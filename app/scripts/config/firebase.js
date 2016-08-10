@@ -9,4 +9,4 @@ var config = {
     storageBucket: "eva-ss2016.appspot.com",
 };
 firebase.initializeApp(config);
-var rootRef = firebase.database().ref();
+var database = firebase.database();

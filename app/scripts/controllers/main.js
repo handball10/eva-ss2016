@@ -8,25 +8,29 @@
  * Controller of the bookingCalendarApp
  */
 angular.module('bookingCalendarApp')
-    .controller('MainCtrl', function ($q, $scope, $log, $firebaseAuth) {
+    .controller('MainCtrl', function ($q, $scope, $log, AuthService) {
 
         $scope.auth = {
-            email : 'test@test.de',
-            password : '...'
+            email : '',
+            password : ''
+        };
+
+
+        $scope.submit = function() {
+            AuthService
+                .authenticate($scope.auth)
+                .catch(function(error){
+                    $log.log(error);
+                })
+            ;
+        };
+
+        $scope.logout = function(){
+            AuthService.logout();
         };
 
 
 
 
-
-        var auth = firebase.auth();
-
-        var provider = new firebase.auth.TwitterAuthProvider();
-        auth.signInWithPopup(provider).then(function(result) {
-            // User signed in!
-            var uid = result.user.uid;
-        }).catch(function(error) {
-            // An error occurred
-        });
 
     });
