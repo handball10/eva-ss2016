@@ -96,8 +96,6 @@ angular.module('bookingCalendarApp')
 
         function onLogin(user,event){
             $scope.isLoggedIn = true;
-            $log.log(user);
-            $log.log(event);
             try{
                 $scope.$digest();
             }catch(error){
@@ -157,6 +155,10 @@ angular.module('bookingCalendarApp')
                 $mdDialog.cancel();
             };
             $scope.answer = function(answer) {
+                //this should be added to save service
+                $rootScope.$broadcast("booking::Booking",function(all){
+                    console.log(all);
+                });
                 $mdDialog.hide(answer);
             };
         }
