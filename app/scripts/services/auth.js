@@ -16,6 +16,10 @@ angular.module('bookingCalendarApp')
          */
         var service = {};
 
+        service.isLoggedIn = function(){
+            return false;
+        };
+
 
         service.authenticate = function(authObject){
 

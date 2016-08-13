@@ -17,14 +17,25 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
 </head>
-<body ng-app="bookingCalendarApp">
+<body ng-app="bookingCalendarApp" ng-controller="MainCtrl" ng-init="init()">
 <!--[if lte IE 8]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
 <![endif]-->
 
-<div ng-include="'views/partials/header.html'"></div>
-<div ng-include="'views/partials/calendar.html'"></div>
+<div ng-if="isLoggedIn">
+    <div ng-include="'views/partials/header.html'"></div>
+    <div ng-include="'views/partials/calendar.html'"></div>
+
+    <!-- Modal -->
+    <div ng-include="'views/partials/login.html'" ng-if="!isLoggedIn"></div>
+    <!-- /Modal -->
+</div>
+
+<div ng-hide="isLoggedIn">
+
+</div>
+
 
 
 
@@ -58,6 +69,7 @@
 <script src="scripts/controllers/test.js"></script>
 <script src="scripts/services/auth.js"></script>
 <script src="scripts/controllers/calendar.js"></script>
+<script src="scripts/controllers/login.js"></script>
 <!-- endbuild -->
 
 </body>

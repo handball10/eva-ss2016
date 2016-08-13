@@ -10,6 +10,45 @@
 angular.module('bookingCalendarApp')
     .controller('MainCtrl', function ($q, $scope, $log, AuthService) {
 
+        $scope.isLoggedIn = false;
+
+        $scope.init = function(){
+            $scope.isLoggedIn = AuthService.isLoggedIn();
+        };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         $scope.auth = {
             email : '',
             password : ''
