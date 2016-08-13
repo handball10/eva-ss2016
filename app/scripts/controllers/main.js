@@ -29,6 +29,20 @@ angular.module('bookingCalendarApp')
             });
 
 
+            //firebase.database().ref('bookings/').push({
+            //    username: 'Test',
+            //    email: 'TEST@web.de'
+            //});
+
+            //firebase.database().ref('bookings/').push({
+            //        StartDate : 'Hallo',
+            //        EndDate : 'Hallo'
+            //    })
+            //    .then(function(){
+            //
+            //    });
+            //;
+
             $log.log(booking);
 
 

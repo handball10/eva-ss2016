@@ -8,7 +8,7 @@
  * Service in the bookingCalendarApp.
  */
 angular.module('bookingCalendarApp')
-    .service('Collection', function ($window, $q) {
+    .service('Collection', function ($window, $q, $log) {
 
         function Collection(settings){
 
@@ -20,9 +20,7 @@ angular.module('bookingCalendarApp')
                 throw new Error('Database object not available');
             }
 
-            var self = this
-
-            ;
+            var self = this;
 
             this.items = [];
 
@@ -38,8 +36,9 @@ angular.module('bookingCalendarApp')
                 var data = {};
 
                 _.each(model, function(value, key){
+
                     if(!_.isFunction(value)){
-                        data[key] = value;
+                        data[key] = _.isDate(value) ? value.getTime() : value;
                     }
                 });
 
@@ -66,7 +65,6 @@ angular.module('bookingCalendarApp')
                     })
                 ;
 
-
                 return deferred.promise;
             };
 
@@ -77,14 +75,6 @@ angular.module('bookingCalendarApp')
             this.find = function(options){
 
             }
-
-
-
-
-
-
-
-
 
         }
 
