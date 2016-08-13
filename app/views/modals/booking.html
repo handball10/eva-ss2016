@@ -1,7 +1,6 @@
 <md-dialog aria-label="Booking" ng-cloak ng-controller="BookingCtrl as ctrl">
-    <form name="bookingForm">
         <md-toolbar>
-            <div class="md-toolbar-tools">
+            <div class="md-toolbar-tools modal-width">
                 <h2>Booking</h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="cancel()">
@@ -9,6 +8,7 @@
                 </md-button>
             </div>
         </md-toolbar>
+    <form name="bookingForm" layout-padding>
 
         <md-input-container class="md-block">
             <label>Name</label>
@@ -19,6 +19,7 @@
         </md-input-container>
 
         <!-- RESOURCE -->
+        <md-content class="md-block">
         <md-autocomplete
                 ng-disabled="ctrl.isDisabled"
                 md-no-cache="ctrl.noCache"
@@ -38,14 +39,22 @@
                 <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>
             </md-not-found>
         </md-autocomplete>
+        </md-content>
 
         <!-- DATEPICKER -->
+        <md-content flex-gt-sm>
+        <h4>Startdatum</h4>
         <md-datepicker ng-model="myStartDate" md-placeholder="Startdatum"></md-datepicker>
+
+        </md-content>
+        <md-content flex-gt-sm>
+        <h4>Enddatum</h4>
         <md-datepicker ng-model="myEndDate" md-placeholder="Enddatum"></md-datepicker>
+        </md-content>
 
         <!-- Person Size -->
-        <md-input-container style="margin-right: 10px;">
-            <md-select placeholder="Anzahl" ng-model="personSize" md-on-open="loadPersonSizes()" style="min-width: 200px;">
+        <md-input-container class="md-block">
+            <md-select placeholder="Anzahl" ng-model="personSize" md-on-open="loadPersonSizes()">
                 <md-option ng-value="personSize" ng-repeat="personSize in personSizes">{{personSize.name}}</md-option>
             </md-select>
         </md-input-container>
@@ -64,5 +73,3 @@
     </form>
 </md-dialog>
 
-
-start - end name - autocomplete für resource  - anzahl der personen

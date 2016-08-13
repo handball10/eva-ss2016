@@ -170,7 +170,7 @@ angular.module('bookingCalendarApp')
             };
             $scope.answer = function(answer) {
                 //this should be added to save service
-                $rootScope.$broadcast("booking::Booking",function(all){
+                $rootScope.$broadcast("booking::getBooking",function(all){
                     console.log(all);
                 });
                 $mdDialog.hide(answer);

@@ -1,11 +1,14 @@
 <section ng-controller="LoginCtrl" ng-init="init()" id="loginModal">
     <div ng-cloak >
-        <md-content class="md-padding" layout-xs="column" layout="row">
+        <md-content layout-xs="column" layout="row">
             <div flex-xs flex-gt-xs="20" layout="column" class="login-box">
                 <md-card md-theme="{{ 'default' }}" md-theme-watch>
-                    <md-card-title>
                         <md-card-title-text>
-                            <span class="md-headline">Login</span>
+                            <md-toolbar>
+                                <div class="md-toolbar-tools modal-width">
+                                    <h2>Login</h2>
+                                </div>
+                            </md-toolbar>
                             <span class="md-subhead">
                              <div  layout="column" ng-cloak>
                                   <md-content layout-padding>
@@ -25,7 +28,6 @@
                                 </div>
                             </span>
                         </md-card-title-text>
-                    </md-card-title>
                     <md-card-actions layout="row" layout-align="end center">
                     </md-card-actions>
                 </md-card>
