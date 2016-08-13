@@ -8,16 +8,17 @@
  * Service in the bookingCalendarApp.
  */
 angular.module('bookingCalendarApp')
-    .service('AuthService', function ($q, $log) {
+    .service('AuthService', function ($q, $log, $rootScope) {
 
         /**
          * Service return object that stores all public methods
          * @type {{}}
          */
         var service = {};
+        var login = false;
 
         service.isLoggedIn = function(){
-            return false;
+            return login;
         };
 
 
@@ -51,7 +52,8 @@ angular.module('bookingCalendarApp')
 
         service.logout = function(){
             firebase.auth().signOut().then(function(){
-                $log.log('logged out')
+                $rootScope.$broadcast("auth::logout");
+                $log.log('logged out');
             }, function(){
                 $log.log('Not logged in!');
             });
@@ -61,7 +63,7 @@ angular.module('bookingCalendarApp')
             .auth()
             .onAuthStateChanged(function(user){
                 if(user){
-                    $log.log(user);
+                    $rootScope.$broadcast("auth::login",user);
                 } else {
                     $log.log('Error');
                 }

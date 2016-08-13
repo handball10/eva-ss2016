@@ -1,10 +1,28 @@
 <section id="header">
 
 
-    <input type="email" ng-model="auth.email" id="email" placeholder="test@domain.de"/>
-    <input type="password" ng-model="auth.password" id="password" placeholder="Secret"/>
+    <md-toolbar class="md-hue-2">
+        <div class="md-toolbar-tools">
+            <pan>LOGO</pan>
+            <h2>
+                <span>Hier steht dann ein Text</span>
+            </h2>
+            <span flex>{{status}}</span>
+            <md-button class="md-raised" aria-label="More" ng-click="showCustomerDialog($event)">
+                Customer
+            </md-button>
+            <md-button class="md-raised" aria-label="More" ng-click="showResourceDialog($event)">
+                Resource
+            </md-button>
 
-    <button ng-click="submit()">Sign in</button>
-    <button ng-click="logout()">Log out</button>
+            <md-button class="md-raised" aria-label="More" ng-click="showBookingDialog($event)">
+                Buchung
+            </md-button>
+            <md-button class="md-raised" aria-label="More" ng-click="logout()">
+                Logout
+            </md-button>
+        </div>
+    </md-toolbar>
 
 </section>
+

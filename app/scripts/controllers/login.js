@@ -8,19 +8,22 @@
  * Controller of the bookingCalendarApp
  */
 angular.module('bookingCalendarApp')
-    .controller('LoginCtrl', function ($scope, AuthService) {
+    .controller('LoginCtrl', function ($scope, AuthService,$rootScope,$log) {
+        $scope.auth = {
+            email : "s@s.de",
+            password:"Hallo1234#"
+        };
 
+        $scope.submit = function() {
+            AuthService
+                .authenticate($scope.auth)
+                .catch(function(error){
+                    $scope.errorMessage = true;
+                    $log.log(error);
+                })
+            ;
+        };
 
-
-
-
-
-
-
-
-
-
-
-
+        $scope.errorMessage = false;
 
     });

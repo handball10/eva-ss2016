@@ -27,13 +27,13 @@
     <div ng-include="'views/partials/header.html'"></div>
     <div ng-include="'views/partials/calendar.html'"></div>
 
-    <!-- Modal -->
-    <div ng-include="'views/partials/login.html'" ng-if="!isLoggedIn"></div>
-    <!-- /Modal -->
+
 </div>
 
 <div ng-hide="isLoggedIn">
-
+    <!-- Modal -->
+    <div ng-include="'views/login.html'"></div>
+    <!-- /Modal -->
 </div>
 
 
@@ -66,10 +66,14 @@
 <script src="scripts/app.js"></script>
 <script src="scripts/controllers/main.js"></script>
 <script src="scripts/controllers/about.js"></script>
-<script src="scripts/controllers/test.js"></script>
 <script src="scripts/services/auth.js"></script>
 <script src="scripts/controllers/calendar.js"></script>
 <script src="scripts/controllers/login.js"></script>
+<script src="scripts/controllers/npm.js"></script>
+<script src="scripts/controllers/newbooking.js"></script>
+<script src="scripts/controllers/customer.js"></script>
+<script src="scripts/controllers/booking.js"></script>
+<script src="scripts/controllers/resource.js"></script>
 <!-- endbuild -->
 
 </body>

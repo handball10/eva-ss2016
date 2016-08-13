@@ -1,0 +1,35 @@
+<section ng-controller="LoginCtrl" ng-init="init()" id="loginModal">
+    <div ng-cloak >
+        <md-content class="md-padding" layout-xs="column" layout="row">
+            <div flex-xs flex-gt-xs="20" layout="column" class="login-box">
+                <md-card md-theme="{{ 'default' }}" md-theme-watch>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Login</span>
+                            <span class="md-subhead">
+                             <div  layout="column" ng-cloak>
+                                  <md-content layout-padding>
+                                    <form name="loginForm">
+                                      <md-input-container class="md-block">
+                                        <label>Email</label>
+                                        <input required name="email" type="email" ng-model="authe.email">
+                                      </md-input-container>
+                                      <md-input-container class="md-block">
+                                        <label>Password</label>
+                                        <input required name="password" ng-model="authe.password" type="password">
+                                      </md-input-container>
+                                    </form>
+                                  </md-content>
+                                    <span ng-show="errorMessage" class="error-info">Passwort oder Email nicht korrekt</span>
+                                    <md-button class="md-raised md-primary" ng-click="submit()">Login</md-button>
+                                </div>
+                            </span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-actions layout="row" layout-align="end center">
+                    </md-card-actions>
+                </md-card>
+            </div>
+        </md-content>
+    </div>
+</section>
