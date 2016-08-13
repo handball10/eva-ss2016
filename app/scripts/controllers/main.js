@@ -8,12 +8,84 @@
  * Controller of the bookingCalendarApp
  */
 angular.module('bookingCalendarApp')
-    .controller('MainCtrl', function ($q, $scope, $log, AuthService, $rootScope, $mdMedia, $mdDialog) {
+    .controller('MainCtrl', function ($q, $scope, $log, AuthService, Bookings, Booking, $rootScope, $mdMedia, $mdDialog) {
 
         $scope.isLoggedIn = false;
 
         $scope.init = function(){
             $scope.isLoggedIn = AuthService.isLoggedIn();
+        };
+
+
+        $scope.saveData = function(){
+
+            var now = moment();
+
+            $log.log(now);
+
+            var booking = new Booking({
+                StartDate : now,
+                EndDate : now.add(2, 'weeks').clone()
+            });
+
+
+            $log.log(booking);
+
+
+
+
+
+            Bookings
+                .insert(booking)
+                .then(function(item){
+                    $log.log(item);
+                })
+            ;
+        };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        $scope.auth = {
+            email : '',
+            password : ''
+        };
+
+
+        $scope.submit = function() {
+            AuthService
+                .authenticate($scope.auth)
+                .catch(function(error){
+                    $log.log(error);
+                })
+            ;
         };
 
         $scope.logout = function(){
