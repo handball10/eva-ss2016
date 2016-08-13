@@ -10,4 +10,5 @@
 angular.module('bookingCalendarApp')
   .controller('CustomerCtrl', function ($scope) {
 
+
   });
