@@ -16,7 +16,6 @@ angular.module('bookingCalendarApp')
       $scope.name = '';
       $scope.resource;
 
-
       //AUTOCOMPLETE
         var self = this;
         self.simulateQuery = false;
@@ -66,9 +65,7 @@ angular.module('bookingCalendarApp')
             };
           });
         }
-        /**
-         * Create filter function for a query string
-         */
+
         function createFilterFor(query) {
           var lowercaseQuery = angular.lowercase(query);
           return function filterFn(state) {
@@ -80,6 +77,7 @@ angular.module('bookingCalendarApp')
     $scope.myStartDate = new Date();
     $scope.myEndDate = new Date();
 
+    //SIZE
     var size = 5;
     function fillSizes(){
         for(var i = 0;i<size;i++){
@@ -88,20 +86,19 @@ angular.module('bookingCalendarApp')
         }
     }
 
-      //for save service after clicking okay
-      $rootScope.$on("booking::getBooking",getBooking);
+  $scope.submit = function(){
+      $scope.answer("booking");
+  };
 
-      function getBooking(obj,event){
-          booking.startTime = $scope.myStartDate;
-          booking.endTime = $scope.myEndDate;
-          booking.size = $scope.size;
-          booking.name = $scope.name;
-          booking.resource = $scope.resource;
-          event(booking);
-      }
+  $rootScope.$on("booking::getBooking",getBooking);
+  function getBooking(obj,event){
+      booking.startTime = $scope.myStartDate;
+      booking.endTime = $scope.myEndDate;
+      booking.size = $scope.size;
+      booking.name = $scope.name;
+      booking.resource = $scope.resource;
+      event(booking);
+  }
 
-      $scope.submit = function(){
-          $scope.answer("yoyoyoy");
-      };
 
   });

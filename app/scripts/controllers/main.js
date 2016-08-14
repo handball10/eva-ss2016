@@ -169,10 +169,27 @@ angular.module('bookingCalendarApp')
                 $mdDialog.cancel();
             };
             $scope.answer = function(answer) {
-                //this should be added to save service
-                $rootScope.$broadcast("booking::getBooking",function(all){
-                    console.log(all);
-                });
+                if(answer === "booking") {
+                    $rootScope.$broadcast("booking::getBooking", function (all) {
+                        //this should be added to save service
+                        console.log(all);
+                    });
+                }
+
+                if(answer === "resource") {
+                    $rootScope.$broadcast("resource::getResource", function (all) {
+                        //this should be added to save service
+                        console.log(all);
+                    });
+                }
+
+                if(answer === "customer") {
+                    $rootScope.$broadcast("customer::getCustomer", function (all) {
+                        //this should be added to save service
+                        console.log(all);
+                    });
+                }
+
                 $mdDialog.hide(answer);
             };
         }
