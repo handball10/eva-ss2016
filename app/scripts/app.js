@@ -16,6 +16,10 @@ angular
         'ngRoute',
         'ngSanitize',
         'firebase',
-        'ngMaterial'
+        'ngMaterial',
+        'angularMoment'
     ])
+    .run(function(amMoment) {
+        amMoment.changeLocale('de');
+    })
 ;

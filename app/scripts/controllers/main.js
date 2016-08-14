@@ -53,6 +53,11 @@ angular.module('bookingCalendarApp')
                 .insert(booking)
                 .then(function(item){
                     $log.log(item);
+
+                    return Bookings.list();
+                })
+                .then(function(list){
+                    $log.log(list);
                 })
             ;
         };
