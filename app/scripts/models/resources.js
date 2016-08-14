@@ -8,16 +8,6 @@
  * Factory in the bookingCalendarApp.
  */
 angular.module('bookingCalendarApp')
-  .factory('Resources', function () {
-    // Service logic
-    // ...
-
-    var meaningOfLife = 42;
-
-    // Public API here
-    return {
-      someMethod: function () {
-        return meaningOfLife;
-      }
-    };
-  });
+    .factory('Resources', function (Resource, RemoteObject) {
+        return RemoteObject.createCollection('Resource', 'resources', Resource);
+    });
