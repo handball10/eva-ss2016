@@ -9,13 +9,18 @@
  */
 angular.module('bookingCalendarApp')
   .controller('BookingCtrl', function ($scope,$log,$timeout,$rootScope) {
-      $scope.booking = {};
+      var booking = {};
+      $scope.isResource = false;
+      $scope.sizes = [];
+      $scope.size = 1;
+      $scope.name = '';
+      $scope.resource;
 
 
+      //AUTOCOMPLETE
         var self = this;
         self.simulateQuery = false;
         self.isDisabled    = false;
-        // list of `state` value/display objects
         self.states        = loadAll();
         self.querySearch   = querySearch;
         self.selectedItemChange = selectedItemChange;
@@ -24,13 +29,7 @@ angular.module('bookingCalendarApp')
         function newState(state) {
           alert("Sorry! You'll need to create a Constituion for " + state + " first!");
         }
-        // ******************************
-        // Internal methods
-        // ******************************
-        /**
-         * Search for states... use $timeout to simulate
-         * remote dataservice call.
-         */
+
         function querySearch (query) {
           var results = query ? self.states.filter( createFilterFor(query) ) : self.states,
               deferred;
@@ -46,13 +45,11 @@ angular.module('bookingCalendarApp')
           $log.info('Text changed to ' + text);
         }
         function selectedItemChange(item) {
+            fillSizes();
+            $scope.isResource = true;
           $log.info('Item changed to ' + JSON.stringify(item));
-            $scope.booking.resource = item.value;
+            $scope.resource = item.value;
         }
-        /**
-         * Build `states` list of key/value pairs
-         */
-
 
         function loadAll() {
           var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
@@ -79,47 +76,32 @@ angular.module('bookingCalendarApp')
           };
         }
 
-
+    //DATE
     $scope.myStartDate = new Date();
     $scope.myEndDate = new Date();
 
+    var size = 5;
+    function fillSizes(){
+        for(var i = 0;i<size;i++){
+        $scope.sizes[i] = i+1;
 
-   $scope.$watch('myStartDate', function(newValue, oldValue){
-     console.log(oldValue);
-     console.log(newValue);
-   });
-
-  $scope.$watch('myEndDate', function(newValue, oldValue){
-      console.log(oldValue);
-      console.log(newValue);
-  });
-
-
-      $scope.personSize = null;
-      $scope.personSizes = null;
-      $scope.loadPersonSizes = function() {
-          // Use timeout to simulate a 650ms request.
-          return $timeout(function () {
-              $scope.personSizes = $scope.personSizes || [
-                      {id: 1, name: 1},
-                      {id: 2, name: 2},
-                      {id: 3, name: 3},
-                      {id: 4, name: 4},
-                      {id: 5, name: 5}
-                  ];
-          }, 650);
-      };
-
-      $scope.booking.name = '';
+        }
+    }
 
       //for save service after clicking okay
       $rootScope.$on("booking::getBooking",getBooking);
 
-      function getBooking(temp,event){
-          $scope.booking.startTime = $scope.myStartDate;
-          $scope.booking.endTime = $scope.myEndDate;
-          $scope.booking.personSize = $scope.personSize.id;
-          event($scope.booking);
+      function getBooking(obj,event){
+          booking.startTime = $scope.myStartDate;
+          booking.endTime = $scope.myEndDate;
+          booking.size = $scope.size;
+          booking.name = $scope.name;
+          booking.resource = $scope.resource;
+          event(booking);
       }
+
+      $scope.submit = function(){
+          $scope.answer("yoyoyoy");
+      };
 
   });

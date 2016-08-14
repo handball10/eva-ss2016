@@ -8,12 +8,11 @@
                 </md-button>
             </div>
         </md-toolbar>
-    <form name="bookingForm" layout-padding>
-
+    <form name="bookingForm" layout-padding ng-submit="bookingForm.$valid && submit()">
         <md-input-container class="md-block">
             <label>Name</label>
-            <input required name="name" ng-model="booking.name">
-            <div ng-messages="bookingForm.name.$error">
+            <input required name="name" ng-model="name">
+            <div ng-messages="name.$error">
                 <div ng-message="required">Bitte ausfüllen</div>
             </div>
         </md-input-container>
@@ -30,7 +29,8 @@
                 md-items="item in ctrl.querySearch(ctrl.searchText)"
                 md-item-text="item.display"
                 md-min-length="0"
-                placeholder="Wähle dein zu Buchendes Zimmer">
+                placeholder="Wähle dein zu Buchendes Zimmer"
+                required="required">
             <md-item-template>
                 <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
             </md-item-template>
@@ -40,6 +40,20 @@
             </md-not-found>
         </md-autocomplete>
         </md-content>
+
+        <!-- Person Size
+        <md-input-container class="md-block" ng-show="isResource">
+            <md-select placeholder="Anzahl" ng-model="personSize" md-on-open="loadPersonSizes()">
+                <md-option ng-value="personSize" ng-repeat="personSize in personSizes">{{personSize.name}}</md-option>
+            </md-select>
+        </md-input-container>
+        -->
+        <md-input-container style="margin-right: 10px;" ng-show="isResource">
+            <label>Size</label>
+            <md-select ng-model="size" required="required">
+                <md-option ng-repeat="size in sizes" value="{{size}}">{{size}}</md-option>
+            </md-select>
+        </md-input-container>
 
         <!-- DATEPICKER -->
         <md-content flex-gt-sm>
@@ -52,21 +66,15 @@
         <md-datepicker ng-model="myEndDate" md-placeholder="Enddatum"></md-datepicker>
         </md-content>
 
-        <!-- Person Size -->
-        <md-input-container class="md-block">
-            <md-select placeholder="Anzahl" ng-model="personSize" md-on-open="loadPersonSizes()">
-                <md-option ng-value="personSize" ng-repeat="personSize in personSizes">{{personSize.name}}</md-option>
-            </md-select>
-        </md-input-container>
 
         <!-- BUTTONS -->
         <md-dialog-actions layout="row">
             <span flex></span>
             <md-button ng-click="cancel()">
-                Cancel
+                abbrechen
             </md-button>
-            <md-button ng-click="answer('OKay')">
-                Okay
+            <md-button type="submit">
+                speichern
             </md-button>
         </md-dialog-actions>
 
