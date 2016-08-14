@@ -51,7 +51,7 @@ angular.module('bookingCalendarApp')
                         editable: true, // enable draggable events
                         droppable: true, // this allows things to be dropped onto the calendar
                         aspectRatio: 1.8,
-                        height: $(window).innerHeight() - 50,
+                        height: $(window).innerHeight() - 64,
                         schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
                         scrollTime: '00:00', // undo default 6am scrollTime
                         header: {
