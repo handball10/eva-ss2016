@@ -8,8 +8,7 @@
  * Controller of the bookingCalendarApp
  */
 angular.module('bookingCalendarApp')
-  .controller('CustomerCtrl', function ($scope,$rootScope) {
-  var customer = {};
+  .controller('CustomerCtrl', function ($scope,$rootScope,Customer,Customers) {
 
   $scope.company = "";
   $scope.birthday = "";
@@ -17,12 +16,10 @@ angular.module('bookingCalendarApp')
   $scope.lastname = "";
   $scope.street = "";
   $scope.city = "";
-  $scope.postalCode = "";
+  $scope.zipcode = "";
   $scope.email = "";
   $scope.phone = "";
-  $scope.extras = "";
-
-
+  $scope.custom = "";
 
 
     $scope.submit = function(){
@@ -32,17 +29,21 @@ angular.module('bookingCalendarApp')
 
     $rootScope.$on("customer::getCustomer",getCustomer);
     function getCustomer(obj,event){
-      customer.company = $scope.company;
-      customer.birthday = $scope.birthday;
-      customer.firstname = $scope.firstname;
-      customer.lastname = $scope.lastname;
-      customer.street = $scope.street;
-      customer.city = $scope.city;
-      customer.post = $scope.postalCode;
-      customer.email = $scope.email;
-      customer.phone = $scope.phone;
-      customer.extras = $scope.extras;
-      event(customer);
+
+      var customer = new Customer({
+        Company : $scope.company,
+        FirstName : $scope.firstname,
+        LastName : $scope.lastname,
+        BirthDate : $scope.birthday,
+        Street : $scope.street,
+        City : $scope.city,
+        ZipCode : $scope.zipcode,
+        Email : $scope.email,
+        Phone : $scope.phone,
+        Custom : $scope.custom
+      });
+
+      Customers.insert(customer);
     }
 
 

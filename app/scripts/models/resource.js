@@ -8,14 +8,14 @@
  * Factory in the bookingCalendarApp.
  */
 angular.module('bookingCalendarApp')
-    .factory('Resource', function () {
+    .factory('Resource', function ($log) {
         function Resource(properties){
 
             $log.log(properties);
 
             var self = this;
 
-            this.Id         = undefined;
+            //this.Id         = undefined;
             //this.Ressource  = undefined;
             this.Size  = undefined;
             this.Name    = undefined;
