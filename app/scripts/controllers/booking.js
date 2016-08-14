@@ -8,65 +8,80 @@
  * Controller of the bookingCalendarApp
  */
 angular.module('bookingCalendarApp')
-  .controller('BookingCtrl', function ($scope,$log,$timeout,$rootScope,Booking,Bookings) {
+  .controller('BookingCtrl', function ($scope,$log,$timeout,$rootScope,Booking,Bookings,Resources,Customers) {
       $scope.isResource = false;
       $scope.sizes = [];
       $scope.size = 1;
-      $scope.name = '';
-      $scope.resource;
+      $scope.resourceID;
+      $scope.customerID;
+      $scope.maxSize = 1;
+
+      $scope.resource = {};
+      $scope.customer = {};
+
+      //load resources
+
+
+
+
+
+
 
       //AUTOCOMPLETE
-        var self = this;
-        self.simulateQuery = false;
-        self.isDisabled    = false;
-        self.states        = loadAll();
-        self.querySearch   = querySearch;
-        self.selectedItemChange = selectedItemChange;
-        self.searchTextChange   = searchTextChange;
-        self.newState = newState;
-        function newState(state) {
-          alert("Sorry! You'll need to create a Constituion for " + state + " first!");
-        }
-
-        function querySearch (query) {
-          var results = query ? self.states.filter( createFilterFor(query) ) : self.states,
+      //resources
+        var resource = $scope.resource;
+        resource.simulateQuery = false;
+          Resources.list()
+              .then(function(list){
+                  resource.states = list;
+              })
+          ;
+        resource.querySearchResource = function (query) {
+          var results = query ? resource.states.filter( createFilterFor(query) ) : resource.states,
               deferred;
-          if (self.simulateQuery) {
-            deferred = $q.defer();
-            $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
-            return deferred.promise;
+          if (resource.simulateQuery) {
+              deferred = $q.defer();
+              $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
+              return deferred.promise;
           } else {
-            return results;
+              return results;
           }
-        }
-        function searchTextChange(text) {
-        }
-        function selectedItemChange(item) {
-            fillSizes();
-            $scope.isResource = true;
-            $scope.resource = item.value;
-        }
+        };
+        resource.selectedResourceItemChange = function(item) {
+            fillSizes(item.Size);
+            $scope.resourceID = item.id;
+        };
 
-        function loadAll() {
-          var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-              Wisconsin, Wyoming';
-          return allStates.split(/, +/g).map( function (state) {
-            return {
-              value: state.toLowerCase(),
-              display: state
-            };
-          });
-        }
+        //customer
+        var customer = $scope.customer;
+      customer.simulateQuery = false;
+      Customers.list()
+          .then(function(list){
+              console.log(list);
+              customer.states = list;
+          })
+      ;
+      customer.querySearchCustomer = function (query) {
+          var results = query ? customer.states.filter( createFilterFor(query) ) : customer.states,
+              deferred;
+          if (customer.simulateQuery) {
+              deferred = $q.defer();
+              $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
+              return deferred.promise;
+          } else {
+              return results;
+          }
+      };
+      customer.selectedCustomerItemChange = function(item) {
+          $scope.customerID = item.id;
+      };
+
+
 
         function createFilterFor(query) {
           var lowercaseQuery = angular.lowercase(query);
           return function filterFn(state) {
-            return (state.value.indexOf(lowercaseQuery) === 0);
+            return (state.Name.indexOf(lowercaseQuery) === 0);
           };
         }
 
@@ -75,12 +90,12 @@ angular.module('bookingCalendarApp')
     $scope.myEndDate = new Date();
 
     //SIZE
-    var size = 5;
-    function fillSizes(){
-        for(var i = 0;i<size;i++){
-        $scope.sizes[i] = i+1;
+    function fillSizes(maxSize){
 
+        for(var i = 0;i<maxSize;i++){
+            $scope.sizes[i] = i+1;
         }
+        $scope.isResource = true;
     }
 
   $scope.submit = function(){
@@ -89,12 +104,13 @@ angular.module('bookingCalendarApp')
 
   $rootScope.$on("booking::getBooking",getBooking);
       function getBooking(obj,event){
+          console.log($scope.resource);
 
       var booking = new Booking({
-          Resource : $scope.resource,
+          Resource : $scope.resourceID,
           StartDate : $scope.myStartDate,
           EndDate : $scope.myEndDate,
-          Customer : $scope.name,
+          Customer : $scope.customerID,
           Size : $scope.size
       });
 

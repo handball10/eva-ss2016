@@ -1,4 +1,4 @@
-<md-dialog aria-label="Booking" ng-cloak ng-controller="BookingCtrl as ctrl">
+<md-dialog aria-label="Booking" ng-cloak ng-controller="BookingCtrl">
         <md-toolbar>
             <div class="md-toolbar-tools modal-width">
                 <h2>Booking</h2>
@@ -9,45 +9,60 @@
             </div>
         </md-toolbar>
     <form name="bookingForm" layout-padding ng-submit="bookingForm.$valid && submit()">
-        <md-input-container class="md-block">
-            <label>Name</label>
-            <input required="required" name="name" ng-model="name">
-            <div ng-messages="bookingForm.name.$error">
-                <div ng-message="required">Bitte ausfüllen</div>
-            </div>
-        </md-input-container>
+
+        <!-- CUSTOMER -->
+        <md-content class="md-block">
+            <label>Kunde</label>
+            <md-autocomplete
+                    md-no-cache="customer.noCache"
+                    md-selected-item="customer.selectedItem"
+                    md-search-text="customer.searchText"
+                    md-selected-item-change="customer.selectedCustomerItemChange(item)"
+                    md-items="item in customer.querySearchCustomer(customer.searchText)"
+                    md-item-text="item.LastName"
+                    md-min-length="0"
+                    placeholder="Wähle einen Kunden aus"
+                    required="required">
+                <md-item-template>
+                    <span md-highlight-text="resource.searchText" md-highlight-flags="^i">{{item.FirstName}} {{item.LastName}}</span>
+                </md-item-template>
+                <md-not-found>
+                    Keine Einträge für "{{resource.searchText}}" gefunden.
+                </md-not-found>
+            </md-autocomplete>
+        </md-content>
 
         <!-- RESOURCE -->
         <md-content class="md-block">
+            <label>Objekt</label>
         <md-autocomplete
-                ng-disabled="ctrl.isDisabled"
-                md-no-cache="ctrl.noCache"
-                md-selected-item="ctrl.selectedItem"
-                md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
-                md-search-text="ctrl.searchText"
-                md-selected-item-change="ctrl.selectedItemChange(item)"
-                md-items="item in ctrl.querySearch(ctrl.searchText)"
-                md-item-text="item.display"
+                md-no-cache="resource.noCache"
+                md-selected-item="resource.selectedItem"
+                md-search-text="resource.searchText"
+                md-selected-item-change="resource.selectedResourceItemChange(item)"
+                md-items="item in resource.querySearchResource(resource.searchText)"
+                md-item-text="item.Name"
                 md-min-length="0"
-                placeholder="Wähle dein zu Buchendes Zimmer"
+                placeholder="Wähle ein zu buchendes Objekt"
                 required="required">
             <md-item-template>
-                <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+                <span md-highlight-text="resource.searchText" md-highlight-flags="^i">{{item.Name}}</span>
             </md-item-template>
             <md-not-found>
-                No states matching "{{ctrl.searchText}}" were found.
-                <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>
+                Keine Einträge für "{{resource.searchText}}" gefunden.
             </md-not-found>
         </md-autocomplete>
         </md-content>
+
         <!-- SIZE -->
+        <md-content>
         <md-input-container style="margin-right: 10px;" ng-show="isResource">
             <label>Personenanzahl</label>
             <md-select ng-model="size" required="required">
                 <md-option ng-repeat="size in sizes" value="{{size}}">{{size}}</md-option>
             </md-select>
         </md-input-container>
-
+        </md-content>
         <!-- DATEPICKER -->
         <md-content flex-gt-sm>
         <h4>Startdatum</h4>

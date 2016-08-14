@@ -137,6 +137,7 @@ angular.module('bookingCalendarApp')
         };
         $scope.showResourceDialog = function(ev){
           $scope.showDialog(ev,'../../views/modals/resource.html');
+            console.log(ev);
         };
 
         $scope.showDialog = function(ev,dialog) {
@@ -165,6 +166,7 @@ angular.module('bookingCalendarApp')
             $scope.hide = function() {
                 $mdDialog.hide();
             };
+
             $scope.cancel = function() {
                 $mdDialog.cancel();
             };

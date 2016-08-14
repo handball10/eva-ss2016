@@ -11,8 +11,6 @@ angular.module('bookingCalendarApp')
     .factory('Resource', function ($log) {
         function Resource(properties){
 
-            $log.log(properties);
-
             var self = this;
 
             //this.Id         = undefined;
@@ -54,7 +52,6 @@ angular.module('bookingCalendarApp')
                 if (!properties) {
                     return;
                 }
-                $log.log('extending');
 
                 angular.extend(self, properties);
                 angular.extend(self, getComputedProperties(properties));
