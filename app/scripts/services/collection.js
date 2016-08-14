@@ -30,6 +30,8 @@ angular.module('bookingCalendarApp')
 
             this.realtime = settings.realtime;
 
+            this.model = settings.Model;
+
             var reference = $window.database.ref(this.path);
 
             function prepareModel(model){
@@ -38,7 +40,10 @@ angular.module('bookingCalendarApp')
                 _.each(model, function(value, key){
 
                     if(!_.isFunction(value)){
-                        data[key] = _.isDate(value) ? value.getTime() : value;
+
+                        if(typeof value !== 'undefined'){
+                            data[key] = _.isDate(value) ? value.getTime() : value;
+                        }
                     }
                 });
 
@@ -73,6 +78,42 @@ angular.module('bookingCalendarApp')
             };
 
             this.find = function(options){
+
+            };
+
+            this.list = function(){
+
+                var deferred = $q.defer();
+
+                reference
+                    .once('value')
+                    .then(function(snapshot){
+
+                        var items = [];
+
+                        $log.log(snapshot.val());
+
+                        _.each(snapshot.val(), function(value, key){
+
+                            var properties = {
+                                id : key
+                            };
+
+                            items.push(
+                                new self.model(
+                                    _.extend(properties, value)
+                                )
+                            );
+                        });
+
+                        deferred.resolve(items);
+
+                    })
+                ;
+
+                return deferred.promise;
+
+
 
             }
 
