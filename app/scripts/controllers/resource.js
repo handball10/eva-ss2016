@@ -13,27 +13,20 @@ angular.module('bookingCalendarApp')
 
     var resource = {};
     $scope.name = "";
-    $scope.size = 0;
+    $scope.size = 1;
 
     $scope.submit = function(){
       $scope.answer("resource");
+            };
 
-
-
-
+    $rootScope.$on("resource::getResource",getResource);
+    function getResource(obj,event){
         var resource = new Resource({
             Size : $scope.size,
             Name : $scope.name
         });
 
         Resources.insert(resource);
-    };
-
-    $rootScope.$on("resource::getResource",getResource);
-    function getResource(obj,event){
-      resource.size = $scope.size;
-      resource.name = $scope.name;
-      event(resource);
     }
 
   });

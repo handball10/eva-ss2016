@@ -8,8 +8,7 @@
  * Controller of the bookingCalendarApp
  */
 angular.module('bookingCalendarApp')
-  .controller('BookingCtrl', function ($scope,$log,$timeout,$rootScope) {
-      var booking = {};
+  .controller('BookingCtrl', function ($scope,$log,$timeout,$rootScope,Booking,Bookings) {
       $scope.isResource = false;
       $scope.sizes = [];
       $scope.size = 1;
@@ -41,12 +40,10 @@ angular.module('bookingCalendarApp')
           }
         }
         function searchTextChange(text) {
-          $log.info('Text changed to ' + text);
         }
         function selectedItemChange(item) {
             fillSizes();
             $scope.isResource = true;
-          $log.info('Item changed to ' + JSON.stringify(item));
             $scope.resource = item.value;
         }
 
@@ -91,14 +88,19 @@ angular.module('bookingCalendarApp')
   };
 
   $rootScope.$on("booking::getBooking",getBooking);
-  function getBooking(obj,event){
-      booking.startTime = $scope.myStartDate;
-      booking.endTime = $scope.myEndDate;
-      booking.size = $scope.size;
-      booking.name = $scope.name;
-      booking.resource = $scope.resource;
-      event(booking);
-  }
+      function getBooking(obj,event){
+
+      var booking = new Booking({
+          Resource : $scope.resource,
+          StartDate : $scope.myStartDate,
+          EndDate : $scope.myEndDate,
+          Customer : $scope.name,
+          Size : $scope.size
+      });
+
+      Bookings.insert(booking);
+
+      }
 
 
   });

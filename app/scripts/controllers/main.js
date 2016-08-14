@@ -170,23 +170,17 @@ angular.module('bookingCalendarApp')
             };
             $scope.answer = function(answer) {
                 if(answer === "booking") {
-                    $rootScope.$broadcast("booking::getBooking", function (all) {
-                        //this should be added to save service
-                        console.log(all);
+                    $rootScope.$broadcast("booking::getBooking", function () {
                     });
                 }
 
                 if(answer === "resource") {
-                    $rootScope.$broadcast("resource::getResource", function (all) {
-                        //this should be added to save service
-                        console.log(all);
+                    $rootScope.$broadcast("resource::getResource", function () {
                     });
                 }
 
                 if(answer === "customer") {
-                    $rootScope.$broadcast("customer::getCustomer", function (all) {
-                        //this should be added to save service
-                        console.log(all);
+                    $rootScope.$broadcast("customer::getCustomer", function () {
                     });
                 }
 
