@@ -91,8 +91,6 @@ angular.module('bookingCalendarApp')
 
                         var items = [];
 
-                        $log.log(snapshot.val());
-
                         _.each(snapshot.val(), function(value, key){
 
                             var properties = {
@@ -112,8 +110,6 @@ angular.module('bookingCalendarApp')
                 ;
 
                 return deferred.promise;
-
-
 
             }
 
