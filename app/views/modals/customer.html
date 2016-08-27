@@ -29,12 +29,13 @@
                 <input ng-model="lastname">
             </md-input-container>
         </div>
-        <md-content>
-        <md-input-container md-no-float class="md-block">
+
+        <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
             <label>Strasse</label>
             <input ng-model="street">
         </md-input-container>
-        </md-content>
+            </div>
 
         <div layout-gt-sm="row">
             <md-input-container class="md-block" flex-gt-sm>
@@ -58,12 +59,12 @@
         </div>
 
 
-        <md-content>
-        <md-input-container class="md-block">
+        <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
             <label>Zusatzinformation</label>
-            <textarea ng-model="custom" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+            <textarea ng-model="custom" md-maxlength="150" rows="7" md-select-on-focus></textarea>
         </md-input-container>
-        </md-content>
+        </div>
 
         <!-- BUTTONS -->
         <md-dialog-actions layout="row">
