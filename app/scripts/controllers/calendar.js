@@ -123,7 +123,7 @@ angular.module('bookingCalendarApp')
                 $mdDialog.show(confirm).then(function() {
                     $log.log('delete ',resource);
 
-                    Resources
+                    Resources.remove(resource);
 
                 }, function() {
                     $log.log('Abbruch ',resource);
@@ -143,6 +143,7 @@ angular.module('bookingCalendarApp')
         function bindListeners(){
 
             $rootScope.$on('Resource::added', addRemoteRessource);
+            $rootScope.$on('Resource::removed', deleteRemoteResource);
 
         }
 
@@ -154,7 +155,8 @@ angular.module('bookingCalendarApp')
         }
 
         function deleteRemoteResource(event, removedResource){
-            calendarInstance.fullCalendar('removeResource',removedResource);
+            $log.log('removed', removedResource);
+            calendarInstance.fullCalendar('removeResource',removedResource.Id);
         }
 
 

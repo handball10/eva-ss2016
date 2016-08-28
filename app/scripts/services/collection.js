@@ -65,6 +65,10 @@ angular.module('bookingCalendarApp')
 
             function dataRemove(data){
                 $log.log('Removed:: ',data);
+
+                var newModel = prepareLifetimeData(data);
+
+                $rootScope.$broadcast(self.name + '::removed', newModel);
             }
 
             function prepareModel(model){
@@ -106,8 +110,11 @@ angular.module('bookingCalendarApp')
                 return deferred.promise;
             };
 
-            this.remove = function(id){
-                var modelReference = $window.database().ref(this.path + '/' + id);
+            this.remove = function(item){
+
+                $log.log(item);
+
+                var modelReference = $window.database.ref(this.path + '/' + item.id);
 
                 modelReference.remove();
             };
