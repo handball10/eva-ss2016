@@ -8,7 +8,7 @@
  * Service in the bookingCalendarApp.
  */
 angular.module('bookingCalendarApp')
-    .service('Collection', function ($window, $q, $log) {
+    .service('Collection', function ($window, $q, $log, $rootScope) {
 
         function Collection(settings){
 
@@ -28,11 +28,44 @@ angular.module('bookingCalendarApp')
 
             this.path = settings.path;
 
-            this.realtime = settings.realtime;
+            this.realtime = settings.realtime || false;
 
             this.model = settings.Model;
 
             var reference = $window.database.ref(this.path);
+
+            if(this.realtime){
+                bindRealTimeHandlers();
+            }
+
+            function bindRealTimeHandlers(){
+
+                reference.on('child_added', dataAdd);
+                reference.on('child_changed', dataChange);
+                reference.on('child_removed', dataRemove);
+
+            }
+
+            function prepareLifetimeData(data){
+                return new self.model(_.extend(data.val(), {Id : data.key}));
+            }
+
+            function dataAdd(data){
+
+                var newModel = prepareLifetimeData(data);
+
+                self.items.push(newModel);
+
+                $rootScope.$broadcast(self.name + '::added', newModel);
+            }
+
+            function dataChange(data){
+                $log.log('Changed:: ',data);
+            }
+
+            function dataRemove(data){
+                $log.log('Removed:: ',data);
+            }
 
             function prepareModel(model){
                 var data = {};
@@ -73,45 +106,66 @@ angular.module('bookingCalendarApp')
                 return deferred.promise;
             };
 
-            this.remove = function(reference){
+            this.remove = function(id){
+                var modelReference = $window.database().ref(this.path + '/' + id);
 
+                modelReference.remove();
             };
 
             this.find = function(options){
 
             };
 
-            this.list = function(){
+            /**
+             * Returns a list of all data in the reference
+             * @returns {*}
+             */
+            this.list = function(options){
 
                 var deferred = $q.defer();
 
-                reference
-                    .once('value')
-                    .then(function(snapshot){
+                if(options && options.bypassCache){
+                    reference
+                        .once('value')
+                        .then(function(snapshot){
 
-                        var items = [];
+                            var items = [];
 
-                        _.each(snapshot.val(), function(value, key){
+                            _.each(snapshot.val(), function(value, key){
 
-                            var properties = {
-                                id : key
-                            };
+                                var properties = {
+                                    id : key
+                                };
 
-                            items.push(
-                                new self.model(
-                                    _.extend(properties, value)
-                                )
-                            );
-                        });
+                                items.push(
+                                    new self.model(
+                                        _.extend(properties, value)
+                                    )
+                                );
+                            });
 
-                        deferred.resolve(items);
+                            self.items = items;
 
-                    })
-                ;
+                            deferred.resolve(items);
+
+                        })
+                    ;
+                } else {
+                    deferred.resolve(self.items);
+                }
+
+
 
                 return deferred.promise;
 
             }
+
+
+
+
+
+
+
 
         }
 

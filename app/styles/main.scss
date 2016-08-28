@@ -55,3 +55,7 @@
 .button--arrow-right:hover::after{
   transform: translate(0%);
 }
+
+.resourceCell {
+  cursor: pointer;
+}

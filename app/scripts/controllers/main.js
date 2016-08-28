@@ -43,7 +43,7 @@ angular.module('bookingCalendarApp')
             //    });
             //;
 
-            $log.log(booking);
+            //$log.log(booking);
 
 
 
@@ -145,7 +145,7 @@ angular.module('bookingCalendarApp')
             console.log(ev);
         };
 
-        $scope.showDialog = function(ev,dialog) {
+        $scope.showDialog = function(ev,dialog, data) {
             var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
             $mdDialog.show({
                 controller: DialogController,
@@ -153,7 +153,8 @@ angular.module('bookingCalendarApp')
                 parent: angular.element(document.body),
                 targetEvent: ev,
                 clickOutsideToClose:true,
-                fullscreen: useFullScreen
+                fullscreen: useFullScreen,
+
             })
                 .then(function(answer) {
                     $scope.status = answer;

@@ -13,11 +13,9 @@ angular.module('bookingCalendarApp')
 
             var self = this;
 
-            //this.Id         = undefined;
-            //this.Ressource  = undefined;
+            this.Id         = undefined;
             this.Size  = undefined;
             this.Name    = undefined;
-            //this.Customer   = undefined;
 
 
             /**

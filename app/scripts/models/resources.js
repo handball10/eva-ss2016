@@ -9,5 +9,5 @@
  */
 angular.module('bookingCalendarApp')
     .factory('Resources', function (Resource, RemoteObject) {
-        return RemoteObject.createCollection('Resource', 'resources', Resource);
+        return RemoteObject.createCollection('Resource', 'resources', Resource, true);
     });

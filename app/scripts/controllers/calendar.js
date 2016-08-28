@@ -8,20 +8,22 @@
  * Controller of the bookingCalendarApp
  */
 angular.module('bookingCalendarApp')
-    .controller('CalendarCtrl', function ($scope, Resources, Resource, Bookings, $log) {
+    .controller('CalendarCtrl', function ($scope, $rootScope, Resources, Resource, Bookings, $log, $mdDialog) {
+
+        var resourceList,
+            bookingList,
+            calendarInstance
+        ;
 
         $scope.init = function(){
 
-            var resourceList,
-                bookingList
-            ;
 
             Resources
-                .list()
+                .list({bypassCache : true})
                 .then(function(resources){
                     resourceList = _.map(resources, function(item){
 
-                        $log.log(item);
+                        $log.log(item.id);
 
                         return {
                             id : item.id,
@@ -31,7 +33,7 @@ angular.module('bookingCalendarApp')
 
                     $log.log('ResourceList::',resourceList);
 
-                    return Bookings.list();
+                    return Bookings.list({bypassCache : true});
                 })
                 .then(function(bookings){
                     bookingList = _.map(bookings, function(item){
@@ -46,12 +48,15 @@ angular.module('bookingCalendarApp')
 
                 })
                 .finally(function(){
-                    $('#calendar-container').fullCalendar({
+
+                    calendarInstance = $('#calendar-container');
+
+                    calendarInstance.fullCalendar({
                         now: moment(),
                         editable: true, // enable draggable events
                         droppable: true, // this allows things to be dropped onto the calendar
                         aspectRatio: 1.8,
-                        height: $(window).innerHeight() - 64,
+                        height: $(window).innerHeight() - 100,
                         schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
                         scrollTime: '00:00', // undo default 6am scrollTime
                         header: {
@@ -59,9 +64,18 @@ angular.module('bookingCalendarApp')
                             center: 'title',
                             right : ''
                         },
+                        slotEventOverlap : false,
+                        eventOverlap : function(){
+                            return false
+                        },
+                        resourceAreaWidth : '20%',
                         timeFormat : 'HH:mm',
                         lang : 'de',
                         defaultView: 'timelineMonth',
+
+                        selectable : true,
+
+                        select : selectHandler,
 
                         resourceLabelText: 'Rooms',
                         resources: resourceList,
@@ -80,16 +94,67 @@ angular.module('bookingCalendarApp')
                         },
                         eventDrop: function(event) { // called when an event (already on the calendar) is moved
                             console.log('eventDrop', event);
-                        }
+                        },
+
+                        resourceRender: resourceRender
                     });
+
+                    bindListeners();
                 })
             ;
 
         };
 
-        function getResources(){
-            Resources
-                .list()
+        function resourceRender(resource, cell){
+
+            cell.addClass('resourceCell');
+
+            cell.click(function(event){
+
+                var confirm = $mdDialog
+                                .confirm()
+                                .title('Wollen Sie diese Ressource wirklich löschen?')
+                                .textContent('Achtung: Alle Buchungen gehen dabei auch verloren!')
+                                .ariaLabel('Löschen?')
+                                .targetEvent(event)
+                                .ok('Löschen')
+                                .cancel('Abbruch');
+
+                $mdDialog.show(confirm).then(function() {
+                    $log.log('delete ',resource);
+
+                    Resources
+
+                }, function() {
+                    $log.log('Abbruch ',resource);
+                });
+
+
+                //calendarInstance.fullCalendar('removeResource', resource);
+            });
+
+        }
+
+        function selectHandler(start, end, jsEvent, view, resource){
+            $log.log(start, end, resource);
+        }
+
+
+        function bindListeners(){
+
+            $rootScope.$on('Resource::added', addRemoteRessource);
+
+        }
+
+        function addRemoteRessource(event, addedRessource){
+            calendarInstance.fullCalendar('addResource',{
+                id : addedRessource.Id,
+                title : addedRessource.Name
+            });
+        }
+
+        function deleteRemoteResource(event, removedResource){
+            calendarInstance.fullCalendar('removeResource',removedResource);
         }
 
 
