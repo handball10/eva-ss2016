@@ -1,0 +1,30 @@
+\renewcommand*{\maketitle}{
+\thispagestyle{empty}
+\par
+\vspace{5cm}
+\hspace{-3.8cm}
+\noindent\colorbox{thmgreen}{
+\hspace{3.3cm}
+\parbox{\dimexpr\paperwidth-2\fboxsep}{\vspace{10pt}\color{white}
+\parbox{\textwidth}{\fontsize{22}{26}\selectfont\sffamily\bfseries\raggedright\thetitle}\hfill\vspace{5pt}
+}
+}
+\vspace{1mm}
+\par
+{\sffamily\ourSubTitle}
+\vspace{5cm}
+\par
+\hspace{0.4\textwidth}\parbox{.6\linewidth}{\fontsize{12}{14}\selectfont\raggedleft\sffamily Eine Arbeit von\\\theauthor\\\vspace{3mm}entstanden im Sommersemester 2016 im Fach \textbf{„Entwicklung verteilter Anwendung“ bei\\Prof. Dr. Karim Kremer}\\(\thedate)
+}
+\vspace{4cm}
+\par
+{
+\raggedleft
+\includegraphics[width=6cm]{images/THMlogo.png}\\
+\vspace{0.3cm}
+{\sffamily
+Technische Hochschule Mittelhessen\\
+Wilhelm-Leuschner-Straße 13\\
+61169 Friedberg\\}
+}
+}

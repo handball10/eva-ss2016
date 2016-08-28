@@ -1,0 +1,83 @@
+%Packages:
+\usepackage{geometry} % Ränder
+\usepackage{settings/packages/bookabstract} % Abstract für ein Buch
+\usepackage[ngerman]{babel} % Alles deutsch
+\usepackage[utf8]{inputenc} % Umlaute
+\usepackage[T1]{fontenc} % Auch für Umlaute
+\usepackage[german=quotes]{csquotes} %Für Zitate, braucht bibtex
+\usepackage{xcolor} % Farbdefinitionen
+
+\usepackage{fancyhdr} % Für Header und Footer
+\usepackage[]{listings} %Codeblöcke
+\usepackage{accsupp} % Bessere Accessability des PDF (z.B. Code ohne Zeilennummern herauskopieren
+\usepackage{xcolor} % Farben
+\usepackage{blindtext} % Beispieltext
+\usepackage[compact]{titlesec} % Überschriften anpassen
+\usepackage[scaled]{helvet} % Helvetica laden
+\usepackage{lastpage} % Gesamtseitenanzahl ermitteln
+\usepackage{tikz} %Z eichnen
+\usepackage{microtype} % Text sperren
+\usepackage{calc} % Berechnungen bei Maßangaben
+\usepackage[colorinlistoftodos,prependcaption,textsize=scriptsize]{todonotes} % todos vermerken
+\usepackage{float} %B esseres Positionieren von Bildern
+\usepackage[justification=centering]{caption} % Anpassen von Captions
+\usepackage{subcaption} %Anpassen von Subcaptions
+\usepackage{wrapfig} % Bilder umfließen
+\usepackage{parskip} % Leerzeile = Abasatz
+\usepackage{changepage} % Ermitteln, ob gerade/ungerade Seite
+\usepackage{tocloft} % Inhaltsverzeichnis anpassen
+\usepackage{xhfill} %Zeile mit Linie auffüllen
+\usepackage{titling} %Titelseite bearbeiten
+\usepackage{etoolbox} % Programmiertechnische Tricks
+\usepackage{settings/packages/chaptersinlof} % Fügt Kapitelüberschriften ins Abbildungsverzeichnis ein
+\usepackage{settings/packages/chaptersinlot} % Fügt Kapitelüberschriften ins Tabellenverzeichnis ein
+\usepackage{settings/packages/chaptersinlol} % Fügt Kapitelüberschriften ins Listingverzeichnis ein
+\usepackage{hyperref} % Verlinkungen innerhalb des Dokuments
+\usepackage[style=alphabetic,sorting=nyt,sortcites=true,autopunct=true,autolang=hyphen,hyperref=true,abbreviate=false,backref=true,backend=biber]{biblatex} % Literaturverzeichnis
+\usepackage{colortbl} % Randfarben von Tabellen
+\usepackage{xargs} % Use more than one optional parameter in a new commands
+\usepackage[export]{adjustbox} % Bilder umrahmen
+\usepackage{xparse}
+
+%Glossar
+\usepackage[xindy,toc, automake]{glossaries} % nomain, if you define glossaries in a file, and you use \include{INP-00-glossary}
+\setacronymstyle{footnote-sc}
+\DeclareDocumentCommand{\newdualentry}{ O{} O{} m m m m } {
+  \newglossaryentry{gls-#3}{name={#5},text={#5\glsadd{#3}},
+    description={#6},#1
+  }
+  \makeglossaries
+  \newacronym[#2]{#3}{#4}{\glsadd{gls-#3}\glsseeformat{gls-#3}{}}
+}
+\makeglossaries
+\usepackage[xindy]{imakeidx}
+\makeindex
+\loadglsentries[main]{glossary}
+
+%To Dos
+\newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+\newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+\newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+\newcommandx{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+\newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
+
+%Colors
+\definecolor{middlegray}{rgb}{0.5,0.5,0.5}
+\definecolor{orange}{rgb}{0.8,0.3,0.3}
+\definecolor{lightgray}{rgb}{0.8,0.8,0.8}
+\definecolor{yac}{rgb}{0.6,0.6,0.1}
+\definecolor{thmgreen}{RGB}{128,186,36}
+
+% Breite von Randnotizen
+\setlength{\marginparwidth}{2.8cm}
+
+%Tabellen
+\arrayrulecolor{black}
+\setlength{\arrayrulewidth}{1pt}
+
+%includes advanced settings
+\input{settings/fontsPenaltiesMargins}
+
+\input{settings/titlepage}
+\input{settings/listings}
+\input{settings/pagelayout}

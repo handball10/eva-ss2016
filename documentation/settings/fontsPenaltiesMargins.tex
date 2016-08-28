@@ -1,0 +1,54 @@
+%Überschriften
+\titleformat{\chapter}[hang] 
+{\normalfont\LARGE\bfseries\sffamily}{\thechapter}{1em}{} % Kapitelüberschrift Optik
+\titleformat{\section}[hang] 
+{\normalfont\Large\bfseries\sffamily}{\thesection}{1em}{} % Abschnittsüberschrift Optik
+\titlespacing*{\section}{0pt}{0.5cm}{-2pt plus 0pt minus 0pt} %Abschnittsüberschrift Abstände
+\titleformat{\subsection}[hang] 
+{\normalfont\large\bfseries\sffamily}{\thesubsection}{1em}{} %Unterabschnittsüberschrift Optik
+\titlespacing*{\subsection}{0pt}{0.5cm plus 2mm minus 2mm}{-3pt plus 0pt minus 0pt} % ... Abstände
+\titleformat{\subsubsection}[hang] 
+{\normalfont\large\bfseries\sffamily}{\thesubsubsection}{1em}{} %Unterunterabschnittsüberschrift Optik
+\titlespacing*{\subsubsection}{0pt}{0.5cm plus 2mm minus 2mm}{-3pt plus 0pt minus 0pt} % .... Abstände
+\titleformat{\paragraph}[hang] 
+{\normalfont\normalsize\bfseries\sffamily}{}{1em}{} 
+\titlespacing*{\paragraph}{0pt}{0.3cm plus 1mm minus 1mm}{0.1cm plus 0pt minus 0pt}
+
+%Captions
+\captionsetup{labelfont=sf, labelsep=newline}
+
+%TOC
+\renewcommand\cftchapfont{\normalsize\bfseries\sffamily} % Schriftart der Kapitelüberschriften
+\renewcommand{\cftchapleader}{~\xrfill[0pt]{1pt}[thmgreen]} % Linien neben Kapitelnamen
+\renewcommand{\cftsecleader}{~\cftdotfill{0}} % Linien neben Abschnittsüberschriften
+\renewcommand{\cftsubsecleader}{~\cftdotfill{0}} % Linien neben Unterabschnittsüberschriften
+\renewcommand{\cfttoctitlefont}{\sffamily\bfseries\LARGE} % Inhaltsverzeichnis Überschrift Optik
+
+\renewcommand{\cftfigleader}{~\cftdotfill{0}} % Linien neben Unterabschnittsüberschriften in lof
+\renewcommand{\cftloftitlefont}{\sffamily\bfseries\LARGE} %Inhaltsverzeichnis Überschrift Optik
+
+\renewcommand{\cfttableader}{~\cftdotfill{0}} % Linien neben Unterabschnittsüberschriften in lot
+\renewcommand{\cftlottitlefont}{\sffamily\bfseries\LARGE} %Inhaltsverzeichnis Überschrift Optik
+
+%List of Listings anpassbar machen
+\begingroup\makeatletter
+\let\newcounter\@gobble\let\setcounter\@gobbletwo
+  \globaldefs\@ne \let\c@loldepth\@ne
+  \newlistof{listings}{lol}{\lstlistlistingname}
+  \newlistentry{lstlisting}{lol}{0}
+\endgroup
+\renewcommand{\cftlstlistingleader}{~\cftdotfill{0}} %Linie neben einem Listing
+
+%Abstände
+\setlength{\parskip}{6pt} % Abstand nach Absatz
+\setlength{\columnsep}{16pt} %Spaltenabstand
+\setlength{\intextsep}{16pt} %Abstand zwischen Text und z.B. Bildern
+\renewcommand{\baselinestretch}{1.05} % Zeilenabstand
+
+% Strafpunkte, um Phänomene zu vermeiden
+\hyphenpenalty=5000
+\widowpenalty=5000
+\clubpenalty=5000
+
+%Aufzählungen
+\renewcommand\labelitemi{\scriptsize$\bullet$}

@@ -1,0 +1,67 @@
+%\title{SG II Dokumentation}
+\documentclass[12pt,fleqn]{book} % Default font size and left-justified equations
+\input{settings/basicsettings} % Alle Präambel-Settings
+\addbibresource{bibliography.bib} % BibTeX bibliography file
+
+\begin{document}
+%-------------------------------------------------------
+% Titelseite
+%-------------------------------------------------------
+\newcommand{\ourBookTitle}{Konzeption und Prototyp eines Verwaltungstool für Buchungen von Wohnräumen}
+\title{\ourBookTitle}
+\author{Stefan Baumann, Florian Gümbel}
+\newcommand{\ourSubTitle}{Analyse der verteilten Anwendung }
+\newcommand{\ourBookDate}{16.09.2016}
+\date{\ourBookDate}
+\maketitle
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
+%-------------------------------------------------------
+% Abstract
+%-------------------------------------------------------LL 
+\pagebreak
+\pagestyle{roman}
+\pagenumbering{roman}
+\setcounter{page}{3}
+\input{content/00-abstract}
+\pagebreak
+
+%-------------------------------------------------------
+% Inhaltsverzeichnis
+%-------------------------------------------------------
+\newpage
+\newpage
+{\tocloftpagestyle{roman}
+\tableofcontents
+\raggedbottom
+\pagebreak}
+
+%-------------------------------------------------------
+% Inhalt
+%-------------------------------------------------------
+\pagestyle{fancyStd}
+\pagenumbering{arabic}
+\input{content/01-intro}
+\input{content/99-end}
+
+%-------------------------------------------------------
+% Weitere Verzeichnisse
+%-------------------------------------------------------
+\pagebreak
+{\listoffigures
+\raggedbottom
+\pagebreak}
+{\listoftables
+\raggedbottom
+\pagebreak}
+{\lstlistoflistings
+\raggedbottom
+\pagebreak}
+\printbibliography
+%\input{content/100-glossary}
+\glsaddall
+\printglossary[nonumberlist]
+%\listoftodos[To Dos]
+\end{document}

@@ -1,0 +1,22 @@
+\makeatletter
+% initial definitions of the chapter info (name and number)
+\def\thischaptertitle{}\def\thischapternumber{}
+\newtoggle{noTables}
+
+\apptocmd{\@chapter}%
+  {\gdef\thischaptertitle{#1}\gdef\thischapternumber{\thechapter}%
+    \global\toggletrue{noTables}}{}{}
+
+% the figure environment does the job: the first time it is used after a \chapter command, 
+% it writes the information of the chapter to the LoF
+\AtBeginDocument{%
+  \AtBeginEnvironment{table}{%
+    \iftoggle{noTables}{
+      \addtocontents{lot}{\protect\contentsline {chapter}%
+        {\protect\numberline {\thischapternumber} {\thischaptertitle}}{}{} }
+      \global\togglefalse{noTables}
+    }{}
+  }%
+}
+
+\makeatother
