@@ -1,0 +1,83 @@
+\chapter{Einführung}
+Ich bin der Einführungstext
+\blindtext[2]\cite{BB2016}
+\section{Test1}
+Ich bin ein Textabschnitt
+\blindtext[1]
+\subsection{Ebene runter}
+\blindtext[2]
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{images/AbstractFactory.pdf}
+\caption{test}
+\label{testfigure}
+\end{figure}
+\subsubsection{Noch eine Ebene}
+\blindtext
+\blindtext[1]\ref{fig:figlabel}
+
+\paragraph{Ein Absatz}
+\blindtext
+\begin{wrapfigure}{o}{0.5\textwidth} 
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/AbstractFactory.pdf}
+    \caption{Bildunterschrift und}
+    \label{fig:figlabel}
+\end{wrapfigure}
+\blindtext\footnote{Das sind wichtige Informationen}
+\begin{lstlisting}[language=java, caption=Das ist hochkomplexer Code]
+public class HelloWorld 
+{
+ 
+       public static void main (String[] args)
+       {
+             // Ausgabe Hello World!
+             System.out.println("Hello World!");
+       }
+}
+\end{lstlisting}
+\blindtext[4]
+\begin{wrapfigure}{o}{0.5\textwidth}
+\begin{lstlisting}[language=java, caption=Das ist hochkomplexer Code, belowskip=0pt]
+public class HelloWorld 
+{
+ 
+       public static void main (String[] args)
+       {
+             // Ausgabe Hello World!
+             System.out.println("Hello World!");
+       }
+}
+\end{lstlisting}
+\end{wrapfigure}
+\blindtext
+\begin{table}[h]
+\centering
+\caption{My caption}
+\label{my-label}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+fgfhg &     &     &  &  \\ \hline
+      &     & gfg &  &  \\ \hline
+      & gfh &     &  &  \\ \hline
+fgh   &     &     &  &  \\ \hline
+\end{tabular}
+\end{table}
+\blindtext
+
+\begin{wraptable}{o}{0.5\textwidth}
+\caption{My caption}
+\label{my-new-label}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+fgfhg &     &     &  &  \\ \hline
+      &     & gfg &  &  \\ \hline
+      & gfh &     &  &  \\ \hline
+fgh   &     &     &  &  \\ \hline
+\end{tabular}
+\end{wraptable}
+\blindtext[2]
+\begin{itemize}
+\item ich bin ein Listenpunkt
+\item Ich auch
+\end{itemize}

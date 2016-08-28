@@ -160,10 +160,10 @@ angular.module('bookingCalendarApp',['ngMaterial'])
                 fullscreen: useFullScreen
             })
                 .then(function(answer) {
-                    $scope.toastText = answer;
                     $scope.showCustomToast();
+                    $scope.toastText = answer;
                 }, function() {
-                    //if canceld
+                    //if canceled
                 });
             $scope.$watch(function() {
                 return $mdMedia('xs') || $mdMedia('sm');
