@@ -1,6 +1,5 @@
 <section id="header">
 
-
     <md-toolbar class="md-hue-2">
         <div class="md-toolbar-tools">
             <pan>LOGO</pan>
@@ -13,17 +12,21 @@
                 Save Data
             </md-button>
 
-            <md-button class="md-raised" aria-label="More" ng-click="showCustomerDialog($event)">
+            <md-button class="md-raised button--add" aria-label="More" ng-click="showCustomerDialog($event)">
+                <md-icon md-svg-src="../../images/ic_person_black_24px.svg"></md-icon>
                 Customer
             </md-button>
-            <md-button class="md-raised" aria-label="More" ng-click="showResourceDialog($event)">
+            <md-button class="md-raised button--add" aria-label="More" ng-click="showResourceDialog($event)">
+                <md-icon md-svg-src="../../images/ic_home_black_24px.svg"></md-icon>
                 Wohungen
             </md-button>
 
-            <md-button class="md-raised" aria-label="More" ng-click="showBookingDialog($event)">
+            <md-button class="md-raised button--add" aria-label="More" ng-click="showBookingDialog($event)">
+                <md-icon md-svg-src="../../images/ic_content_paste_black_24px.svg"></md-icon>
                 Buchung
             </md-button>
-            <md-button class="md-raised" aria-label="More" ng-click="logout()">
+            <md-button class="md-raised button--arrow-right" aria-label="More" ng-click="logout()">
+                <md-icon md-svg-src="../../images/ic_power_settings_new_black_24px.svg"></md-icon>
                 Logout
             </md-button>
         </div>

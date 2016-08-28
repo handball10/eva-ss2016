@@ -12,10 +12,46 @@
   margin:200px auto;
 }
 
+.calender-box{
+  margin:20px auto;
+}
+
 .error-info{
   color:red;
 }
 
 .modal-width{
   width:600px;
+}
+
+.button--add::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 35px;
+  height: 100%;
+  transition-duration: 0.5s;
+  background: url("../images/ic_add_black_24px.svg") rgba(255,255,255,0.8);
+  background-size:contain ;
+  transform: translate(-100%);
+}
+
+.button--add:hover::after{
+  transform: translate(0%);
+}
+
+.button--arrow-right::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 35px;
+  height: 100%;
+  transition-duration: 0.5s;
+  background: url("../images/ic_forward_black_24px.svg") rgba(255,255,255,0.8);
+  background-size:contain ;
+  transform: translate(-100%);
+}
+
+.button--arrow-right:hover::after{
+  transform: translate(0%);
 }
