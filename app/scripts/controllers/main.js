@@ -86,15 +86,6 @@ angular.module('bookingCalendarApp',['ngMaterial'])
 
 
 
-        $scope.showCustomToast = function() {
-            $mdToast.show({
-                hideDelay   : 3000,
-                position    : 'bottom right',
-                controller  : 'ToastCtrl',
-                templateUrl : '../../views/toasts/toast.html'
-            });
-        };
-
 
         $scope.auth = {
             email : '',
@@ -138,6 +129,16 @@ angular.module('bookingCalendarApp',['ngMaterial'])
             }
         }
 
+        $scope.showCustomToast = function() {
+            $mdToast.show({
+                hideDelay   : 3000,
+                position    : 'bottom right',
+                controller  : 'ToastCtrl',
+                templateUrl : '../../views/toasts/toast.html'
+            });
+        };
+
+
         $scope.showBookingDialog = function(ev){
           $scope.showDialog(ev,'../../views/modals/booking.html');
         };
@@ -157,12 +158,14 @@ angular.module('bookingCalendarApp',['ngMaterial'])
                 parent: angular.element(document.body),
                 targetEvent: ev,
                 clickOutsideToClose:true,
-                fullscreen: useFullScreen,
+                fullscreen: useFullScreen
 
             })
                 .then(function(answer) {
-                    $scope.showCustomToast();
-                    $scope.toastText = answer;
+                    if(typeof answer == String) {
+                        $scope.showCustomToast();
+                    }
+
                 }, function() {
                     //if canceled
                 });
@@ -181,20 +184,20 @@ angular.module('bookingCalendarApp',['ngMaterial'])
             $scope.cancel = function() {
                 $mdDialog.cancel();
             };
+
+
+
             $scope.answer = function(answer) {
                 if(answer === "booking") {
-                    $rootScope.$broadcast("booking::getBooking", function () {
-                    });
+                    $rootScope.$broadcast("booking::getBooking", function () {});
                 }
 
                 if(answer === "resource") {
-                    $rootScope.$broadcast("resource::getResource", function () {
-                    });
+                    $rootScope.$broadcast("resource::getResource", function () {});
                 }
 
                 if(answer === "customer") {
-                    $rootScope.$broadcast("customer::getCustomer", function () {
-                    });
+                    $rootScope.$broadcast("customer::setCustomer", function () {});
                 }
 
                 $mdDialog.hide(answer);

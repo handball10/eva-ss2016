@@ -55,7 +55,7 @@ angular.module('bookingCalendarApp')
         //customer
         var customer = $scope.customer;
       customer.simulateQuery = false;
-      Customers.list()
+      Customers.list({bypassCache : true})
           .then(function(list){
               console.log(list);
               customer.states = list;

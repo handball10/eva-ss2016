@@ -10,7 +10,7 @@
 angular.module('bookingCalendarApp')
     .factory('Customer', function () {
         function Customer(properties){
-
+            var isDlgOpen = false;
             var self = this;
 
             //this.Id         = undefined;
@@ -25,13 +25,13 @@ angular.module('bookingCalendarApp')
             this.Phone   = undefined;
             this.Custom   = undefined;
 
+
             /**
              * @private
              * @method getComputedProperties
              * @param properties
              */
             function getComputedProperties(properties) {
-
                 // Convert all dateStrings to date Objects
                 properties = _.mapValues(properties, function (property, name) {
                     if (!_.isFunction(property) && angular.isDefined(property) && name.indexOf('Date') >= 0) {
@@ -41,8 +41,6 @@ angular.module('bookingCalendarApp')
 
                     return property;
                 });
-
-
                 return properties;
             }
 
@@ -52,8 +50,6 @@ angular.module('bookingCalendarApp')
              * @param properties
              */
             function extend(properties) {
-
-
                 if (!properties) {
                     return;
                 }
