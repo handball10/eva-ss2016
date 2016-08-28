@@ -11,7 +11,7 @@ var isDlgOpen;
 
 angular.module('bookingCalendarApp',['ngMaterial'])
     .controller('MainCtrl', function ($q, $scope, $log, AuthService, Bookings, Booking, $rootScope, $mdMedia, $mdDialog, $mdToast) {
-        $scope.toastText = "Informationstext";
+        $scope.toastText = "Gespeichert!";
         $scope.isLoggedIn = false;
 
         $scope.init = function(){
@@ -160,11 +160,10 @@ angular.module('bookingCalendarApp',['ngMaterial'])
                 fullscreen: useFullScreen
             })
                 .then(function(answer) {
-                    showCustomToast();
-                   // $scope.status = answer;
-                }, function() {
+                    $scope.toastText = answer;
                     $scope.showCustomToast();
-                   // $scope.status = 'close with bg';
+                }, function() {
+                    //if canceld
                 });
             $scope.$watch(function() {
                 return $mdMedia('xs') || $mdMedia('sm');
