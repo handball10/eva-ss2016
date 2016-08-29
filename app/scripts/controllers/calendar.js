@@ -117,27 +117,7 @@ angular.module('bookingCalendarApp')
             cell.addClass('resourceCell');
 
             cell.click(function(event){
-                //TODO delete dialog
-                var confirm = $mdDialog
-                                .confirm()
-                                .title('Wollen Sie diese Ressource wirklich löschen?')
-                                .textContent('Achtung: Alle Buchungen gehen dabei auch verloren!')
-                                .ariaLabel('Löschen?')
-                                .targetEvent(event)
-                                .ok('Löschen')
-                                .cancel('Abbruch');
-
-                $mdDialog.show(confirm).then(function() {
-                    $log.log('delete ',resource);
-
-                    Resources.remove(resource);
-
-                }, function() {
-                    $log.log('Abbruch ',resource);
-                });
-
-
-                //calendarInstance.fullCalendar('removeResource', resource);
+                //TODO open edit dialog
             });
 
         }

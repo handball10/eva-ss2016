@@ -8,8 +8,7 @@
  * Controller of the bookingCalendarApp
  */
 angular.module('bookingCalendarApp')
-  .controller('ResourceCtrl', function ($scope,$rootScope, Resource, Resources) {
-
+  .controller('ResourceCtrl', function ($scope,$rootScope, Resource, Resources, $location) {
 
     var resource = {};
     $scope.name = "";
@@ -18,7 +17,6 @@ angular.module('bookingCalendarApp')
     $scope.submit = function(){
       $scope.answer("resource");
             };
-
     $rootScope.$on("resource::getResource",getResource);
     function getResource(obj,event){
         var resource = new Resource({

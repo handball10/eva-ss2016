@@ -49,26 +49,6 @@ angular.module('bookingCalendarApp')
         $scope.showSearchField = function () {
             $scope.isSearch = !$scope.isSearch;
         };
-        //SAVE new Customer
-        $rootScope.$on("customer::setCustomer", setCustomer);
-
-        function setCustomer(obj, event) {
-
-            //var customer = new Customer({
-            //    Company: $scope.company,
-            //    FirstName: $scope.firstname,
-            //    LastName: $scope.lastname,
-            //    BirthDate: $scope.birthday,
-            //    Street: $scope.street,
-            //    City: $scope.city,
-            //    ZipCode: $scope.zipcode,
-            //    Email: $scope.email,
-            //    Phone: $scope.phone,
-            //    Custom: $scope.custom
-            //});
-            //
-            //Customers.insert(customer);
-        }
 
         //DELETE customerdialog
         $scope.delete = function (customerID) {
@@ -79,14 +59,7 @@ angular.module('bookingCalendarApp')
                 .ok('JA')
                 .cancel('NEIN');
             $mdDialog.show(confirm).then(function () {
-
-
                 Customers.remove(customerID);
-
-
-
-
-
             }, function () {
             });
         };

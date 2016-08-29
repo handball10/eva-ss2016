@@ -147,7 +147,6 @@ angular.module('bookingCalendarApp',['ngMaterial'])
         };
         $scope.showResourceDialog = function(ev){
           $scope.showDialog(ev,'../../views/modals/resource.html');
-            console.log(ev);
         };
 
         $scope.showDialog = function(ev,dialog, data) {
