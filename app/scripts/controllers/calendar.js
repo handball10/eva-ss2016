@@ -33,17 +33,21 @@ angular.module('bookingCalendarApp')
 
                     $log.log('ResourceList::',resourceList);
 
+
                     return Bookings.list({bypassCache : true});
                 })
                 .then(function(bookings){
                     bookingList = _.map(bookings, function(item){
+
                         return {
-                            id : item.Id,
+                            id : item.id,
                             resourceId : item.Resource,
                             start : item.StartDate,
                             end : item.EndDate
                         };
                     });
+
+                    $log.log(bookingList);
 
 
                 })
@@ -77,7 +81,7 @@ angular.module('bookingCalendarApp')
 
                         select : selectHandler,
 
-                        resourceLabelText: 'Rooms',
+                        resourceLabelText: 'Wohnungen',
                         resources: resourceList,
                         events: bookingList,
                         drop: function(date, jsEvent, ui, resourceId) {
@@ -94,6 +98,9 @@ angular.module('bookingCalendarApp')
                         },
                         eventDrop: function(event) { // called when an event (already on the calendar) is moved
                             console.log('eventDrop', event);
+                        },
+                        eventClick : function( event, jsEvent, view){
+                            $log.log('Event::', event);
                         },
 
                         resourceRender: resourceRender
@@ -145,6 +152,29 @@ angular.module('bookingCalendarApp')
             $rootScope.$on('Resource::added', addRemoteRessource);
             $rootScope.$on('Resource::removed', deleteRemoteResource);
 
+
+            $rootScope.$on('Booking::change', bookingsChanged);
+
+        }
+
+        function bookingsChanged(event, bookings){
+
+            $log.log('Bookings::CHANGE');
+
+            bookingList =  _.map(bookings, function(item){
+
+                return {
+                    id : item.id,
+                    resourceId : item.Resource,
+                    start : item.StartDate,
+                    end : item.EndDate
+                };
+            });;
+
+
+            calendarInstance.fullCalendar('refetchEvents');
+
+            $log.log('Bookings::', bookingList);
         }
 
         function addRemoteRessource(event, addedRessource){

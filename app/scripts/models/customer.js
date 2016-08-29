@@ -13,17 +13,17 @@ angular.module('bookingCalendarApp')
             var isDlgOpen = false;
             var self = this;
 
-            //this.Id         = undefined;
+            this.Id         = undefined;
             this.Company    = undefined;
             this.BirthDate  = undefined;
             this.FirstName  = undefined;
             this.LastName   = undefined;
-            this.Street   = undefined;
-            this.City   = undefined;
-            this.ZipCode   = undefined;
-            this.Email   = undefined;
-            this.Phone   = undefined;
-            this.Custom   = undefined;
+            this.Street     = undefined;
+            this.City       = undefined;
+            this.ZipCode    = undefined;
+            this.Email      = undefined;
+            this.Phone      = undefined;
+            this.Custom     = undefined;
 
 
             /**

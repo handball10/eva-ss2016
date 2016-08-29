@@ -44,10 +44,18 @@ angular.module('bookingCalendarApp')
                 reference.on('child_changed', dataChange);
                 reference.on('child_removed', dataRemove);
 
+                reference.on('value', datasetChange);
+
             }
 
             function prepareLifetimeData(data){
                 return new self.model(_.extend(data.val(), {Id : data.key}));
+            }
+
+            function datasetChange(data){
+                $log.log(self.name + '::change', data.val());
+
+                $rootScope.$broadcast(self.name + '::change', data.val());
             }
 
             function dataAdd(data){
@@ -100,6 +108,9 @@ angular.module('bookingCalendarApp')
                 reference
                     .push(prepareModel(model))
                     .then(function(result){
+
+                        $log.log(result);
+
                         deferred.resolve(result);
                     })
                     .catch(function(error){
@@ -112,9 +123,9 @@ angular.module('bookingCalendarApp')
 
             this.remove = function(item){
 
-                $log.log(item);
+                var id = (item.id || item);
 
-                var modelReference = $window.database.ref(this.path + '/' + item.id);
+                var modelReference = $window.database.ref(this.path + '/' + id);
 
                 modelReference.remove();
             };

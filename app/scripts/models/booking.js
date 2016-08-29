@@ -22,6 +22,8 @@ angular.module('bookingCalendarApp')
             this.EndDate    = undefined;
             this.Customer       = undefined;
             this.Size       = undefined;
+            this.start = undefined;
+            this.end    = undefined;
 
 
             /**
@@ -45,6 +47,7 @@ angular.module('bookingCalendarApp')
                 return properties;
             }
 
+
             /**
              * @private
              * @method extend
@@ -57,6 +60,14 @@ angular.module('bookingCalendarApp')
                     return;
                 }
                 $log.log('extending');
+
+                if(properties.StartDate){
+                    properties.start = properties.StartDate;
+                }
+
+                if(properties.EndDate){
+                    properties.end = properties.EndDate;
+                }
 
                 angular.extend(self, properties);
                 angular.extend(self, getComputedProperties(properties));
