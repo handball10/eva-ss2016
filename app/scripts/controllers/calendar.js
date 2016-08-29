@@ -117,7 +117,7 @@ angular.module('bookingCalendarApp')
             cell.addClass('resourceCell');
 
             cell.click(function(event){
-
+                //TODO delete dialog
                 var confirm = $mdDialog
                                 .confirm()
                                 .title('Wollen Sie diese Ressource wirklich löschen?')
