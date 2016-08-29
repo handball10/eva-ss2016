@@ -8,20 +8,21 @@
  * Controller of the bookingCalendarApp
  */
 angular.module('bookingCalendarApp')
-    .controller('CustomerCtrl', function ($scope, $rootScope, $log, Customer, Customers, $mdDialog) {
-        $scope.isSearch = true;
-        $scope.isDelete = true;
-        $scope.customer = {};
-        $scope.company = "";
-        $scope.birthday = "";
-        $scope.firstname = "";
-        $scope.lastname = "";
-        $scope.street = "";
-        $scope.city = "";
-        $scope.zipcode = "";
-        $scope.email = "";
-        $scope.phone = "";
-        $scope.custom = "";
+  .controller('CustomerCtrl', function ($scope,$rootScope,Customer,Customers, $mdDialog) {
+  $scope.isSearch = true;
+  $scope.isDelete = true;
+  $scope.customer = {};
+  $scope.company = "";
+  $scope.birthday = "";
+  $scope.firstname = "";
+  $scope.lastname = "";
+  $scope.street = "";
+  $scope.city = "";
+  $scope.zipcode = "";
+  $scope.email = "";
+  $scope.phone = "";
+  $scope.custom = "";
+  $scope.customerID = "";
 
 
         $scope.submit = function () {
@@ -90,52 +91,50 @@ angular.module('bookingCalendarApp')
             });
         };
 
-        //AUTOCOMPLETE for search
-        var oldCustomer = $scope.customer;
-        oldCustomer.simulateQuery = false;
-        Customers.list({bypassCache: true})
-            .then(function (list) {
-                console.log(list);
-                oldCustomer.states = list;
-            });
+    //AUTOCOMPLETE for search
+    var oldCustomer = $scope.customer;
+    oldCustomer.simulateQuery = false;
+    Customers.list({bypassCache : true})
+        .then(function(list){
+          console.log(list);
+          oldCustomer.states = list;
+        });
 
-        oldCustomer.querySearchCustomer = function (query) {
-            var results = query ? oldCustomer.states.filter(createFilterFor(query)) : oldCustomer.states,
-                deferred;
-            if (oldCustomer.simulateQuery) {
-                deferred = $q.defer();
-                $timeout(function () {
-                    deferred.resolve(results);
-                }, Math.random() * 1000, false);
-                return deferred.promise;
-            } else {
-                return results;
-            }
-        };
+    oldCustomer.querySearchCustomer = function (query) {
+      var results = query ? oldCustomer.states.filter( createFilterFor(query) ) : oldCustomer.states,
+          deferred;
+      if (oldCustomer.simulateQuery) {
+        deferred = $q.defer();
+        $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
+        return deferred.promise;
+      } else {
+        return results;
+      }
+    };
 
-        oldCustomer.selectedCustomerItemChange = function (item) {
-            console.log("here should be show the customers");
-            $scope.company = item.Company;
-            $scope.firstname = item.FirstName;
-            $scope.lastname = item.LastName;
-            $scope.birthday = item.BirthDate;
-            $scope.street = item.Street;
-            $scope.city = item.City;
-            $scope.zipcode = item.ZipCode;
-            $scope.email = item.Email;
-            $scope.phone = item.Phone;
-            $scope.custom = item.Custom;
+    oldCustomer.selectedCustomerItemChange = function(item) {
+      console.log("here should be show the customers");
+      $scope.company = item.Company;
+      $scope.firstname = item.FirstName;
+      $scope.lastname = item.LastName;
+      $scope.birthday = item.BirthDate;
+      $scope.street = item.Street;
+      $scope.city = item.City;
+      $scope.zipcode = item.ZipCode;
+      $scope.email = item.Email;
+      $scope.phone = item.Phone;
+      $scope.custom = item.Custom;
 
-            $scope.customerID = item.id;
-            $scope.isDelete = false;
-        };
+      $scope.customerID = item.id;
+      $scope.isDelete = false;
+    };
 
-        function createFilterFor(query) {
-            var lowercaseQuery = angular.lowercase(query);
-            return function filterFn(state) {
-                return (state.Name.indexOf(lowercaseQuery) === 0);
-            };
-        }
+    function createFilterFor(query) {
+      var lowercaseQuery = angular.lowercase(query);
+      return function filterFn(state) {
+        return (state.Name.indexOf(lowercaseQuery) === 0);
+      };
+    }
 
 
-    });
+  });
