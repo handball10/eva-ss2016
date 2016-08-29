@@ -25,15 +25,6 @@ angular.module('bookingCalendarApp')
 
 
         $scope.submit = function () {
-            $scope.answer("customer");
-        };
-
-        $scope.showSearchField = function () {
-            $scope.isSearch = !$scope.isSearch;
-        };
-        //SAVE new Customer
-        $rootScope.$on("customer::setCustomer", setCustomer);
-        function setCustomer(obj, event) {
 
             var customer = new Customer({
                 Company: $scope.company,
@@ -45,10 +36,37 @@ angular.module('bookingCalendarApp')
                 ZipCode: $scope.zipcode,
                 Email: $scope.email,
                 Phone: $scope.phone,
-                Custom: $scope.custom
+                Custom: $scope.custom,
+                id : $scope.customerID || undefined
             });
 
-            Customers.insert(customer);
+            Customers.upsert(customer);
+
+            $scope.answer("customer");
+        };
+
+        $scope.showSearchField = function () {
+            $scope.isSearch = !$scope.isSearch;
+        };
+        //SAVE new Customer
+        $rootScope.$on("customer::setCustomer", setCustomer);
+
+        function setCustomer(obj, event) {
+
+            //var customer = new Customer({
+            //    Company: $scope.company,
+            //    FirstName: $scope.firstname,
+            //    LastName: $scope.lastname,
+            //    BirthDate: $scope.birthday,
+            //    Street: $scope.street,
+            //    City: $scope.city,
+            //    ZipCode: $scope.zipcode,
+            //    Email: $scope.email,
+            //    Phone: $scope.phone,
+            //    Custom: $scope.custom
+            //});
+            //
+            //Customers.insert(customer);
         }
 
         //DELETE customerdialog

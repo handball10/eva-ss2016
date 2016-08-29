@@ -86,6 +86,10 @@ angular.module('bookingCalendarApp')
 
                     if(!_.isFunction(value)){
 
+                        if(key === 'id'){
+                            return;
+                        }
+
                         if(typeof value !== 'undefined'){
                             data[key] = _.isDate(value) ? value.getTime() : value;
                         }
@@ -175,6 +179,20 @@ angular.module('bookingCalendarApp')
 
 
                 return deferred.promise;
+
+            };
+
+            this.upsert = function(model){
+
+                if(typeof model.id !== 'undefined'){
+
+                    var modelReference = $window.database.ref(this.path + '/' + model.id);
+
+                    modelReference.set(prepareModel(model));
+                } else {
+
+                    this.insert(model);
+                }
 
             }
 
