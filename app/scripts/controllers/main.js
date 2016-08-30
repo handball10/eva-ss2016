@@ -139,20 +139,24 @@ angular.module('bookingCalendarApp',['ngMaterial'])
         };
 
 
-        $scope.showBookingDialog = function(ev){
-          $scope.showDialog(ev,'../../views/modals/booking.html');
+        $scope.showBookingDialog = function(ev,Id){
+          $scope.showDialog(ev,'../../views/modals/booking.html','BookingCtrl',Id);
         };
         $scope.showCustomerDialog = function(ev){
-          $scope.showDialog(ev,'../../views/modals/customer.html');
+          $scope.showDialog(ev,'../../views/modals/customer.html','CustomerCtrl');
         };
-        $scope.showResourceDialog = function(ev){
-          $scope.showDialog(ev,'../../views/modals/resource.html');
+        $scope.showResourceDialog = function(ev,Id){
+          $scope.showDialog(ev,'../../views/modals/resource.html','ResourceCtrl',Id);
         };
 
-        $scope.showDialog = function(ev,dialog, data) {
+        $scope.showDialog = function(ev,dialog, myController,Id) {
             var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
             $mdDialog.show({
-                controller: DialogController,
+                locals : {
+                    items : Id || false
+                },
+                bindToController : true,
+                controller: myController,
                 templateUrl: dialog,
                 parent: angular.element(document.body),
                 targetEvent: ev,
@@ -164,7 +168,6 @@ angular.module('bookingCalendarApp',['ngMaterial'])
                     if(typeof answer == String) {
                         $scope.showCustomToast();
                     }
-
                 }, function() {
                     //if canceled
                 });
@@ -174,34 +177,6 @@ angular.module('bookingCalendarApp',['ngMaterial'])
                 $scope.customFullscreen = (wantsFullScreen === true);
             });
         };
-
-        function DialogController($scope, $mdDialog) {
-            $scope.hide = function() {
-                $mdDialog.hide();
-            };
-
-            $scope.cancel = function() {
-                $mdDialog.cancel();
-            };
-
-
-
-            $scope.answer = function(answer) {
-                if(answer === "booking") {
-                    $rootScope.$broadcast("booking::getBooking", function () {});
-                }
-
-                if(answer === "resource") {
-                    $rootScope.$broadcast("resource::getResource", function () {});
-                }
-
-                if(answer === "customer") {
-                    $rootScope.$broadcast("customer::setCustomer", function () {});
-                }
-
-                $mdDialog.hide(answer);
-            };
-        }
     })
     .controller('ToastCtrl', function($scope, $mdToast, $mdDialog) {
         $scope.closeToast = function() {

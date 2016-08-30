@@ -8,18 +8,25 @@
  * Controller of the bookingCalendarApp
  */
 angular.module('bookingCalendarApp')
-    .controller('BookingCtrl', function ($scope, $log, $timeout, $rootScope, Booking, Bookings, Resources, Customers) {
+    .controller('BookingCtrl', function ($scope, $log, $timeout, $rootScope, Booking, Bookings, Resources, Customers, $mdDialog, items) {
         $scope.isResource = false;
+        $scope.isDelete = true;
         $scope.sizes = [];
         $scope.size = 1;
         $scope.resourceID;
         $scope.customerID;
+        $scope.bookingID;
         $scope.maxSize = 1;
 
         $scope.resource = {};
         $scope.customer = {};
 
-        //load resources
+        if(items){
+            $scope.isDelete = false;
+            $scope.bookingID = items.id;
+            //TODO get booking element from firebase with id
+
+        }
 
 
         //AUTOCOMPLETE
@@ -95,26 +102,27 @@ angular.module('bookingCalendarApp')
             }
             $scope.isResource = true;
         }
-
         $scope.submit = function () {
-            $scope.answer("booking");
-        };
-
-        $rootScope.$on("booking::getBooking", getBooking);
-        function getBooking(obj, event) {
-            console.log($scope.resource);
-
             var booking = new Booking({
                 Resource: $scope.resourceID,
                 StartDate: $scope.myStartDate,
                 EndDate: $scope.myEndDate,
                 Customer: $scope.customerID,
-                Size: $scope.size
+                Size: $scope.size,
+                id: $scope.bookingID
             });
-
             Bookings.insert(booking);
+        };
 
+        $scope.hide = function() {
+            $mdDialog.hide();
+        };
+
+        $scope.cancel = function() {
+            $mdDialog.cancel();
+        };
+        $scope.delete = function(bookingID){
+            //TODO delete with ID
         }
-
 
     });

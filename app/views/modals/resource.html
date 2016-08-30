@@ -1,4 +1,4 @@
-<md-dialog aria-label="Resource"  ng-cloak ng-controller="ResourceCtrl">
+<md-dialog aria-label="Resource"  ng-cloak>
     <md-toolbar>
         <div class="md-toolbar-tools modal-width">
             <h2>Resources</h2>
@@ -30,6 +30,9 @@
         </md-content>
     <!-- BUTTONS -->
         <md-dialog-actions layout="row">
+            <md-button class="md-raised md-warn" ng-click="delete(resourceID)" ng-hide="isDelete">
+                löschen
+            </md-button>
             <span flex></span>
             <md-button class="md-warn" ng-click="cancel()">
                 abbrechen

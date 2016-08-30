@@ -26,7 +26,6 @@ angular.module('bookingCalendarApp')
 
 
         $scope.submit = function () {
-
             var customer = new Customer({
                 Company: $scope.company,
                 FirstName: $scope.firstname,
@@ -42,8 +41,7 @@ angular.module('bookingCalendarApp')
             });
 
             Customers.upsert(customer);
-
-            $scope.answer("customer");
+            $scope.hide();
         };
 
         $scope.showSearchField = function () {
@@ -97,7 +95,6 @@ angular.module('bookingCalendarApp')
       $scope.email = item.Email;
       $scope.phone = item.Phone;
       $scope.custom = item.Custom;
-
       $scope.customerID = item.id;
       $scope.isDelete = false;
     };
@@ -109,5 +106,11 @@ angular.module('bookingCalendarApp')
       };
     }
 
+      $scope.hide = function() {
+          $mdDialog.hide();
+      };
 
+      $scope.cancel = function() {
+          $mdDialog.cancel();
+      };
   });

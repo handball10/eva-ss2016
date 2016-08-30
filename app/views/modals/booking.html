@@ -1,4 +1,4 @@
-<md-dialog aria-label="Booking" ng-cloak ng-controller="BookingCtrl">
+<md-dialog aria-label="Booking" ng-cloak >
         <md-toolbar>
             <div class="md-toolbar-tools modal-width">
                 <h2>Booking</h2>
@@ -77,6 +77,9 @@
 
         <!-- BUTTONS -->
         <md-dialog-actions layout="row">
+            <md-button class="md-raised md-warn" ng-click="delete(bookingID)" ng-hide="isDelete">
+                löschen
+            </md-button>
             <span flex></span>
             <md-button class="md-warn" ng-click="cancel()">
                 abbrechen

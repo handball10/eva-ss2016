@@ -100,7 +100,7 @@ angular.module('bookingCalendarApp')
                             console.log('eventDrop', event);
                         },
                         eventClick : function( event, jsEvent, view){
-                            $log.log('Event::', event);
+                            $scope.showBookingDialog(window,event.id);
                         },
 
                         resourceRender: resourceRender
@@ -117,7 +117,7 @@ angular.module('bookingCalendarApp')
             cell.addClass('resourceCell');
 
             cell.click(function(event){
-                //TODO open edit dialog
+                $scope.showResourceDialog(window,resource.id);
             });
 
         }

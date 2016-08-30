@@ -8,23 +8,39 @@
  * Controller of the bookingCalendarApp
  */
 angular.module('bookingCalendarApp')
-  .controller('ResourceCtrl', function ($scope,$rootScope, Resource, Resources, $location) {
+    .controller('ResourceCtrl', function ($scope, $mdDialog, items, $rootScope, Resource, Resources) {
+        $scope.isDelete = true;
+        $scope.resourceID = "";
+        $scope.name = "";
+        $scope.size = 1;
 
-    var resource = {};
-    $scope.name = "";
-    $scope.size = 1;
+        if(items) {
+            $scope.isDelete = false;
+            $scope.resourceID = items.id;
+            //TODO get resource from fireabse with id
+            //TODO lower and uppercase ID at resources
+        }
 
-    $scope.submit = function(){
-      $scope.answer("resource");
-            };
-    $rootScope.$on("resource::getResource",getResource);
-    function getResource(obj,event){
-        var resource = new Resource({
-            Size : $scope.size,
-            Name : $scope.name
-        });
+        $scope.submit = function () {
+            var resource = new Resource({
+                Size: $scope.size,
+                Name: $scope.name,
+                id:   $scope.resourceID
+            });
+            Resources.insert(resource);
+        };
 
-        Resources.insert(resource);
-    }
+        $scope.hide = function () {
+            $mdDialog.hide();
+        };
 
-  });
+        $scope.cancel = function () {
+            $mdDialog.cancel();
+        };
+
+        $scope.delete = function(resourceID){
+            //TODO delete with id
+        }
+
+
+    });
