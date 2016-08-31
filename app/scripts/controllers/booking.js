@@ -25,27 +25,6 @@ angular.module('bookingCalendarApp')
         $scope.myStartDate = new Date();
         $scope.myEndDate = new Date();
 
-        if(items){
-            $scope.isDelete = false;
-            $scope.bookingID = items;
-            Bookings.find({id : items}).then(function(result){
-                console.log("result");
-                console.log(result);
-                console.log("result");
-
-                $scope.myStartDate = new Date(result.StartDate);
-                $scope.myEndDate = new Date(result.EndDate);
-
-                Resources.find({id : result.Resource}).then(function(resourceResult){
-                   $scope.item.Name = "sss";
-
-                });
-
-            });
-
-        }
-
-
         //AUTOCOMPLETE
         //resources
         var resource = $scope.resource;
@@ -122,10 +101,33 @@ angular.module('bookingCalendarApp')
                 EndDate: $scope.myEndDate,
                 Customer: $scope.customerID,
                 Size: $scope.size,
-                ID: $scope.bookingID || undefined
+                Id: $scope.bookingID || undefined
             });
-            Bookings.insert(booking);
+            Bookings.upsert(booking);
+            $scope.hide();
         };
+
+        if(items){
+            $scope.isDelete = false;
+            $scope.bookingID = items;
+            Bookings.find({id : items}).then(function(result){
+                $scope.myStartDate = new Date(result.StartDate);
+                $scope.myEndDate = new Date(result.EndDate);
+                Resources.find({id : result.Resource}).then(function(resourceResult){
+                resource.searchText = resourceResult.Name;
+
+                });
+
+                Customers.find({id : result.Customer}).then(function(customerResult){
+                    console.log("customerresult");
+                    console.log(customerResult);
+
+                });
+
+            });
+
+        }
+
 
         $scope.hide = function() {
             $mdDialog.hide();

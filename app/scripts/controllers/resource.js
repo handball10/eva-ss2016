@@ -32,7 +32,7 @@ angular.module('bookingCalendarApp')
                 Name: $scope.name,
                 Id:   $scope.resourceID || undefined
             });
-            Resources.insert(resource);
+            Resources.upsert(resource);
             $scope.hide();
         };
 

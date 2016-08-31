@@ -40,10 +40,11 @@ angular.module('bookingCalendarApp')
                     bookingList = _.map(bookings, function(item){
 
                         return {
-                            id : item.id,
+                            id : item.Id,
                             resourceId : item.Resource,
                             start : item.StartDate,
-                            end : item.EndDate
+                            end : item.EndDate,
+                            customerId : item.Customer
                         };
                     });
 
