@@ -112,7 +112,7 @@ angular.module('bookingCalendarApp')
                 EndDate: $scope.myEndDate,
                 Customer: $scope.customerID,
                 Size: $scope.size,
-                id: $scope.bookingID
+                ID: $scope.bookingID || undefined
             });
             Bookings.insert(booking);
         };

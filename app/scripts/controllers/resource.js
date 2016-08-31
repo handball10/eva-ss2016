@@ -28,7 +28,7 @@ angular.module('bookingCalendarApp')
             var resource = new Resource({
                 Size: $scope.size,
                 Name: $scope.name,
-                id:   $scope.resourceID
+                ID:   $scope.resourceID || undefined
             });
             Resources.insert(resource);
         };
