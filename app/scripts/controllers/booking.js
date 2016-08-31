@@ -32,10 +32,11 @@ angular.module('bookingCalendarApp')
         Resources.list()
             .then(function (list) {
                 resource.states = list;
-            })
-        ;
+            });
+
+        //TODO Autocomplete not working for resource
         resource.querySearchResource = function (query) {
-            var results = query ? resource.states.filter(createFilterFor(query)) : resource.states,
+            var results = query ? resource.states.filter(createFilterForResource(query)) : resource.states,
                 deferred;
             if (resource.simulateQuery) {
                 deferred = $q.defer();
@@ -49,20 +50,26 @@ angular.module('bookingCalendarApp')
         };
         resource.selectedResourceItemChange = function (item) {
             fillSizes(item.Size);
-            $scope.resourceID = item.id;
+            $scope.resourceID = item.Id;
         };
+
+        function createFilterForResource(query) {
+            var lowercaseQuery = angular.lowercase(query);
+            return function filterFn(state) {
+                return (state.Name.indexOf(lowercaseQuery) === 0);
+            };
+        }
 
         //customer
         var customer = $scope.customer;
         customer.simulateQuery = false;
         Customers.list({bypassCache: true})
             .then(function (list) {
-                console.log(list);
                 customer.states = list;
-            })
-        ;
+            });
+
         customer.querySearchCustomer = function (query) {
-            var results = query ? customer.states.filter(createFilterFor(query)) : customer.states,
+            var results = query ? customer.states.filter(createFilterForCustomer(query)) : customer.states,
                 deferred;
             if (customer.simulateQuery) {
                 deferred = $q.defer();
@@ -74,15 +81,16 @@ angular.module('bookingCalendarApp')
                 return results;
             }
         };
+
         customer.selectedCustomerItemChange = function (item) {
-            $scope.customerID = item.id;
+            $scope.customerID = item.Id;
         };
 
 
-        function createFilterFor(query) {
+        function createFilterForCustomer(query) {
             var lowercaseQuery = angular.lowercase(query);
             return function filterFn(state) {
-                return (state.Name.indexOf(lowercaseQuery) === 0);
+                return (state.FirstName.indexOf(lowercaseQuery) === 0);
             };
         }
 
@@ -94,6 +102,28 @@ angular.module('bookingCalendarApp')
             }
             $scope.isResource = true;
         }
+
+        if(items){
+            $scope.isDelete = false;
+            $scope.bookingID = items;
+            Bookings.find({id : items}).then(function(result){
+                $scope.myStartDate = new Date(result.StartDate);
+                $scope.myEndDate = new Date(result.EndDate);
+                $scope.customerID = result.Customer;
+                $scope.resourceID = result.Resource;
+                $scope.bookingID = items;
+
+                Resources.find({id : result.Resource}).then(function(resourceResult){
+                resource.searchText = resourceResult.Name;
+
+                });
+
+                Customers.find({id : result.Customer}).then(function(customerResult){
+                    customer.searchText = customerResult.FirstName;
+                });
+            });
+        }
+
         $scope.submit = function () {
             var booking = new Booking({
                 Resource: $scope.resourceID,
@@ -106,28 +136,6 @@ angular.module('bookingCalendarApp')
             Bookings.upsert(booking);
             $scope.hide();
         };
-
-        if(items){
-            $scope.isDelete = false;
-            $scope.bookingID = items;
-            Bookings.find({id : items}).then(function(result){
-                $scope.myStartDate = new Date(result.StartDate);
-                $scope.myEndDate = new Date(result.EndDate);
-                Resources.find({id : result.Resource}).then(function(resourceResult){
-                resource.searchText = resourceResult.Name;
-
-                });
-
-                Customers.find({id : result.Customer}).then(function(customerResult){
-                    console.log("customerresult");
-                    console.log(customerResult);
-
-                });
-
-            });
-
-        }
-
 
         $scope.hide = function() {
             $mdDialog.hide();

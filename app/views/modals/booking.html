@@ -24,10 +24,10 @@
                     placeholder="Wähle einen Kunden aus"
                     required="required">
                 <md-item-template>
-                    <span md-highlight-text="resource.searchText" md-highlight-flags="^i">{{item.FirstName}} {{item.LastName}}</span>
+                    <span md-highlight-text="customer.searchText" md-highlight-flags="^i">{{item.FirstName}} {{item.LastName}}</span>
                 </md-item-template>
                 <md-not-found>
-                    Keine Einträge für "{{resource.searchText}}" gefunden.
+                    Keine Einträge für "{{customer.searchText}}" gefunden.
                 </md-not-found>
             </md-autocomplete>
         </md-content>
