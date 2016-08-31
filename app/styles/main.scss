@@ -24,41 +24,34 @@
   width:600px;
 }
 
-.button--add::after{
+.button__hover-effect::after{
   content: "";
   position: absolute;
   left: 0;
   width: 100%;
   height: 100%;
   transition-duration: 0.5s;
-  background: url("../images/ic_add_black_24px.svg") rgba(255,255,255,0.8);
+  //background: url("../images/ic_add_black_24px.svg") rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.8);
   background-position: center;
   background-size:contain ;
   background-repeat: no-repeat;
   transform: translate(-100%);
 }
 
-.button--add:hover::after{
-  transform: translate(0%);
-}
-
-.button--arrow-right::after{
-  content: "";
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transition-duration: 0.5s;
+.button__hover-effect--logout::after{
   background: url("../images/ic_forward_black_24px.svg") rgba(255,255,255,0.8);
   background-position: center;
   background-size:contain ;
   background-repeat: no-repeat;
-  transform: translate(-100%);
 }
 
-.button--arrow-right:hover::after{
+.button__hover-effect:hover::after{
   transform: translate(0%);
 }
+
+
+
 
 md-toast .md-toast-content {
     background-color: rgba(255,255,255,1);
