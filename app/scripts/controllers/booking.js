@@ -29,24 +29,15 @@ angular.module('bookingCalendarApp')
         //resources
         var resource = $scope.resource;
         resource.simulateQuery = false;
-        Resources.list()
+        Resources.list({bypassCache: true})
             .then(function (list) {
                 resource.states = list;
             });
 
         //TODO Autocomplete not working for resource
         resource.querySearchResource = function (query) {
-            var results = query ? resource.states.filter(createFilterForResource(query)) : resource.states,
-                deferred;
-            if (resource.simulateQuery) {
-                deferred = $q.defer();
-                $timeout(function () {
-                    deferred.resolve(results);
-                }, Math.random() * 1000, false);
-                return deferred.promise;
-            } else {
-                return results;
-            }
+            var results = query ? resource.states.filter(createFilterForResource(query)) : resource.states;
+            return results;
         };
         resource.selectedResourceItemChange = function (item) {
             fillSizes(item.Size);
@@ -69,17 +60,8 @@ angular.module('bookingCalendarApp')
             });
 
         customer.querySearchCustomer = function (query) {
-            var results = query ? customer.states.filter(createFilterForCustomer(query)) : customer.states,
-                deferred;
-            if (customer.simulateQuery) {
-                deferred = $q.defer();
-                $timeout(function () {
-                    deferred.resolve(results);
-                }, Math.random() * 1000, false);
-                return deferred.promise;
-            } else {
-                return results;
-            }
+            var results = query ? customer.states.filter(createFilterForCustomer(query)) : customer.states;
+            return results;
         };
 
         customer.selectedCustomerItemChange = function (item) {
@@ -96,7 +78,6 @@ angular.module('bookingCalendarApp')
 
         //SIZE
         function fillSizes(maxSize) {
-
             for (var i = 0; i < maxSize; i++) {
                 $scope.sizes[i] = i + 1;
             }
@@ -114,8 +95,7 @@ angular.module('bookingCalendarApp')
                 $scope.bookingID = items;
 
                 Resources.find({id : result.Resource}).then(function(resourceResult){
-                resource.searchText = resourceResult.Name;
-
+                    resource.searchText = resourceResult.Name;
                 });
 
                 Customers.find({id : result.Customer}).then(function(customerResult){
