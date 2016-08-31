@@ -88,7 +88,7 @@ angular.module('bookingCalendarApp')
 
                     if(!_.isFunction(value)){
 
-                        if(key === 'id'){
+                        if(key === 'Id'){
                             return;
                         }
 
@@ -182,7 +182,7 @@ angular.module('bookingCalendarApp')
                             _.each(snapshot.val(), function(value, key){
 
                                 var properties = {
-                                    id : key
+                                    Id : key
                                 };
 
                                 items.push(
@@ -210,9 +210,9 @@ angular.module('bookingCalendarApp')
 
             this.upsert = function(model){
 
-                if(typeof model.id !== 'undefined'){
+                if(typeof model.Id !== 'undefined'){
 
-                    var modelReference = $window.database.ref(this.path + '/' + model.id);
+                    var modelReference = $window.database.ref(this.path + '/' + model.Id);
 
                     modelReference.set(prepareModel(model));
                 } else {
