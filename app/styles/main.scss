@@ -31,16 +31,19 @@
   width: 100%;
   height: 100%;
   transition-duration: 0.5s;
-  //background: url("../images/ic_add_black_24px.svg") rgba(255,255,255,0.8);
   background: rgba(255,255,255,0.8);
-  background-position: center;
-  background-size:contain ;
-  background-repeat: no-repeat;
   transform: translate(-100%);
 }
 
 .button__hover-effect--logout::after{
   background: url("../images/ic_forward_black_24px.svg") rgba(255,255,255,0.8);
+  background-position: center;
+  background-size:contain ;
+  background-repeat: no-repeat;
+}
+
+.button__hover-effect--add::after{
+  background: url("../images/ic_add_black_24px.svg") rgba(255,255,255,0.8);
   background-position: center;
   background-size:contain ;
   background-repeat: no-repeat;

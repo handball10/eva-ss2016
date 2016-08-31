@@ -16,21 +16,22 @@ angular.module('bookingCalendarApp')
 
         if(items) {
             $scope.isDelete = false;
-            $scope.resourceID = items.id;
-            Resources.find(items.id).then(function(result){
-               console.log(result);
+            $scope.resourceID = items;
+            Resources.find({id : items}).then(function(result){
+                console.log(result);
+               $scope.name = result.Name;
+               $scope.size = result.Size;
             });
-            //TODO get Object with ID
-            //TODO lower and uppercase ID at resources item
         }
 
         $scope.submit = function () {
             var resource = new Resource({
                 Size: $scope.size,
                 Name: $scope.name,
-                ID:   $scope.resourceID || undefined
+                Id:   $scope.resourceID || undefined
             });
             Resources.insert(resource);
+            $scope.hide();
         };
 
         $scope.hide = function () {

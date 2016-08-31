@@ -37,7 +37,7 @@ angular.module('bookingCalendarApp')
                 Email: $scope.email,
                 Phone: $scope.phone,
                 Custom: $scope.custom,
-                ID : $scope.customerID || undefined
+                Id : $scope.customerID || undefined
             });
 
             Customers.upsert(customer);

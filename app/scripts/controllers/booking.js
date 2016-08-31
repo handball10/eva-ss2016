@@ -21,12 +21,26 @@ angular.module('bookingCalendarApp')
         $scope.resource = {};
         $scope.customer = {};
 
+        //DATE
+        $scope.myStartDate = new Date();
+        $scope.myEndDate = new Date();
+
         if(items){
             $scope.isDelete = false;
-            $scope.bookingID = items.id;
-            Bookings.find(items.id).then(function(result){
+            $scope.bookingID = items;
+            Bookings.find({id : items}).then(function(result){
+                console.log("result");
                 console.log(result);
-                //TODO get object with ID
+                console.log("result");
+
+                $scope.myStartDate = new Date(result.StartDate);
+                $scope.myEndDate = new Date(result.EndDate);
+
+                Resources.find({id : result.Resource}).then(function(resourceResult){
+                   $scope.item.Name = "sss";
+
+                });
+
             });
 
         }
@@ -92,10 +106,6 @@ angular.module('bookingCalendarApp')
                 return (state.Name.indexOf(lowercaseQuery) === 0);
             };
         }
-
-        //DATE
-        $scope.myStartDate = new Date();
-        $scope.myEndDate = new Date();
 
         //SIZE
         function fillSizes(maxSize) {
