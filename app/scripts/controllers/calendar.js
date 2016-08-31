@@ -159,7 +159,7 @@ angular.module('bookingCalendarApp')
 
         function addRemoteRessource(event, addedRessource){
             calendarInstance.fullCalendar('addResource',{
-                id : addedRessource.Id,
+                d : addedRessource.Id,
                 title : addedRessource.Name
             });
         }

@@ -14,6 +14,8 @@ angular.module('bookingCalendarApp')
         $scope.name = "";
         $scope.size = 1;
 
+        console.log(items);
+
         if(items) {
             $scope.isDelete = false;
             $scope.resourceID = items;

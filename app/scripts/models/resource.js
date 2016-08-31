@@ -35,6 +35,8 @@ angular.module('bookingCalendarApp')
                     return property;
                 });
 
+                properties.id = properties.Id;
+
 
                 return properties;
             }

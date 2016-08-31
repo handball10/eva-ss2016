@@ -140,6 +140,8 @@ angular.module('bookingCalendarApp')
 
                 var deferred = $q.defer();
 
+                $log.log(options);
+
                 if(options && options.id){
 
                     var modelReference = $window.database.ref(this.path + '/' + options.id);
