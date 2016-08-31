@@ -17,8 +17,11 @@ angular.module('bookingCalendarApp')
         if(items) {
             $scope.isDelete = false;
             $scope.resourceID = items.id;
-            //TODO get resource from fireabse with id
-            //TODO lower and uppercase ID at resources
+            Resources.find(items.id).then(function(result){
+               console.log(result);
+            });
+            //TODO get Object with ID
+            //TODO lower and uppercase ID at resources item
         }
 
         $scope.submit = function () {
@@ -39,7 +42,16 @@ angular.module('bookingCalendarApp')
         };
 
         $scope.delete = function(resourceID){
-            //TODO delete with id
+            var confirm = $mdDialog.confirm()
+                .title('Kunde löschen?')
+                .textContent('Wollen Sie diesen Kunde wirklich löschen?')
+                .targetEvent(this)
+                .ok('JA')
+                .cancel('NEIN');
+            $mdDialog.show(confirm).then(function () {
+                Resources.remove(resourceID);
+            }, function () {
+            });
         }
 
 

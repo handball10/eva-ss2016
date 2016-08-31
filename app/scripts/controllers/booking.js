@@ -24,7 +24,10 @@ angular.module('bookingCalendarApp')
         if(items){
             $scope.isDelete = false;
             $scope.bookingID = items.id;
-            //TODO get booking element from firebase with id
+            Bookings.find(items.id).then(function(result){
+                console.log(result);
+                //TODO get object with ID
+            });
 
         }
 
@@ -122,7 +125,16 @@ angular.module('bookingCalendarApp')
             $mdDialog.cancel();
         };
         $scope.delete = function(bookingID){
-            //TODO delete with ID
+            var confirm = $mdDialog.confirm()
+                .title('Kunde löschen?')
+                .textContent('Wollen Sie diesen Kunde wirklich löschen?')
+                .targetEvent(this)
+                .ok('JA')
+                .cancel('NEIN');
+            $mdDialog.show(confirm).then(function () {
+                Bookings.remove(bookingID);
+            }, function () {
+            });
         }
 
     });

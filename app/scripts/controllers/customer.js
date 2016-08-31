@@ -84,7 +84,6 @@ angular.module('bookingCalendarApp')
     };
 
     oldCustomer.selectedCustomerItemChange = function(item) {
-      console.log("here should be show the customers");
       $scope.company = item.Company;
       $scope.firstname = item.FirstName;
       $scope.lastname = item.LastName;
