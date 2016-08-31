@@ -55,7 +55,7 @@ angular.module('bookingCalendarApp')
             function datasetChange(data){
                 $log.log(self.name + '::change', data.val());
 
-                $rootScope.$broadcast(self.name + '::change', data.val());
+                $rootScope.$broadcast(self.name + '::dataset', data.val());
             }
 
             function dataAdd(data){
@@ -69,6 +69,8 @@ angular.module('bookingCalendarApp')
 
             function dataChange(data){
                 $log.log('Changed:: ',data);
+
+                $rootScope.$broadcast(self.name + '::changed', data.val());
             }
 
             function dataRemove(data){
@@ -135,6 +137,30 @@ angular.module('bookingCalendarApp')
             };
 
             this.find = function(options){
+
+                var deferred = $q.defer();
+
+                if(options && options.id){
+
+                    var modelReference = $window.database.ref(this.path + '/' + options.id);
+
+                    modelReference
+                        .once('value')
+                        .then(function(dump){
+                            if(dump){
+
+                                deferred.resolve(dump.val());
+
+                            } else {
+                                deferred.reject({message: self.name + '::'+options.id + ' not found!'});
+                            }
+                        })
+                    ;
+
+                }
+
+
+                return deferred.promise;
 
             };
 

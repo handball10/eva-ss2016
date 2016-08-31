@@ -133,7 +133,7 @@ angular.module('bookingCalendarApp')
             $rootScope.$on('Resource::removed', deleteRemoteResource);
 
 
-            $rootScope.$on('Booking::change', bookingsChanged);
+            $rootScope.$on('Booking::changed', bookingsChanged);
 
         }
 
