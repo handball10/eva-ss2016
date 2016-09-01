@@ -94,11 +94,19 @@ angular.module('bookingCalendarApp')
                 $scope.bookingID = items;
 
                 Resources.find({id : result.Resource}).then(function(resourceResult){
-                    resource.searchText = resourceResult.Name;
+                    if(resourceResult) {
+                        resource.searchText = resourceResult.Name;
+                    }else{
+                        resource.searchText = "Objekt nicht vorhanden";
+                    }
                 });
 
                 Customers.find({id : result.Customer}).then(function(customerResult){
-                    customer.searchText = customerResult.FirstName;
+                    if(customerResult) {
+                        customer.searchText = customerResult.FirstName;
+                    }else{
+                        customer.searchText = "Kunde nicht vorhanden";
+                    }
                 });
             });
         }
