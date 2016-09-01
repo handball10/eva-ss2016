@@ -34,7 +34,6 @@ angular.module('bookingCalendarApp')
                 resource.states = list;
             });
 
-        //TODO Autocomplete not working for resource
         resource.querySearchResource = function (query) {
             var results = query ? resource.states.filter(createFilterForResource(query)) : resource.states;
             return results;
@@ -47,7 +46,7 @@ angular.module('bookingCalendarApp')
         function createFilterForResource(query) {
             var lowercaseQuery = angular.lowercase(query);
             return function filterFn(state) {
-                return (state.Name.indexOf(lowercaseQuery) === 0);
+                return (angular.lowercase(state.Name).indexOf(lowercaseQuery) === 0);
             };
         }
 
@@ -72,7 +71,7 @@ angular.module('bookingCalendarApp')
         function createFilterForCustomer(query) {
             var lowercaseQuery = angular.lowercase(query);
             return function filterFn(state) {
-                return (state.FirstName.indexOf(lowercaseQuery) === 0);
+                return (angular.lowercase(state.FirstName).indexOf(lowercaseQuery) === 0);
             };
         }
 
