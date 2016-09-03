@@ -1,2 +1,15 @@
 \BOOKMARK [0][-]{chapter.1}{Einleitung}{}% 1
-\BOOKMARK [0][-]{chapter.2}{Fazit}{}% 2
+\BOOKMARK [0][-]{chapter.2}{Technologie}{}% 2
+\BOOKMARK [1][-]{section.2.1}{Angular}{chapter.2}% 3
+\BOOKMARK [1][-]{section.2.2}{Firebase}{chapter.2}% 4
+\BOOKMARK [1][-]{section.2.3}{Material Design}{chapter.2}% 5
+\BOOKMARK [1][-]{section.2.4}{Grunt}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.5}{NPM}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.6}{Bower}{chapter.2}% 8
+\BOOKMARK [0][-]{chapter.3}{Projekt}{}% 9
+\BOOKMARK [1][-]{section.3.1}{Zielsetzung}{chapter.3}% 10
+\BOOKMARK [1][-]{section.3.2}{Was wollen wir Bauen?}{chapter.3}% 11
+\BOOKMARK [0][-]{chapter.4}{Aufbau Projekt}{}% 12
+\BOOKMARK [1][-]{section.4.1}{Frontend}{chapter.4}% 13
+\BOOKMARK [1][-]{section.4.2}{Backend}{chapter.4}% 14
+\BOOKMARK [0][-]{chapter.5}{Fazit}{}% 15

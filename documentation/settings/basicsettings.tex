@@ -40,7 +40,7 @@
 \usepackage{xparse}
 
 %Glossar
-\usepackage[xindy,toc, automake]{glossaries} % nomain, if you define glossaries in a file, and you use \include{INP-00-glossary}
+\usepackage{glossaries} 
 \setacronymstyle{footnote-sc}
 \DeclareDocumentCommand{\newdualentry}{ O{} O{} m m m m } {
   \newglossaryentry{gls-#3}{name={#5},text={#5\glsadd{#3}},

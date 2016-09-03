@@ -1,4 +1,7 @@
 This is makeindex, version 2.15 [TeX Live 2015] (kpathsea + Thai support).
-Scanning input file /Users/Stefan/Documents/workspace/eva-ss2016/documentation/.texpadtmp/main.glo...done (0 entries accepted, 0 rejected).
-Nothing written in /Users/Stefan/Documents/workspace/eva-ss2016/documentation/.texpadtmp/main.gls.
+Scanning style file /Users/Stefan/Documents/workspace/eva-ss2016/documentation/.texpadtmp/main.ist.............................done (29 attributes redefined, 0 ignored).
+Scanning input file /Users/Stefan/Documents/workspace/eva-ss2016/documentation/.texpadtmp/main.glo....done (53 entries accepted, 0 rejected).
+Sorting entries....done (326 comparisons).
+Generating output file /Users/Stefan/Documents/workspace/eva-ss2016/documentation/.texpadtmp/main.gls....done (93 lines written, 0 warnings).
+Output written in /Users/Stefan/Documents/workspace/eva-ss2016/documentation/.texpadtmp/main.gls.
 Transcript written in /Users/Stefan/Documents/workspace/eva-ss2016/documentation/.texpadtmp/main.glg.
