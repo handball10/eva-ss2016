@@ -1,3 +1,48 @@
 \chapter{Projekt}
+Durch die in der Einleitung erwähnte Problemstellung ergeben sich folgende Zielsetzung und Umsetzung.
 \section{Zielsetzung}
-\section{Was wollen wir Bauen?}
+Prototypische Entwicklung einer Software zur Verwaltung von Buchungen für Ferienhäuser und Wohnungen. Eine der Anforderungen an die Software war die Nutzung auf verschiedenen Endgeräten. Das hat zur folge, dass auch die Betriebssysteme variieren können. Daraus ergibt sich, dass die Anwendung plattformunabhängig nutzbar sein muss. 
+
+Für diesen Fall eignet sich eine Webanwendung besonders gut. Sie ist von jedem Gerät aus nutzbar und benötigt in der Regel nicht mehr als einen Internetbrowser. Auch die Installation eines extra Programmes erübrigt sich. Allerdings ist eine stetige Internetverbindung Voraussetzung. In Anbetracht der weiteren Bedingungen an die Software ist diese aber auch bei einer nativ installieren Anwendung Voraussetzung. Da sie für den stetigen abgleich der Daten zwingend vorhanden sein muss. Das Ziel ist es also eine Webanwendung mit einer Benutzeroberfläche zu erstellen die auf jedem Gerät angezeigt werden kann sofern es über Internet und einen entsprechenden Browser verfügt. Des weiteren wird ein entsprechendes Backend benötigt, dass die Daten speichert. 
+
+Weitere Anforderungen an die Anwendungen sind die Verwaltung von Kunden, der zu vermietbaren Ferienhäuser und Wohnungen sowie die eigentliche Buchung. Das ganze soll übersichtlich dargestellt werden und einfach und schnell Benutzbar sein.
+
+
+\section{Umsetzung}
+
+Für die Umsetzung der eigentlichen Webanwendung kommen JavaScript, HTML und CSS zum Einsatz. Zu dem werden die in Kapitel \ref{chap_2} genannten Frameworks und Tools zur Unterstützung eingesetzt. 
+\subsection{Backend}
+Für das speichern der Daten soll die in Firebase integrierte Objektbasierte Datenbank zum Einsatz kommen. Ebenfalls übernimmt ein weiterer Dienst von Firebase die Authentifizierung bei der Anmeldung.
+
+\subsection{Frontend}
+Neben den oben genannten Script- und Auszeichnungsprachen soll für die Logik und Strukturierung der Anwendung das Framework AngularJS genutzt werden. Dazu passend soll das Layout mittels der Angular Version von Materialize gestaltet werden. 
+
+\subsection{Funktionen}
+Die Funktionen sollen sinnvoll in die Webanwendung integriert werden. Dabei sollen sie schnell und ohne Umwege erreichbar sein. Zu den Hauptfunktionen zählt das Hinzufügen und Bearbeiten von Kundendaten, Ferienwohnungen und der Buchung selbst. 
+Folgende Informationen sollten für jeden Kunden zur eindeutigen Identifizierung gespeichert werden:
+\begin{itemize} 
+\item Firma (Falls vorhanden)
+\item Vor- und Nachname
+\item Strasse und Hausnummer
+\item Postleitzahl und Stadt
+\item Telefonnummer
+\item Geburtstag 
+\item Feld für Zusatzinformationen
+\end{itemize}
+
+Die zu vermietenden Ferienhäuser und Wohnungen sollten folgenden Attribute haben:
+\begin{itemize} 
+\item Name des Objektes
+\item Anzahl der Personen die es maximal beherbergen kann
+\end{itemize}
+
+Um eine Buchung zu erstellen sollte die folgenden Informationen festgehalten werden:
+\begin{itemize} 
+\item Kunde, der das Objekt bucht
+\item Objekt, das gebucht wird
+\item Anzahl der Personen
+\item Startdatum
+\item Enddatum
+\end{itemize}
+
+Um eine bessere Übersicht über die Buchungen zu bekommen, sollen diese optisch in einem Kalender dargestellt werden.
