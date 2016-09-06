@@ -22,7 +22,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.1}Zielsetzung}{5}{section.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.2}Was wollen wir Bauen?}{5}{section.3.2}
+\contentsline {section}{\numberline {3.2}Umsetzung}{5}{section.3.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.1}Backend}{6}{subsection.3.2.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.2}Frontend}{6}{subsection.3.2.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.3}Funktionen}{6}{subsection.3.2.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {4}Aufbau Projekt}{7}{chapter.4}
 \defcounter {refsection}{0}\relax 
