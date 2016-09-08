@@ -1,25 +1,37 @@
 \chapter{Technologie}
-Dieses Kapitel stellt einen Überblick über die verwendeten Technologien dar.
 \label{chap_2}
-\section{AngularJS}
-AngularJS ist ein von Google entwickeltes JavaScript-Framework für client-seitige Webanwendungen. Es funktioniert nach dem Model-View-View-Model Prinzip. Es eignet sich besonders gut für Single-Page-Applications. Dabei werden die meisten Daten beim ersten Aufruf geladen. Das führt dazu, dass bei einer Änderung der URL nicht mehr die komplette Seite aktualisiert wird sondern lediglich die benötigten Daten per Ajax nachgeladen werden. Dadurch, dass bei AngularJS alles mittels JavaScript gerendert wird, stellt die Suchmaschinenoptimierung einen zusätzlichen Aufwand da, da die Suchmaschinen damit noch ihre Probleme haben. Abgesehen davon verfügt AngularJS über viele Stärken. Dazu gehören unter anderem Two-Way Binding, sehr gute Testbarkeit, Abstraktion von Low-Lovel-Operationen so wie die Lesbarkeit und Erweiterung von HTML-Code.
 
-\section{Firebase}
-Wie auch AngularJS stammt das Framework Firebase aus dem Hause Google. Allerdings wurde die Plattform nicht von Grund auf von Google entwickelt sondern erst im Jahr 2014 von Google übernommen. Es stellt eine universelle App-Plattform für Entwickler und Marketer zur Verfügung. Es dient zur Entwicklung von hoch-qualifizierten Anwendungen. Das Herzstück des Framework ist die Analyse von Apps und mobilen Anwendungen. Des Weiteren bietet es Cloud-Speicher, Cloud-Messaging, Remote Config und Test Lab. Ebenfalls stellt es die Möglichkeit zur Authentifizierung bereit so wie eine Echtzeit NoSQL Cloud Datenbank. 
+Dieses Kapitel bietet einen Überblick über die verwendeten Technologien, Frameworks und im Projekt verwendeten Pakete dar.
 
-\section{AngularJS Material Design}
-Passend zu Angular gibt das das User Interface Component Framework AngularJS Material Design. Es ist ein Zusammenschluss der Material Design Guidelines und dem AngularJs Framework. Dies soll dabei helfen, zeitgemäße attraktive konsistente und funktionale  Webseitendesigns zu Erstellen und auf allen Endgeräten zu gewährleisten. 
+\section{Verwendete Technologien}
+\subsection{AngularJS}
+AngularJS ist ein von Google entwickeltes JavaScript-Framework für client-seitige Webanwendungen. Es funktioniert nach dem Model-View-View-Model Prinzip. Es eignet sich besonders gut für Single-Page-Applications. Dabei werden die meisten Daten beim ersten Aufruf geladen. Das führt dazu, dass bei einer Änderung der URL nicht mehr die komplette Seite aktualisiert wird sondern lediglich die benötigten Daten per Ajax nachgeladen werden. Dadurch, dass bei AngularJS alles mittels JavaScript gerendert wird, stellt die Suchmaschinenoptimierung einen zusätzlichen Aufwand da, da die Suchmaschinen damit noch ihre Probleme haben. Abgesehen davon verfügt AngularJS über viele Stärken. Dazu gehören unter anderem Two-Way Binding, sehr gute Testbarkeit, Abstraktion von Low-Lovel-Operationen so wie die Lesbarkeit und Erweiterung von HTML-Code. 
 
-\section{Grunt}
+\subsection{Grunt}
 Grunt ist ein sogenannter JavaScript-Taskrunner der dazu da ist um wiederkehrende Aufgaben in Build-Prozessen in Frontend-Projekten zu automatisieren. Sobald er einmal konfiguriert ist, ist das Testen und Ausliefern selbst bei umfangreichen Projekten problemlos möglich. Es hilft viele Schritte wie zum Beispiel das minifizieren von JavaScript-Code oder das Umwandeln von SASS-Code zu CSS-Code von zentraler Stelle aus zu Steuern. 
-\section{NPM}
+
+\subsection{NPM}
 Node Package Manager ist ein Kommandozeilenprogramm für node.js. Es erleichtert JavaScript Entwicklern das Teilen von Code, welcher erstellt wurde um besondere Probleme zu lösen. Diese wiederverwendbaren Codeschnipsel werden Package oder manchmal auch Module genannt. Die Idee dahinter ist, dass ein Package ein Problem richtig löst. Das ermöglicht es, mit Hilfe von vielen kleinen Package zu einer Lösung zu gelangen.
   
-\section{Bower}
+\subsection{Bower}
 Wie auch der node package manager ist Bower ein Kommandozeilen Paketverwaltungstool für die clientseitige Webentwicklung. Er ist sogar in Node.js geschrieben und wird über NPM installiert. Es dient zur Installation und Aktualisierung von Programmbibliotheken und Frameworks. Als Ergänzung zu NPM und in Zusammenarbeit mit Grunt kann der Workflow erheblich beschleunigt und verbessert werden. 
 
-\section{SASS}
+\subsection{Sass}
 SASS ist ein ausgereifter, etablierter und leistungsfähiger CSS-Präprozessor. Mit der Dateiendung .scss kann die Erweiterung genutzt werden. Da die Browser aktuell keine .scss-Dateien unterstützen, muss das SASS-Kommandozeilentool den Code in .css-Dateien übersetzen.  Andersherum ist es ohne Probleme möglich CSS-Code in SASS-Dateien zu kopieren und zu nutzen. Dieser wird korrekt umgewandelt. Zu den Vorteilen von Sass gehört zum Beispiel Verschachtelungen, Variablen, Mixins, Vererbung und Importe.
 
-\section{Compass}
+
+
+\section{Verwendete Pakete}
+\subsection{Firebase}
+Wie auch AngularJS stammt das Framework Firebase aus dem Hause Google. Allerdings wurde die Plattform nicht von Grund auf von Google entwickelt sondern erst im Jahr 2014 von Google übernommen. Es stellt eine universelle App-Plattform für Entwickler und Marketer zur Verfügung. Es dient zur Entwicklung von hoch-qualifizierten Anwendungen. Das Herzstück des Framework ist die Analyse von Apps und mobilen Anwendungen. Des Weiteren bietet es Cloud-Speicher, Cloud-Messaging, Remote Config und Test Lab. Ebenfalls stellt es die Möglichkeit zur Authentifizierung bereit so wie eine Echtzeit NoSQL Cloud Datenbank. 
+
+\subsection{AngularJS Material Design}
+Passend zu Angular gibt das das User Interface Component Framework AngularJS Material Design. Es ist ein Zusammenschluss der Material Design Guidelines und dem AngularJs Framework. Dies soll dabei helfen, zeitgemäße attraktive konsistente und funktionale  Webseitendesigns zu Erstellen und auf allen Endgeräten zu gewährleisten.
+
+\subsection{Compass}
 Compass baut mit der Spracherweiterung Sass ein Framework. Es ist quasi die Standardbibliothek für Sass und bietet vieles was auch gängige CSS-Framewokrs enthalten. Compass erlaubt eine einheitliche Schreibweise die in verschiedene Eigenschaften übersetzt wird. Das hat zur Folge, dass sich die Entwickler keine Gedanken machen müssen,ob alle Browser abgedeckt werden. Ebenfalls ermöglicht es das automatisierte Erstellen von CSS-Sprites. 
+
+\subsection{Timer?}
+
+\subsection{fullcalender}
+
