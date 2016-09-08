@@ -6,34 +6,38 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {2}Technologie}{3}{chapter.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.1}Angular}{3}{section.2.1}
+\contentsline {section}{\numberline {2.1}AngularJS}{3}{section.2.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.2}Firebase}{3}{section.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.3}Material Design}{3}{section.2.3}
+\contentsline {section}{\numberline {2.3}AngularJS Material Design}{3}{section.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.4}Grunt}{3}{section.2.4}
+\contentsline {section}{\numberline {2.4}Grunt}{4}{section.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.5}NPM}{3}{section.2.5}
+\contentsline {section}{\numberline {2.5}NPM}{4}{section.2.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.6}Bower}{3}{section.2.6}
+\contentsline {section}{\numberline {2.6}Bower}{4}{section.2.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {3}Projekt}{5}{chapter.3}
+\contentsline {section}{\numberline {2.7}SASS}{4}{section.2.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.1}Zielsetzung}{5}{section.3.1}
+\contentsline {section}{\numberline {2.8}Compass}{5}{section.2.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.2}Umsetzung}{5}{section.3.2}
+\contentsline {chapter}{\numberline {3}Projekt}{7}{chapter.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.1}Backend}{6}{subsection.3.2.1}
+\contentsline {section}{\numberline {3.1}Zielsetzung}{7}{section.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.2}Frontend}{6}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.2}Umsetzung}{7}{section.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.3}Funktionen}{6}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.1}Backend}{8}{subsection.3.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Aufbau Projekt}{7}{chapter.4}
+\contentsline {subsection}{\numberline {3.2.2}Frontend}{8}{subsection.3.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Frontend}{7}{section.4.1}
+\contentsline {subsection}{\numberline {3.2.3}Funktionen}{8}{subsection.3.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Backend}{7}{section.4.2}
+\contentsline {chapter}{\numberline {4}Aufbau Projekt}{11}{chapter.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Fazit}{9}{chapter.5}
+\contentsline {section}{\numberline {4.1}Frontend}{11}{section.4.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.2}Backend}{11}{section.4.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {5}Fazit}{13}{chapter.5}
