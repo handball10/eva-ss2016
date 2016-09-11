@@ -3,9 +3,16 @@
     <md-toolbar class="md-hue-2">
         <div class="md-toolbar-tools">
             <pan>Verwaltungstool</pan>
-            <span flex>{{status}}</span>
+            <span flex></span>
+            <div class="header-mobile">
+                <md-button class="md-raised" aria-label="More"
+                           ng-click="toggleRight()">
+                    <md-icon md-svg-src="../../images/menu.svg"></md-icon>
+                </md-button>
 
+            </div>
 
+            <div class="header-dektop">
             <md-button class="md-raised button__hover-effect button__hover-effect--customer" aria-label="More"
                        ng-click="showCustomerDialog($event)">
                 <md-icon md-svg-src="../../images/ic_person_black_24px.svg"></md-icon>
@@ -26,6 +33,7 @@
                 <md-icon md-svg-src="../../images/ic_power_settings_new_black_24px.svg"></md-icon>
                 Logout
             </md-button>
+            </div>
         </div>
     </md-toolbar>
 

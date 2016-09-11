@@ -10,7 +10,7 @@
 var isDlgOpen;
 
 angular.module('bookingCalendarApp',['ngMaterial'])
-    .controller('MainCtrl', function ($q, $scope, $log, AuthService, Bookings, Booking, $rootScope, $mdMedia, $mdDialog, $mdToast) {
+    .controller('MainCtrl', function ($q, $scope, $log, AuthService, Bookings, Booking, $rootScope, $mdMedia, $mdDialog, $mdToast, $mdSidenav) {
         $scope.toastText = "Gespeichert!";
         $scope.isLoggedIn = false;
 
@@ -68,21 +68,14 @@ angular.module('bookingCalendarApp',['ngMaterial'])
 
 
 
+        $scope.toggleLeft = buildToggler('left');
+        $scope.toggleRight = buildToggler('right');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        function buildToggler(componentId) {
+            return function() {
+                $mdSidenav(componentId).toggle();
+            }
+        }
 
 
 

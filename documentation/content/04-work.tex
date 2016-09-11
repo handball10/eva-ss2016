@@ -3,7 +3,7 @@ Im folgenden wird anhand der verschiedener Bereiche die Funktionsweise des Progr
 
 \section{Projektstruktur}
 
-
+%TODO write something about the structur
 
 \section{Frontend}
 Der für den Nutzer sichtbare Bereich.
@@ -30,6 +30,8 @@ Ein Dialog öffnet sich in dem eine neue Buchung hinzugefügt werden kann.
 Nach der Bestätigung eines Dialogs wird der Nutzer abgemeldet und auf die Login-Seite verwiesen. 
 \end{description}
 
+Sobald die Fenstergröße kleiner oder die Größe eines durchschnittlichen Tablets erreicht hat, werden die Buttons ausgeblendet. Stattdesen erscheint ein Symbol das bei Klick eine Seitennavigation einblendet in der sich alle Buttons befinden.
+
 \subsubsection{Main}
 In der Main befindet sich lediglich der Kalender, welcher auf voller Breite und Höhe abgebildet. 
 Dieser ist aufgeteilt in folgende zwei Bereiche:
@@ -41,7 +43,7 @@ Alle Tage des aktuellen Monats werden als Spalten angezeigt. Die Buchungen werde
 \end{description}
 
 \subsection{Kunde}
-Zusammen mit dem Objekt bildet der Kunde eine Buchung. Für die Kundeninformationen wurden alle Felder aus dem Projektzielen implementiert. Zudem sind alle Felder ausgenommen der Zusatzinformationen und der Firma Pflicht und werden beim Abschicken des Formulars überprüft, ob sie leer sind. Um die Eingabe des Geburtstages zu vereinfachen wurde ein Kalender implementiert, welcher auftaucht sobald das Kalendersymbol angeklickt wird. Das Datum wird im UNIX TIMESTAMP gespeichert. Sind alle Felder korrekt ausgefüllt, kann das Formular abgeschickt werden. Sobald die \texttt{submit} Funktion im Controller aufgerufen wird, werden alle Felder aus dem View einem \texttt{customer} JSON-Objekt gespeichert. Diese werden dem \texttt{Customer} Model übergeben und das Dialog geschlossen. 
+Zusammen mit dem Objekt bildet der Kunde eine Buchung. Für die Kundeninformationen wurden alle Felder aus dem Projektzielen implementiert. Zudem sind alle Felder ausgenommen der Zusatzinformationen und der Firma Pflicht und werden beim Abschicken des Formulars überprüft, ob sie leer sind. Um die Eingabe des Geburtstages zu vereinfachen wurde ein für Tag, Monat und Jahr jeweils ein Dropdown-Menü bereitgestellt. Da das Mindestalter für Buchungen 18 Jahre ist, ist das höchste auszuwählende Jahr immer 18 Jahre vom aktuellen gerechnet. Das Datum wird im UNIX TIMESTAMP gespeichert. Sind alle Felder korrekt ausgefüllt, kann das Formular abgeschickt werden. Sobald die \texttt{submit} Funktion im Controller aufgerufen wird, werden alle Felder aus dem View einem \texttt{customer} JSON-Objekt gespeichert. Diese werden dem \texttt{Customer} Model übergeben und das Dialog geschlossen. 
 
 Soll ein bestehender Kunde bearbeitet werden muss dieser zunächst über das Suchfeld gesucht werden. Mittels des Lupensymbol im Kopfbereich des Dialog wird die Suchleiste ein oder ausgeblendet. Sobald das Suchfeld fokussiert wird, wird eine Funktion im Controller angestoßen welche alle Kunden mit Vor und Nachname als Auswahlmöglichkeit auflistet. Dafür wird die Liste aller Kunden im Model angefordert. Dieses Liefert ein Array mit allen Kundenobjekten. Bei einer hohen Anzahl an Kunden kann sich die Suche schwierig gestalten. Aus diesem Grund kann der Kunde durch eintippen von Buchstaben gefiltert werden. Jeder weitere Buchstabe schränkt die Suche nach dem Vornamen ein und es werden nur Kunden angezeigt dessen Vornamen die eingegebene Zeichenkette beinhalten. 
 
@@ -61,10 +63,12 @@ Um ein bereits existierendes Objekt bearbeiten zu können muss dies anders als b
 \subsection{Buchung}
 Eine Buchung ist ein Zusammenschluss aus Kunde, Objekt, Personenanzahl, Startdatum und Enddatum. Wie bei der Bearbeitung von Kunden, kann der Nutzer den Kunden über ein Suchfeld filtern und Auswählen. Zusätzlich funktioniert das ebenfalls für das Objekt. 
 %TODO load data from model
-Wenn eine neue Buchung hinzugefügt wird, wird zunächst die Auswahl der Personenanzahl ausgeblendet. Erst wenn ein Objekt im Suchfeld ausgewählt wurde, wird die Auswahl in form eines Dropdown-Menüs im View angezeigt. Im Controller wird vorher die maximale Personenanzahl des ausgewählten Objektes aus dem JSON-Objekt entnommen und somit die zur Auswahl stehenden Zahlen ermittelt. So zeigt das Dropdown-Menü nur genau die Anzahl von Personen an die dieses Objekt zur verfügung stellt. Für das Startdatum und Enddatum wurden, wie auch beim Kunden, Datepicker zur verfügung gestellt, die es dem Nutzer erlauben das Datum durch einfache Auswahl in einem Kalender das Datum festzulegen. Standardmäßig ist das aktuelle Datum eingestellt.
+Wenn eine neue Buchung hinzugefügt wird, wird zunächst die Auswahl der Personenanzahl ausgeblendet. Erst wenn ein Objekt im Suchfeld ausgewählt wurde, wird die Auswahl in form eines Dropdown-Menüs im View angezeigt. Im Controller wird vorher die maximale Personenanzahl des ausgewählten Objektes aus dem JSON-Objekt entnommen und somit die zur Auswahl stehenden Zahlen ermittelt. So zeigt das Dropdown-Menü nur genau die Anzahl von Personen an die dieses Objekt zur verfügung stellt. Für das Startdatum und Enddatum wurden, anders als beim Kunden, ein Datepicker zur verfügung gestellt, der es dem Nutzer erlaubt das Datum durch einfache Auswahl in einem Kalender festzulegen. Standardmäßig ist das aktuelle Datum eingestellt.
 
 Um eine Buchung bearbeiten zu können muss diese anders als beim Kunden oder Objekt zunächst in der Buchungsübersicht gesucht werden. Wurde die passende Buchung gefunden und ausgewählt, öffnet sich das Modal mit den hinterlegten Daten. Hier wird die Personenauswahl angezeigt und mit dem eingetragenem Wert vordefiniert. Auch hier besteht die Möglichkeit durch den angezeigten Löschen-Button die Buchung aus der Datenbank zu entfernen.  
 
+\subsection{Kalender}
 
+%TODO write text about the main calender
  
 \section{Backend}

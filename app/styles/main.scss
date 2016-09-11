@@ -8,8 +8,16 @@
   padding: 0.2em 0;
 }
 
+$desktop: 959px;
+
 .login-box{
-  margin:200px auto;
+  width:80%;
+  height:100%;
+    margin:200px auto;
+  @media screen and (min-width: $desktop) {
+    width:600px;
+  }
+
 }
 /*
 .calender-box{
@@ -21,7 +29,10 @@
 }
 
 .modal-width{
-  width:600px;
+  width:100%;
+  @media screen and (min-width: $desktop) {
+    width:600px;
+  }
 }
 
 .button__hover-effect::after{
@@ -34,6 +45,7 @@
   background: rgba(255,255,255,0.8);
   transform: translate(-100%);
 }
+
 
 .button__hover-effect--logout::after{
   background: url("../images/ic_forward_black_24px.svg") rgba(255,255,255,0.8);
@@ -87,4 +99,25 @@ md-toast .md-toast-content {
 
 .resourceCell {
   cursor: pointer;
+}
+
+
+
+
+.header-dektop{
+  display:none;
+  @media screen and (min-width: $desktop) {
+    display: block;
+  }
+}
+
+.header-mobile{
+  display:block;
+  @media screen and (min-width: $desktop) {
+    display: none;
+  }
+}
+
+.mobile-button{
+  width:100%;
 }

@@ -26,6 +26,50 @@
 <div ng-if="isLoggedIn">
     <div ng-include="'views/partials/header.html'"></div>
 
+    <md-sidenav class="md-sidenav-right" md-component-id="right"
+                md-disable-backdrop md-whiteframe="4">
+
+        <md-toolbar class="md-theme-indigo">
+            <div class="md-toolbar-tools">
+                <pan>Navigation</pan>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="toggleRight();">
+                    <md-icon md-svg-src="../../images/ic_close_black_24px.svg"
+                             aria-label="Close dialog"></md-icon>
+                </md-button>
+
+            </div>
+        </md-toolbar>
+
+        <md-content layout-margin>
+                <md-button class="md-raised button__hover-effect button__hover-effect--customer mobile-button" aria-label="More"
+                           ng-click="showCustomerDialog($event); toggleRight();">
+                    <md-icon md-svg-src="../../images/ic_person_black_24px.svg"></md-icon>
+                    Kunde
+                </md-button>
+
+                <md-button class="md-raised button__hover-effect button__hover-effect--resource mobile-button" aria-label="More"
+                           ng-click="showResourceDialog($event); toggleRight();">
+                    <md-icon md-svg-src="../../images/ic_home_black_24px.svg"></md-icon>
+                    Wohungen
+                </md-button>
+
+                <md-button class="md-raised button__hover-effect button__hover-effect--booking mobile-button" aria-label="More"
+                           ng-click="showBookingDialog($event); toggleRight();">
+                    <md-icon md-svg-src="../../images/ic_content_paste_black_24px.svg"></md-icon>
+                    Buchung
+                </md-button>
+                <md-button class="md-raised button__hover-effect button__hover-effect--logout mobile-button" aria-label="More"
+                           ng-click="logout()">
+                    <md-icon md-svg-src="../../images/ic_power_settings_new_black_24px.svg"></md-icon>
+                    Logout
+                </md-button>
+            </p>
+        </md-content>
+
+    </md-sidenav>
+
+
     <md-content layout-xs="column" layout="row" class="layout-xs-column layout-row">
             <md-card md-theme="default" md-theme-watch="" class="md-default-theme">
                 <div ng-include="'views/partials/calendar.html'"></div>
