@@ -96,6 +96,8 @@ angular.module('bookingCalendarApp')
                 Resources.find({id : result.Resource}).then(function(resourceResult){
                     if(resourceResult) {
                         resource.searchText = resourceResult.Name;
+                        $scope.size = result.Size;
+                        fillSizes(resourceResult.Size);
                     }else{
                         resource.searchText = "Objekt nicht vorhanden";
                     }

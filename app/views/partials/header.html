@@ -6,17 +6,18 @@
             <span flex>{{status}}</span>
 
 
-            <md-button class="md-raised button__hover-effect" aria-label="More" ng-click="showCustomerDialog($event)">
+            <md-button class="md-raised button__hover-effect button__hover-effect--customer" aria-label="More"
+                       ng-click="showCustomerDialog($event)">
                 <md-icon md-svg-src="../../images/ic_person_black_24px.svg"></md-icon>
                 Kunde
             </md-button>
-            <md-button class="md-raised button__hover-effect button__hover-effect--add" aria-label="More"
+            <md-button class="md-raised button__hover-effect button__hover-effect--resource" aria-label="More"
                        ng-click="showResourceDialog($event)">
                 <md-icon md-svg-src="../../images/ic_home_black_24px.svg"></md-icon>
                 Wohungen
             </md-button>
 
-            <md-button class="md-raised button__hover-effect button__hover-effect--add" aria-label="More"
+            <md-button class="md-raised button__hover-effect button__hover-effect--booking" aria-label="More"
                        ng-click="showBookingDialog($event)">
                 <md-icon md-svg-src="../../images/ic_content_paste_black_24px.svg"></md-icon>
                 Buchung

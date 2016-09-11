@@ -1,4 +1,10 @@
 \chapter{Aufbau Projekt}
+Im folgenden wird anhand der verschiedener Bereiche die Funktionsweise des Programmes erläutert. 
+
+\section{Projektstruktur}
+
+
+
 \section{Frontend}
 Der für den Nutzer sichtbare Bereich.
 \subsection{Login}
@@ -10,6 +16,7 @@ Da es sich hierbei um eine Betriebsinterne Software handelt wird eine Registrier
 
 \subsection{Hauptseite}
 Die Hauptseite ist sehr schlicht aufgebaut und teilt sich auf in zwei Teile. 
+
 \subsubsection{Header}
 Im Header befinden sich neben dem Programmlogo auch folgende vier Button:
 \begin{description}
@@ -29,23 +36,35 @@ Dieser ist aufgeteilt in folgende zwei Bereiche:
 \begin{description}
 \item[Objektübersicht]\hfill \\
 Alle Objekte werden auf der linken Seite in form einer Liste dargestellt
-\item[Monatsübersicht]\hfill \\ 
+\item[Buchungsübersicht]\hfill \\ 
 Alle Tage des aktuellen Monats werden als Spalten angezeigt. Die Buchungen werden als Blöcke angezeigt und verbinden dessen Tage in Spalten.  
 \end{description}
 
 \subsection{Kunde}
-Zusammen mit dem Objekt bildet der Kunde eine Buchung. Es wurden alle in den Projektzielen aufgelisteten Eingabefelder implementiert. Alle Felder abgesehen von dem Feld für die Zusatzinformationen und Firma sind Pflicht und werden überprüft, ob sie leer sind. Um die Eingabe des Geburtstages zu vereinfachen wurde ein Kalender implementiert, welcher auftaucht sobald das Kalendersymbol angeklickt wird. Das Datum wird im UNIX TIMESTAMP gespeichert. Sind alle Felder korrekt ausgefüllt, kann das Formular abgeschickt werden. Sobald die \texttt{submit} Funktion im Controller aufgerufen wird, werden alle Felder aus dem View einem \texttt{customer} Objekt gespeichert. Diese werden dem \texttt{Customer} Model übergeben und das Dialog geschlossen. 
+Zusammen mit dem Objekt bildet der Kunde eine Buchung. Für die Kundeninformationen wurden alle Felder aus dem Projektzielen implementiert. Zudem sind alle Felder ausgenommen der Zusatzinformationen und der Firma Pflicht und werden beim Abschicken des Formulars überprüft, ob sie leer sind. Um die Eingabe des Geburtstages zu vereinfachen wurde ein Kalender implementiert, welcher auftaucht sobald das Kalendersymbol angeklickt wird. Das Datum wird im UNIX TIMESTAMP gespeichert. Sind alle Felder korrekt ausgefüllt, kann das Formular abgeschickt werden. Sobald die \texttt{submit} Funktion im Controller aufgerufen wird, werden alle Felder aus dem View einem \texttt{customer} JSON-Objekt gespeichert. Diese werden dem \texttt{Customer} Model übergeben und das Dialog geschlossen. 
 
-Soll ein bestehender Kunde bearbeitet werden muss dieser zunächst über das Suchfeld gesucht werden. Mittels des Lupensymbol im Kopfbereich des Dialog wird die Suchleiste ein oder ausgeblendet. Sobald das Suchfeld fokussiert wird, wird eine Funktion im Controller angestoßen welche alle Kunden mit Vor und Nachname als Auswahlmöglichkeit auflistet. Dafür wird die Liste aller Kunden im Model angefordert. Dieses Liefert ein Array mit allen Kundenobjekten. Bei einer hohen Anzahl an KundeDialogn kann sich die Suche schwierig gestalten. Aus diesem Grund kann der Kunde durch eintippen von Buchstaben gefiltert werden. Jeder weitere Buchstabe schränkt die Suche nach dem Vornamen ein und es werden nur Kunden angezeigt dessen Vornamen die eingegebene Zeichenkette beinhalten. 
+Soll ein bestehender Kunde bearbeitet werden muss dieser zunächst über das Suchfeld gesucht werden. Mittels des Lupensymbol im Kopfbereich des Dialog wird die Suchleiste ein oder ausgeblendet. Sobald das Suchfeld fokussiert wird, wird eine Funktion im Controller angestoßen welche alle Kunden mit Vor und Nachname als Auswahlmöglichkeit auflistet. Dafür wird die Liste aller Kunden im Model angefordert. Dieses Liefert ein Array mit allen Kundenobjekten. Bei einer hohen Anzahl an Kunden kann sich die Suche schwierig gestalten. Aus diesem Grund kann der Kunde durch eintippen von Buchstaben gefiltert werden. Jeder weitere Buchstabe schränkt die Suche nach dem Vornamen ein und es werden nur Kunden angezeigt dessen Vornamen die eingegebene Zeichenkette beinhalten. 
 
-Wurde ein Kunde ausgewählt, werden alle Daten aus dem Objekt ausgelesen und in die Input Felder eingefügt. Gleichzeitig wird ein Button angezeigt der das Löschen eines Kunden aus der Datenbank ermöglicht. Um einem Fehler vorzubeugen muss zusätzlich noch ein Dialog bestätigt werden. Wird dieser bestätigt übergibt der Controller dem Model die UUID des Kunden in einer \texttt{delete} Funktion. %TODO delete cusomer in model
+Wurde ein Kunde ausgewählt, werden alle Daten aus dem JSON-Objekt ausgelesen und in die Input Felder eingefügt. Gleichzeitig wird ein Button angezeigt der das Löschen eines Kunden aus der Datenbank ermöglicht. Um einem Fehler vorzubeugen muss zusätzlich noch ein Dialog bestätigt werden. Wird dieser bestätigt übergibt der Controller dem Model die UUID des Kunden in einer \texttt{delete} Funktion. 
+%TODO delete customer in model
 Wenn Daten verändert wurden, können diese wie auch beim Hinzufügen eines neuen Kunden bestätigt werden. Dabei wird die selbe Funktion aufgerufen. In diesem Fall wird im Controller die \texttt{upsert} Funktion im Model aufgerufen. Je nachdem, ob es sich dabei um einen bestehenden Eintrag in der Datenbank handelt oder der Eintrag bereits vorhanden ist wird ein \texttt{Update} oder \texttt{Insert} durchgeführt. Dafür ist die von der Datenbank vergebene UUID ausschlaggebend.
 
 Soll weder ein neuer Kunde hinzugefügt noch ein bestehender bearbeitet werden kann das Dialog über den "Abbrechen" Button, das "X" oder einen Klick ausserhalb des Dialogs geschlossen werden. Für den Controller ist das ein und die selbe Funktion. Dieser ruft lediglich die \texttt{hide} Methode des Dialogs auf und das Dialogfenster wird ausgeblendet. Dabei werden auch alle Daten aus den Feldern entfernt.
 
 \subsection{Objekt}
+Als Objekt wird eine Ferienwohnung oder Haus bezeichnet. Wie auch beim Kunden können Objekte verschiedene Informationen gespeichert werden. Die beiden gewünschten Felder aus den Projektzielen wurden übernommen. Dazu gehört die Eingabe des Namens in ein Textfeld. Wird das Feld fokussiert und ohne Eingabe verlassen erscheint eine Fehlermeldung mit dem Hinweis das Feld auszufüllen. Wird dieser Hinweis ignoriert und der Nutzer versucht das Formular abzuschicken, überprüft der View, ob alle als Pflicht gekennzeichneten Felder ausgefüllt wurden und der \texttt{submit} Button gedrückt wurde. Ist eines dieser Angaben \texttt{false} wird das Formular erst gar nicht abgeschickt. Auch bei der Angabe der maximalen Personenanzahl wurde darauf geachtet Falscheingaben abzufangen. Standardmäßig ist das minimum von 1 eingestellt. Der Nutzer hat die Möglichkeit mit Hilfe von Pfeilen den Wert zu Verändern. Die Maximale Anzahl von Personen ist 10 für jedes Objekt. Da es auch möglich ist Manuell eine Zahl einzugeben, wird ebenfalls überprüft, ob sich die Zahl in der Range zwischen 1 und 10 befindet. Ist dies nicht der Fall wird ein Hinweis ausgegeben und das Formular kann nicht abgeschickt werden. Sind alle Angaben korrekt und der \texttt{submit} Button wird betätigt wird das Formular abgeschickt. Im Controller wird eine Funktion aufgerufen in der die Daten aus den Feldern in ein JSON-Objekt gespeichert werden. Dieses wird der \texttt{upsert} Methode des Models übergeben. 
 
+Um ein bereits existierendes Objekt bearbeiten zu können muss dies anders als bei den Kunden in der Auflistung in der main ausgewählt werden. Auch hier werden die Daten anhand der UUID aus der Datenbank geladen und in die Felder eingefügt. Zusätzlich wird der Button zum Löschen des Objektes angezeigt. Die Besonderheit bei der Änderung von Daten ist eine Eigenschaft im JSON-Objekt in dem die Informationen der Felder gespeichert werden. Neben des Namens und der Personenanzahl wird die ID des Objektes gespeichert. Ist, wie bei einer Änderung, bereits eine UUID vorhanden, wird diese als Wert gespeichert. Wird eine Objekt neu hinzugefügt ist der Wert \texttt{undefined}. Diese Information erlaubt wird in der \texttt{upsert} Methode des Models abgefragt und dementsprechend ein neues Objekt hinzugefügt oder ein bestehendes aktualisiert.
+%TODO how works upsert at model
+
+  
 \subsection{Buchung}
+Eine Buchung ist ein Zusammenschluss aus Kunde, Objekt, Personenanzahl, Startdatum und Enddatum. Wie bei der Bearbeitung von Kunden, kann der Nutzer den Kunden über ein Suchfeld filtern und Auswählen. Zusätzlich funktioniert das ebenfalls für das Objekt. 
+%TODO load data from model
+Wenn eine neue Buchung hinzugefügt wird, wird zunächst die Auswahl der Personenanzahl ausgeblendet. Erst wenn ein Objekt im Suchfeld ausgewählt wurde, wird die Auswahl in form eines Dropdown-Menüs im View angezeigt. Im Controller wird vorher die maximale Personenanzahl des ausgewählten Objektes aus dem JSON-Objekt entnommen und somit die zur Auswahl stehenden Zahlen ermittelt. So zeigt das Dropdown-Menü nur genau die Anzahl von Personen an die dieses Objekt zur verfügung stellt. Für das Startdatum und Enddatum wurden, wie auch beim Kunden, Datepicker zur verfügung gestellt, die es dem Nutzer erlauben das Datum durch einfache Auswahl in einem Kalender das Datum festzulegen. Standardmäßig ist das aktuelle Datum eingestellt.
+
+Um eine Buchung bearbeiten zu können muss diese anders als beim Kunden oder Objekt zunächst in der Buchungsübersicht gesucht werden. Wurde die passende Buchung gefunden und ausgewählt, öffnet sich das Modal mit den hinterlegten Daten. Hier wird die Personenauswahl angezeigt und mit dem eingetragenem Wert vordefiniert. Auch hier besteht die Möglichkeit durch den angezeigten Löschen-Button die Buchung aus der Datenbank zu entfernen.  
 
 
+ 
 \section{Backend}

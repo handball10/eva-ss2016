@@ -1,7 +1,7 @@
 <md-dialog aria-label="Resource"  ng-cloak>
     <md-toolbar>
         <div class="md-toolbar-tools modal-width">
-            <h2>Resources</h2>
+            <h2>Objekt</h2>
             <span flex></span>
             <md-button class="md-icon-button" ng-click="cancel()">
                 <md-icon md-svg-src="../../images/ic_close_black_24px.svg" aria-label="Close dialog"></md-icon>
@@ -26,6 +26,9 @@
             <label>Personenanzahl</label>
             <input required type="number" step="any" name="rate" ng-model="size" min="1"
                    max="10"  />
+            <div ng-messages="resourceForm.size.$error">
+                <div ng-message="required">Bitte ausfüllen</div>
+            </div>
         </md-input-container>
         </md-content>
     <!-- BUTTONS -->

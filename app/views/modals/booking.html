@@ -1,7 +1,7 @@
 <md-dialog aria-label="Booking" ng-cloak >
         <md-toolbar>
             <div class="md-toolbar-tools modal-width">
-                <h2>Booking</h2>
+                <h2>Buchung</h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="cancel()">
                     <md-icon md-svg-src="../../images/ic_close_black_24px.svg" aria-label="Close dialog"></md-icon>
@@ -58,8 +58,8 @@
         <md-content>
         <md-input-container style="margin-right: 10px;" ng-show="isResource">
             <label>Personenanzahl</label>
-            <md-select ng-model="size" required="required">
-                <md-option ng-repeat="size in sizes" value="{{size}}">{{size}}</md-option>
+            <md-select ng-model="size" required="required" ng-selected="size">
+                <md-option ng-repeat="size in sizes" value="{{size}}" >{{size}}</md-option>
             </md-select>
         </md-input-container>
         </md-content>
