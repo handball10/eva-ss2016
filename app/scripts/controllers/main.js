@@ -103,7 +103,17 @@ angular.module('bookingCalendarApp',['ngMaterial'])
         };
 
         $scope.logout = function(){
-            AuthService.logout();
+            var LogoutConfirm = $mdDialog.confirm()
+                .title('Logout?')
+                .textContent('Wollen Sie sich wirklich abmelden?')
+                .targetEvent(this)
+                .ok('JA')
+                .cancel('NEIN');
+            $mdDialog.show(LogoutConfirm).then(function () {
+                AuthService.logout();
+            }, function () {
+            });
+
         };
 
         $rootScope.$on("auth::login",onLogin);

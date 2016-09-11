@@ -2,66 +2,66 @@
 \begin{theglossary}\glossaryheader
 \glsgroupheading{C}\relax \glsresetentrylist %
 \glossentry{gls-css}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{17}}}%
+		\setentrycounter[]{page}\glsnumberformat{19}}}%
 \glossentry{css}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{17}}}\glsgroupskip
+		\setentrycounter[]{page}\glsnumberformat{19}}}\glsgroupskip
 \glsgroupheading{D}\relax \glsresetentrylist %
 \glossentry{gls-dbms}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{17}}}%
+		\setentrycounter[]{page}\glsnumberformat{19}}}%
 \glossentry{dbms}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{17}}}\glsgroupskip
+		\setentrycounter[]{page}\glsnumberformat{19}}}\glsgroupskip
 \glsgroupheading{E}\relax \glsresetentrylist %
 \glossentry{gls-xml}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{17\delimN 18}}}\glsgroupskip
+		\setentrycounter[]{page}\glsnumberformat{19\delimN 20}}}\glsgroupskip
 \glsgroupheading{G}\relax \glsresetentrylist %
 \glossentry{gls-gui}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{17}}}%
+		\setentrycounter[]{page}\glsnumberformat{19}}}%
 \glossentry{gui}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{17}}}\glsgroupskip
+		\setentrycounter[]{page}\glsnumberformat{19}}}\glsgroupskip
 \glsgroupheading{H}\relax \glsresetentrylist %
 \glossentry{html}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{17}}}%
+		\setentrycounter[]{page}\glsnumberformat{19}}}%
 \glossentry{http}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{17}}}%
+		\setentrycounter[]{page}\glsnumberformat{19}}}%
 \glossentry{gls-html}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{17}}}%
+		\setentrycounter[]{page}\glsnumberformat{19}}}%
 \glossentry{gls-http}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{17}}}\glsgroupskip
+		\setentrycounter[]{page}\glsnumberformat{19}}}\glsgroupskip
 \glsgroupheading{J}\relax \glsresetentrylist %
 \glossentry{javafx}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{17}}}%
+		\setentrycounter[]{page}\glsnumberformat{19}}}%
 \glossentry{gls-json}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{17}}}%
+		\setentrycounter[]{page}\glsnumberformat{19}}}%
 \glossentry{json}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{17}}}\glsgroupskip
+		\setentrycounter[]{page}\glsnumberformat{19}}}\glsgroupskip
 \glsgroupheading{P}\relax \glsresetentrylist %
 \glossentry{gls-pojo}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{17}}}%
+		\setentrycounter[]{page}\glsnumberformat{19}}}%
 \glossentry{pojo}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{17}}}\glsgroupskip
+		\setentrycounter[]{page}\glsnumberformat{19}}}\glsgroupskip
 \glsgroupheading{Q}\relax \glsresetentrylist %
 \glossentry{qrcode}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{17\delimN 18}}}%
+		\setentrycounter[]{page}\glsnumberformat{19\delimN 20}}}%
 \glossentry{gls-qrcode}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{17\delimN 18}}}\glsgroupskip
+		\setentrycounter[]{page}\glsnumberformat{19\delimN 20}}}\glsgroupskip
 \glsgroupheading{S}\relax \glsresetentrylist %
 \glossentry{sql}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{17\delimN 18}}}%
+		\setentrycounter[]{page}\glsnumberformat{19\delimN 20}}}%
 \glossentry{gls-sql}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{17\delimN 18}}}\glsgroupskip
+		\setentrycounter[]{page}\glsnumberformat{19\delimN 20}}}\glsgroupskip
 \glsgroupheading{T}\relax \glsresetentrylist %
 \glossentry{token}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{17}}}\glsgroupskip
+		\setentrycounter[]{page}\glsnumberformat{19}}}\glsgroupskip
 \glsgroupheading{U}\relax \glsresetentrylist %
 \glossentry{ui}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{17\delimN 18}}}%
+		\setentrycounter[]{page}\glsnumberformat{19\delimN 20}}}%
 \glossentry{gls-url}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{17\delimN 18}}}%
+		\setentrycounter[]{page}\glsnumberformat{19\delimN 20}}}%
 \glossentry{url}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{17\delimN 18}}}%
+		\setentrycounter[]{page}\glsnumberformat{19\delimN 20}}}%
 \glossentry{gls-ui}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{17\delimN 18}}}\glsgroupskip
+		\setentrycounter[]{page}\glsnumberformat{19\delimN 20}}}\glsgroupskip
 \glsgroupheading{X}\relax \glsresetentrylist %
 \glossentry{xml}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{17\delimN 18}}}%
+		\setentrycounter[]{page}\glsnumberformat{19\delimN 20}}}%
 \end{theglossary}\glossarypostamble

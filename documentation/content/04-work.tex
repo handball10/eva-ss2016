@@ -1,3 +1,51 @@
 \chapter{Aufbau Projekt}
 \section{Frontend}
+Der für den Nutzer sichtbare Bereich.
+\subsection{Login}
+Da die Software wie bereits erwähnt nicht nur intern im Büro sondern auch von extern aus erreichbar sein muss, ist es nötig eine Authentifizierung einzurichten damit unbefugte keine Möglichkeiten haben die Daten zu verändern. Um die Software nutzen zu können, benötigt der Bearbeiter eine gültige Kombination aus E-Mail und Passwort. Schon bei der Eingabe der Daten wird überprüft, ob die Felder leer sind oder es sich dabei um eine E-Mail handelt oder nicht. Dabei wird darauf hingewiesen sobald das AT -Zeichen oder der Punkt fehlt. 
+
+Sobald das Formular abgeschickt wurde, werden die Daten zunächst im \texttt{login.js} Controller entgegengenommen. Von da aus werden die Daten an Authenticate-Service weitergegeben. Dort werden diesen an das Backend geschickt. In Firebase werden diese dann mit den hinterlegten Daten verglichen. Sind die Angaben nicht korrekt wird eine Fehlermeldung zurückgegeben die der Controller im View anzeigt. Sofern alles richtig ist, wird der Nutzer weiter zu der Hauptseite geleitet. 
+
+Da es sich hierbei um eine Betriebsinterne Software handelt wird eine Registrierung nicht benötigt. Die Emailadresse und das Passwort werden Manuell im Backend hinzugefügt, bearbeitet oder entfernt. 
+
+\subsection{Hauptseite}
+Die Hauptseite ist sehr schlicht aufgebaut und teilt sich auf in zwei Teile. 
+\subsubsection{Header}
+Im Header befinden sich neben dem Programmlogo auch folgende vier Button:
+\begin{description}
+\item[Kunde]\hfill \\
+Ein Dialog öffnet sich in dem Kunden hinzugefügt, bearbeitet oder gelöscht werden können.
+\item[Objekt]\hfill \\ 
+Ein Dialog öffnet sich in dem eine neue Ferienwohnung / Haus hinzugefügt werden kann. 
+\item[Buchung]\hfill \\ 
+Ein Dialog öffnet sich in dem eine neue Buchung hinzugefügt werden kann. 
+\item[Logout]\hfill \\ 
+Nach der Bestätigung eines Dialogs wird der Nutzer abgemeldet und auf die Login-Seite verwiesen. 
+\end{description}
+
+\subsubsection{Main}
+In der Main befindet sich lediglich der Kalender, welcher auf voller Breite und Höhe abgebildet. 
+Dieser ist aufgeteilt in folgende zwei Bereiche:
+\begin{description}
+\item[Objektübersicht]\hfill \\
+Alle Objekte werden auf der linken Seite in form einer Liste dargestellt
+\item[Monatsübersicht]\hfill \\ 
+Alle Tage des aktuellen Monats werden als Spalten angezeigt. Die Buchungen werden als Blöcke angezeigt und verbinden dessen Tage in Spalten.  
+\end{description}
+
+\subsection{Kunde}
+Zusammen mit dem Objekt bildet der Kunde eine Buchung. Es wurden alle in den Projektzielen aufgelisteten Eingabefelder implementiert. Alle Felder abgesehen von dem Feld für die Zusatzinformationen und Firma sind Pflicht und werden überprüft, ob sie leer sind. Um die Eingabe des Geburtstages zu vereinfachen wurde ein Kalender implementiert, welcher auftaucht sobald das Kalendersymbol angeklickt wird. Das Datum wird im UNIX TIMESTAMP gespeichert. Sind alle Felder korrekt ausgefüllt, kann das Formular abgeschickt werden. Sobald die \texttt{submit} Funktion im Controller aufgerufen wird, werden alle Felder aus dem View einem \texttt{customer} Objekt gespeichert. Diese werden dem \texttt{Customer} Model übergeben und das Dialog geschlossen. 
+
+Soll ein bestehender Kunde bearbeitet werden muss dieser zunächst über das Suchfeld gesucht werden. Mittels des Lupensymbol im Kopfbereich des Dialog wird die Suchleiste ein oder ausgeblendet. Sobald das Suchfeld fokussiert wird, wird eine Funktion im Controller angestoßen welche alle Kunden mit Vor und Nachname als Auswahlmöglichkeit auflistet. Dafür wird die Liste aller Kunden im Model angefordert. Dieses Liefert ein Array mit allen Kundenobjekten. Bei einer hohen Anzahl an KundeDialogn kann sich die Suche schwierig gestalten. Aus diesem Grund kann der Kunde durch eintippen von Buchstaben gefiltert werden. Jeder weitere Buchstabe schränkt die Suche nach dem Vornamen ein und es werden nur Kunden angezeigt dessen Vornamen die eingegebene Zeichenkette beinhalten. 
+
+Wurde ein Kunde ausgewählt, werden alle Daten aus dem Objekt ausgelesen und in die Input Felder eingefügt. Gleichzeitig wird ein Button angezeigt der das Löschen eines Kunden aus der Datenbank ermöglicht. Um einem Fehler vorzubeugen muss zusätzlich noch ein Dialog bestätigt werden. Wird dieser bestätigt übergibt der Controller dem Model die UUID des Kunden in einer \texttt{delete} Funktion. %TODO delete cusomer in model
+Wenn Daten verändert wurden, können diese wie auch beim Hinzufügen eines neuen Kunden bestätigt werden. Dabei wird die selbe Funktion aufgerufen. In diesem Fall wird im Controller die \texttt{upsert} Funktion im Model aufgerufen. Je nachdem, ob es sich dabei um einen bestehenden Eintrag in der Datenbank handelt oder der Eintrag bereits vorhanden ist wird ein \texttt{Update} oder \texttt{Insert} durchgeführt. Dafür ist die von der Datenbank vergebene UUID ausschlaggebend.
+
+Soll weder ein neuer Kunde hinzugefügt noch ein bestehender bearbeitet werden kann das Dialog über den "Abbrechen" Button, das "X" oder einen Klick ausserhalb des Dialogs geschlossen werden. Für den Controller ist das ein und die selbe Funktion. Dieser ruft lediglich die \texttt{hide} Methode des Dialogs auf und das Dialogfenster wird ausgeblendet. Dabei werden auch alle Daten aus den Feldern entfernt.
+
+\subsection{Objekt}
+
+\subsection{Buchung}
+
+
 \section{Backend}
