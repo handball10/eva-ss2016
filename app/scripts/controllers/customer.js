@@ -23,9 +23,25 @@ angular.module('bookingCalendarApp')
   $scope.phone = "";
   $scope.custom = "";
   $scope.customerID = "";
+  $scope.currentYear = new Date().getFullYear();
+  $scope.minYear = 18;
+  $scope.maxYear = 100;
+  $scope.yearOfBirth = "";
+  $scope.yearOfBirths = [];
+  $scope.monthOfBirth = "";
+  $scope.monthOfBirths = [];
+  $scope.dayOfBirth = "";
+  $scope.dayOfBirths = [];
+
+
 
 
         $scope.submit = function () {
+            console.log($scope.dayOfBirth);
+            console.log($scope.monthOfBirth);
+            console.log($scope.yearOfBirth);
+            $scope.birthday = new Date($scope.yearOfBirth,$scope.dayOfBirth,$scope.monthOfBirth).getTime();
+            console.log($scope.birthday);
             var customer = new Customer({
                 Company: $scope.company,
                 FirstName: $scope.firstname,
@@ -37,7 +53,7 @@ angular.module('bookingCalendarApp')
                 Email: $scope.email,
                 Phone: $scope.phone,
                 Custom: $scope.custom,
-                Id : $scope.customerID || undefined
+                id : $scope.customerID || undefined
             });
 
             Customers.upsert(customer);
@@ -47,6 +63,21 @@ angular.module('bookingCalendarApp')
         $scope.showSearchField = function () {
             $scope.isSearch = !$scope.isSearch;
         };
+
+        //BIRTHDAYYEAR
+      for(var i = 0; i < ($scope.maxYear - $scope.minYear); i++){
+          $scope.yearOfBirths[i] = $scope.currentYear - i - $scope.minYear;
+      }
+
+      //BIRTHDAYMONTH
+      for(var j = 0; j<12;j++){
+          $scope.monthOfBirths[j] = j + 1;
+      }
+
+      //BIRTHDAYDAY
+      for(var k = 0; k<31;k++){
+          $scope.dayOfBirths[k] = k + 1;
+      }
 
         //DELETE customerdialog
         $scope.delete = function (customerID) {
@@ -61,6 +92,8 @@ angular.module('bookingCalendarApp')
             }, function () {
             });
         };
+
+
 
     //AUTOCOMPLETE for search
     var oldCustomer = $scope.customer;
@@ -96,6 +129,10 @@ angular.module('bookingCalendarApp')
       $scope.custom = item.Custom;
       $scope.customerID = item.ID;
       $scope.isDelete = false;
+        $scope.dayOfBirth = new Date(item.BirthDate).getDay();
+        $scope.monthOfBirth = new Date(item.BirthDate).getMonth();
+        $scope.yearOfBirth = new Date(item.BirthDate).getYear();
+        console.log(item.BirthDate);
     };
 
     function createFilterFor(query) {

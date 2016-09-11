@@ -36,51 +36,102 @@
         </div>
     </md-toolbar>
 
-    <form name="customerForm" layout-padding ng-submit="customerForm.$valid && submit()">
+    <form name="customerForm" layout-padding ng-submit="submit()">
         <div layout-gt-xs="row">
             <md-input-container class="md-block" flex-gt-xs>
                 <label>Firma </label>
                 <input ng-model="company">
             </md-input-container>
-            <md-datepicker ng-model="birthday" md-placeholder="Geburtstag">
-            </md-datepicker>
+        </div>
+        <div layout="row">
+            <md-input-container style="margin-right: 10px;">
+                <label>Tag</label>
+                <md-select ng-model="dayOfBirth" required="required">
+                    <md-option ng-repeat="dayOfBirth in dayOfBirths" value="{{dayOfBirth}}">{{dayOfBirth}}</md-option>
+                </md-select>
+                <div ng-messages="customerForm.dayOfBirth.$error">
+                    <div ng-message="required">Bitte ausfüllen</div>
+                </div>
+            </md-input-container>
+
+            <md-input-container style="margin-right: 10px;">
+                <label>Monat</label>
+                <md-select ng-model="monthOfBirth" required="required">
+                    <md-option ng-repeat="monthOfBirth in monthOfBirths" value="{{monthOfBirth}}">{{monthOfBirth}}</md-option>
+                </md-select>
+                <div ng-messages="customerForm.monthOfBirth.$error">
+                    <div ng-message="required">Bitte ausfüllen</div>
+                </div>
+            </md-input-container>
+
+            <md-input-container style="margin-right: 10px;">
+                <label>Jahr</label>
+                <md-select ng-model="yearOfBirth" required="required">
+                    <md-option ng-repeat="yearOfBirth in yearOfBirths" value="{{yearOfBirth}}">{{yearOfBirth}}</md-option>
+                </md-select>
+                <div ng-messages="customerForm.yearOfBirth.$error">
+                    <div ng-message="required">Bitte ausfüllen</div>
+                </div>
+            </md-input-container>
+
         </div>
         <div layout-gt-sm="row">
             <md-input-container class="md-block" flex-gt-sm>
                 <label>First name</label>
-                <input ng-model="firstname">
+                <input ng-model="firstname" required>
+                <div ng-messages="customerForm.firstname.$error">
+                    <div ng-message="required">Bitte ausfüllen</div>
+                </div>
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>
                 <label>Nachname</label>
-                <input ng-model="lastname">
+                <input ng-model="lastname" required>
+                <div ng-messages="customerForm.lastname.$error">
+                    <div ng-message="required">Bitte ausfüllen</div>
+                </div>
             </md-input-container>
         </div>
 
         <div layout-gt-sm="row">
         <md-input-container class="md-block" flex-gt-sm>
             <label>Strasse</label>
-            <input ng-model="street">
+            <input ng-model="street" required>
+            <div ng-messages="customerForm.street.$error">
+                <div ng-message="required">Bitte ausfüllen</div>
+            </div>
         </md-input-container>
             </div>
 
         <div layout-gt-sm="row">
             <md-input-container class="md-block" flex-gt-sm>
                 <label>Stadt</label>
-                <input ng-model="city">
+                <input ng-model="city" required>
+                <div ng-messages="customerForm.city.$error">
+                    <div ng-message="required">Bitte ausfüllen</div>
+                </div>
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>
                 <label>Postleitzahl</label>
-                <input name="postalCode" ng-model="zipcode">
+                <input name="postalCode" ng-model="zipcode" required>
+                <div ng-messages="customerForm.zipcode.$error">
+                    <div ng-message="required">Bitte ausfüllen</div>
+                </div>
             </md-input-container>
         </div>
         <div layout-gt-sm="row">
             <md-input-container class="md-block" flex-gt-sm>
                 <label>Email</label>
-                <input ng-model="email">
+                <input ng-model="email" required>
+                <div ng-messages="customerForm.email.$error">
+                    <div ng-message="required">Bitte ausfüllen</div>
+                </div>
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm>
                 <label>Telefonnummer</label>
-                <input name="phone" ng-model="phone" >
+                <input name="phone" ng-model="phone" required>
+                <div ng-messages="customerForm.phone.$error">
+                    <div ng-message="required">Bitte ausfüllen</div>
+                </div>
             </md-input-container>
         </div>
 
