@@ -52,8 +52,7 @@ angular.module('bookingCalendarApp')
 
             Customers.upsert(customer);
             $scope.hide();
-            //call toast
-
+            $rootScope.$broadcast('showToast');
         };
 
         $scope.showSearchField = function () {

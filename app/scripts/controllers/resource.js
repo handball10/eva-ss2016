@@ -34,6 +34,7 @@ angular.module('bookingCalendarApp')
             });
             Resources.upsert(resource);
             $scope.hide();
+            $rootScope.$broadcast('showToast');
         };
 
         $scope.hide = function () {

@@ -130,6 +130,11 @@ angular.module('bookingCalendarApp',['ngMaterial'])
             }
         }
 
+
+        $scope.$on('showToast', function(event, args) {
+            $scope.showCustomToast();
+        });
+
         $scope.showCustomToast = function() {
             $mdToast.show({
                 hideDelay   : 3000,
