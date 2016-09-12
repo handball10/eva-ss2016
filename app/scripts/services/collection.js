@@ -53,7 +53,7 @@ angular.module('bookingCalendarApp')
             }
 
             function datasetChange(data){
-                $log.log(self.name + '::change', data.val());
+                $log.log(self.name + '::dataset', data.val());
 
                 $rootScope.$broadcast(self.name + '::dataset', data.val());
             }
@@ -212,15 +212,21 @@ angular.module('bookingCalendarApp')
 
             this.upsert = function(model){
 
+                var deferred = $q.defer();
+
+                var promise = deferred.promise;
+
                 if(typeof model.Id !== 'undefined'){
 
                     var modelReference = $window.database.ref(this.path + '/' + model.Id);
 
-                    modelReference.set(prepareModel(model));
+                    promise = modelReference.set(prepareModel(model));
                 } else {
 
-                    this.insert(model);
+                    promise = this.insert(model);
                 }
+
+                return promise;
 
             }
 

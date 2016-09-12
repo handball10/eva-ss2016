@@ -84,33 +84,61 @@ angular.module('bookingCalendarApp')
         }
 
         if(items){
-            $scope.isDelete = false;
-            $scope.bookingID = items;
-            Bookings.find({id : items}).then(function(result){
-                $scope.myStartDate = new Date(result.StartDate);
-                $scope.myEndDate = new Date(result.EndDate);
-                $scope.customerID = result.Customer;
-                $scope.resourceID = result.Resource;
-                $scope.bookingID = items;
 
-                Resources.find({id : result.Resource}).then(function(resourceResult){
+            console.log(items);
+
+            if(items.start && items.end){
+                $scope.myStartDate = items.start.toDate();
+                $scope.myEndDate   = items.end.toDate();
+                $scope.resourceID  = items.resource.id;
+
+                $log.log(items.resource);
+
+                Resources.find({id : items.resource.id}).then(function(resourceResult){
                     if(resourceResult) {
                         resource.searchText = resourceResult.Name;
-                        $scope.size = result.Size;
+                        $scope.size = resourceResult.Size;
                         fillSizes(resourceResult.Size);
                     }else{
                         resource.searchText = "Objekt nicht vorhanden";
                     }
                 });
+            } else {
+                $scope.isDelete = false;
+                $scope.bookingID = items;
+                Bookings.find({id : items}).then(function(result){
+                    $scope.myStartDate = new Date(result.StartDate);
+                    $scope.myEndDate = new Date(result.EndDate);
+                    $scope.customerID = result.Customer;
+                    $scope.resourceID = result.Resource;
+                    $scope.bookingID = items;
 
-                Customers.find({id : result.Customer}).then(function(customerResult){
-                    if(customerResult) {
-                        customer.searchText = customerResult.FirstName;
-                    }else{
-                        customer.searchText = "Kunde nicht vorhanden";
-                    }
+                    Resources.find({id : result.Resource}).then(function(resourceResult){
+                        if(resourceResult) {
+                            resource.searchText = resourceResult.Name;
+                            $scope.size = resourceResult.Size;
+                            fillSizes(resourceResult.Size);
+                        }else{
+                            resource.searchText = "Objekt nicht vorhanden";
+                        }
+                    });
+
+                    Customers.find({id : result.Customer}).then(function(customerResult){
+                        if(customerResult) {
+                            customer.searchText = customerResult.FirstName;
+                        }else{
+                            customer.searchText = "Kunde nicht vorhanden";
+                        }
+                    });
                 });
-            });
+            }
+
+
+
+
+
+
+
         }
 
         $scope.submit = function () {
@@ -135,8 +163,8 @@ angular.module('bookingCalendarApp')
         };
         $scope.delete = function(bookingID){
             var confirm = $mdDialog.confirm()
-                .title('Kunde löschen?')
-                .textContent('Wollen Sie diesen Kunde wirklich löschen?')
+                .title('Buchung löschen?')
+                .textContent('Wollen Sie diese Buchung wirklich löschen?')
                 .targetEvent(this)
                 .ok('JA')
                 .cancel('NEIN');

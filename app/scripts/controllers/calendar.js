@@ -8,7 +8,7 @@
  * Controller of the bookingCalendarApp
  */
 angular.module('bookingCalendarApp')
-    .controller('CalendarCtrl', function ($scope, $rootScope, Resources, Resource, Bookings, $log, $mdDialog) {
+    .controller('CalendarCtrl', function ($scope, $rootScope, Resources, Resource, Bookings, Booking, $log, $mdDialog) {
 
         var resourceList,
             bookingList,
@@ -37,16 +37,7 @@ angular.module('bookingCalendarApp')
                     return Bookings.list({bypassCache : true});
                 })
                 .then(function(bookings){
-                    bookingList = _.map(bookings, function(item){
-
-                        return {
-                            id : item.Id,
-                            resourceId : item.Resource,
-                            start : item.StartDate,
-                            end : item.EndDate,
-                            customerId : item.Customer
-                        };
-                    });
+                    bookingList = mapBookings(bookings);
 
                     $log.log(bookingList);
 
@@ -84,7 +75,7 @@ angular.module('bookingCalendarApp')
 
                         resourceLabelText: 'Wohnungen',
                         resources: resourceList,
-                        events: bookingList,
+                        events: eventSource,
                         drop: function(date, jsEvent, ui, resourceId) {
                             console.log('drop', date.format(), resourceId);
 
@@ -99,6 +90,24 @@ angular.module('bookingCalendarApp')
                         },
                         eventDrop: function(event) { // called when an event (already on the calendar) is moved
                             console.log('eventDrop', event);
+
+
+                            //var newEvent = {
+                            //    Id : event.id,
+                            //    Resource : event.resourceId;
+                            //this.StartDate  = event.start;
+                            //this.EndDate    = event.end;
+                            //this.Customer       = event.customerId;
+                            //this.Size       = undefined;
+                            //this.start = undefined;
+                            //this.end    = undefined;
+                            //
+                            //}
+
+                            //Bookings.upsert(new Booking(event));
+
+
+
                         },
                         eventClick : function( event, jsEvent, view){
                             $scope.showBookingDialog(window,event.id);
@@ -113,6 +122,23 @@ angular.module('bookingCalendarApp')
 
         };
 
+        function eventSource(start, end, timezone, callback){
+            callback(bookingList);
+        }
+
+        function mapBookings(bookings){
+            return _.map(bookings, function(item){
+
+                return {
+                    id : item.Id,
+                    resourceId : item.Resource,
+                    start : item.StartDate,
+                    end : item.EndDate,
+                    customerId : item.Customer
+                };
+            });
+        }
+
         function resourceRender(resource, cell){
 
             cell.addClass('resourceCell');
@@ -124,7 +150,7 @@ angular.module('bookingCalendarApp')
         }
 
         function selectHandler(start, end, jsEvent, view, resource){
-            $log.log(start, end, resource);
+            $scope.showBookingDialog(window,{start : start, end : end, resource : resource});
         }
 
 
@@ -132,28 +158,21 @@ angular.module('bookingCalendarApp')
 
             $rootScope.$on('Resource::added', addRemoteRessource);
             $rootScope.$on('Resource::removed', deleteRemoteResource);
+            $rootScope.$on('Resource::changed', updateRemoteResource);
 
 
-            $rootScope.$on('Booking::changed', bookingsChanged);
+            $rootScope.$on('Booking::dataset', bookingsChanged);
 
         }
 
         function bookingsChanged(event, bookings){
 
-            $log.log('Bookings::CHANGE');
+            $log.log('Bookings::CHANGE', bookings);
 
-            bookingList =  _.map(bookings, function(item){
-
-                return {
-                    id : item.id,
-                    resourceId : item.Resource,
-                    start : item.StartDate,
-                    end : item.EndDate
-                };
-            });;
+            bookingList = mapBookings(bookings);
 
 
-            calendarInstance.fullCalendar('refetchEvents');
+            calendarInstance.fullCalendar('refetchEventSources', eventSource);
 
             $log.log('Bookings::', bookingList);
         }
@@ -168,6 +187,10 @@ angular.module('bookingCalendarApp')
         function deleteRemoteResource(event, removedResource){
             $log.log('removed', removedResource);
             calendarInstance.fullCalendar('removeResource',removedResource.Id);
+        }
+
+        function updateRemoteResource(event){
+            calendarInstance.fullCalendar('refetchResources');
         }
 
 

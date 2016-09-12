@@ -19,6 +19,8 @@ module.exports = function (grunt) {
     cdnify: 'grunt-google-cdn'
   });
 
+  grunt.loadNpmTasks('grunt-latex');
+
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
@@ -64,6 +66,10 @@ module.exports = function (grunt) {
           '.tmp/styles/{,*/}*.css',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
+      },
+      latex : {
+        files : 'documentation/main.tex',
+        task : ['latex']
       }
     },
 
@@ -451,6 +457,13 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
+    },
+
+    latex: {
+      options : {
+
+      },
+      src: ['documentation/main.tex']
     }
   });
 
@@ -500,6 +513,11 @@ module.exports = function (grunt) {
     'filerev',
     'usemin',
     'htmlmin'
+  ]);
+
+  grunt.registerTask('latex', [
+    'latex',
+    'watch:latex'
   ]);
 
   grunt.registerTask('default', [

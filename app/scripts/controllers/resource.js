@@ -8,13 +8,11 @@
  * Controller of the bookingCalendarApp
  */
 angular.module('bookingCalendarApp')
-    .controller('ResourceCtrl', function ($scope, $mdDialog, items, $rootScope, Resource, Resources) {
+    .controller('ResourceCtrl', function ($scope, $mdDialog, $log, items, $rootScope, Resource, Resources) {
         $scope.isDelete = true;
         $scope.resourceID = "";
         $scope.name = "";
         $scope.size = 1;
-
-        console.log(items);
 
         if(items) {
             $scope.isDelete = false;
@@ -46,8 +44,8 @@ angular.module('bookingCalendarApp')
 
         $scope.delete = function(resourceID){
             var confirm = $mdDialog.confirm()
-                .title('Kunde löschen?')
-                .textContent('Wollen Sie diesen Kunde wirklich löschen?')
+                .title('Objekt löschen?')
+                .textContent('Wollen Sie dieses Objekt wirklich löschen?')
                 .targetEvent(this)
                 .ok('JA')
                 .cancel('NEIN');
