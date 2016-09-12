@@ -52,6 +52,8 @@ angular.module('bookingCalendarApp')
 
             Customers.upsert(customer);
             $scope.hide();
+            //call toast
+
         };
 
         $scope.showSearchField = function () {
@@ -75,13 +77,13 @@ angular.module('bookingCalendarApp')
 
         //DELETE customerdialog
         $scope.delete = function (customerID) {
-            var confirm = $mdDialog.confirm()
+            var confirmCustomer = $mdDialog.confirm()
                 .title('Kunde löschen?')
                 .textContent('Wollen Sie diesen Kunde wirklich löschen?')
                 .targetEvent(this)
                 .ok('JA')
                 .cancel('NEIN');
-            $mdDialog.show(confirm).then(function () {
+            $mdDialog.show(confirmCustomer).then(function () {
                 Customers.remove(customerID);
             }, function () {
             });
