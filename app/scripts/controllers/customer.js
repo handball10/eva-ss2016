@@ -132,7 +132,7 @@ angular.module('bookingCalendarApp')
         function createFilterFor(query) {
             var lowercaseQuery = angular.lowercase(query);
             return function filterFn(state) {
-                return (state.FirstName.indexOf(lowercaseQuery) === 0);
+                return (angular.lowercase(state.LastName).indexOf(lowercaseQuery) === 0);
             };
         }
 

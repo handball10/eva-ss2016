@@ -55,14 +55,15 @@
         </md-content>
 
         <!-- SIZE -->
-        <md-content>
-        <md-input-container style="margin-right: 10px;" ng-show="isResource">
-            <label>Personenanzahl</label>
-            <md-select ng-model="size" required="required" ng-selected="size">
-                <md-option ng-repeat="size in sizes" value="{{size}}" >{{size}}</md-option>
-            </md-select>
-        </md-input-container>
-        </md-content>
+        <div layout-gt-sm="row">
+            <md-input-container flex-gt-sm ng-show="isResource">
+                <label>Personenanzahl</label>
+                <md-select ng-model="size" required="required" ng-selected="size">
+                    <md-option ng-repeat="size in sizes" value="{{size}}" >{{size}}</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+
         <!-- DATEPICKER -->
         <md-content flex-gt-sm>
         <h4>Startdatum</h4>

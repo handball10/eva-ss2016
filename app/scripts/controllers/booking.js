@@ -71,7 +71,7 @@ angular.module('bookingCalendarApp')
         function createFilterForCustomer(query) {
             var lowercaseQuery = angular.lowercase(query);
             return function filterFn(state) {
-                return (angular.lowercase(state.FirstName).indexOf(lowercaseQuery) === 0);
+                return (angular.lowercase(state.LastName).indexOf(lowercaseQuery) === 0);
             };
         }
 
@@ -84,8 +84,6 @@ angular.module('bookingCalendarApp')
         }
 
         if(items){
-
-            console.log(items);
 
             if(items.start && items.end){
                 $scope.myStartDate = items.start.toDate();
@@ -125,7 +123,7 @@ angular.module('bookingCalendarApp')
 
                     Customers.find({id : result.Customer}).then(function(customerResult){
                         if(customerResult) {
-                            customer.searchText = customerResult.FirstName;
+                            customer.searchText = customerResult.FirstName + " " + customerResult.LastName;
                         }else{
                             customer.searchText = "Kunde nicht vorhanden";
                         }
