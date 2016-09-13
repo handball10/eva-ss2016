@@ -72,6 +72,7 @@ angular.module('bookingCalendarApp')
                         selectable : true,
 
                         select : selectHandler,
+                        eventResize : updateBooking,
 
                         resourceLabelText: 'Wohnungen',
                         resources: resourceList,
@@ -85,30 +86,11 @@ angular.module('bookingCalendarApp')
                                 $(this).remove();
                             }
                         },
+                        displayEventTime : false,
                         eventReceive: function(event) { // called when a proper external event is dropped
                             console.log('eventReceive', event);
                         },
-                        eventDrop: function(event) { // called when an event (already on the calendar) is moved
-                            console.log('eventDrop', event);
-
-
-                            //var newEvent = {
-                            //    Id : event.id,
-                            //    Resource : event.resourceId;
-                            //this.StartDate  = event.start;
-                            //this.EndDate    = event.end;
-                            //this.Customer       = event.customerId;
-                            //this.Size       = undefined;
-                            //this.start = undefined;
-                            //this.end    = undefined;
-                            //
-                            //}
-
-                            //Bookings.upsert(new Booking(event));
-
-
-
-                        },
+                        eventDrop: updateBooking,
                         eventClick : function( event, jsEvent, view){
                             $scope.showBookingDialog(window,event.id);
                         },
@@ -122,21 +104,47 @@ angular.module('bookingCalendarApp')
 
         };
 
+        function updateBooking(event){
+
+            $log.log(event.Id, event.id);
+
+            var newEvent = {
+                Id : event.id || event.Id,
+                Resource : event.resourceId,
+                StartDate : event.start.toDate(),
+                EndDate   : event.end.toDate(),
+                Customer  : event.customerId,
+                Size : event.size
+
+            };
+
+            $log.log('NEWEVENT', newEvent);
+
+            Bookings.upsert(new Booking(newEvent));
+        }
+
         function eventSource(start, end, timezone, callback){
             callback(bookingList);
         }
 
         function mapBookings(bookings){
-            return _.map(bookings, function(item){
 
-                return {
-                    id : item.Id,
+            var bookingsArray = [];
+
+            _.mapKeys(bookings, function(item, key){
+
+                bookingsArray.push({
+                    Id : key,
+                    id : key,
                     resourceId : item.Resource,
                     start : item.StartDate,
                     end : item.EndDate,
-                    customerId : item.Customer
-                };
+                    customerId : item.Customer,
+                    size : item.Size
+                });
             });
+
+            return bookingsArray;
         }
 
         function resourceRender(resource, cell){

@@ -216,12 +216,17 @@ angular.module('bookingCalendarApp')
 
                 var promise = deferred.promise;
 
+                $log.log('Model::',model);
+
                 if(typeof model.Id !== 'undefined'){
 
+                    $log.log('UPDATING');
                     var modelReference = $window.database.ref(this.path + '/' + model.Id);
 
                     promise = modelReference.set(prepareModel(model));
+
                 } else {
+                    $log.log('INSERTING');
 
                     promise = this.insert(model);
                 }

@@ -16,7 +16,7 @@ angular.module('bookingCalendarApp')
 
             var self = this;
 
-            //this.Id         = undefined;
+            this.Id         = undefined;
             this.Resource  = undefined;
             this.StartDate  = undefined;
             this.EndDate    = undefined;
