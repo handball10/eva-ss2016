@@ -14,6 +14,12 @@ Sobald das Formular abgeschickt wurde, werden die Daten zunächst im \texttt{log
 
 Da es sich hierbei um eine Betriebsinterne Software handelt wird eine Registrierung nicht benötigt. Die Emailadresse und das Passwort werden Manuell im Backend hinzugefügt, bearbeitet oder entfernt. 
 
+\begin{figure}[H]
+\centering\includegraphics[width=0.8\textwidth]{images/frontend_login.png}
+\caption{Frontend \texttt{Login}}
+\label{Login}
+\end{figure}
+
 \subsection{Hauptseite}
 Die Hauptseite ist sehr schlicht aufgebaut und teilt sich auf in zwei Teile. 
 
@@ -66,6 +72,8 @@ Eine Buchung ist ein Zusammenschluss aus Kunde, Objekt, Personenanzahl, Startdat
 Wenn eine neue Buchung hinzugefügt wird, wird zunächst die Auswahl der Personenanzahl ausgeblendet. Erst wenn ein Objekt im Suchfeld ausgewählt wurde, wird die Auswahl in form eines Dropdown-Menüs im View angezeigt. Im Controller wird vorher die maximale Personenanzahl des ausgewählten Objektes aus dem JSON-Objekt entnommen und somit die zur Auswahl stehenden Zahlen ermittelt. So zeigt das Dropdown-Menü nur genau die Anzahl von Personen an die dieses Objekt zur verfügung stellt. Für das Startdatum und Enddatum wurden, anders als beim Kunden, ein Datepicker zur verfügung gestellt, der es dem Nutzer erlaubt das Datum durch einfache Auswahl in einem Kalender festzulegen. Standardmäßig ist das aktuelle Datum eingestellt.
 
 Um eine Buchung bearbeiten zu können muss diese anders als beim Kunden oder Objekt zunächst in der Buchungsübersicht gesucht werden. Wurde die passende Buchung gefunden und ausgewählt, öffnet sich das Modal mit den hinterlegten Daten. Hier wird die Personenauswahl angezeigt und mit dem eingetragenem Wert vordefiniert. Auch hier besteht die Möglichkeit durch den angezeigten Löschen-Button die Buchung aus der Datenbank zu entfernen.  
+
+Wird ein Dialog bestätigt wird erscheint für drei Sekunden am oberen rechten Fensterrand ein Nachricht. Ein sogenannter Toast fährt herunter und zeigt die Erfolgsmeldung und einen Button zum schließen an.  
 
 \subsection{Kalender}
 

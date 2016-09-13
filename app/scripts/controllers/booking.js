@@ -152,6 +152,8 @@ angular.module('bookingCalendarApp')
             });
             Bookings.upsert(booking);
             $scope.hide();
+            $rootScope.$broadcast('showToast');
+
         };
 
         $scope.hide = function() {

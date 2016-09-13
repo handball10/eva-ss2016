@@ -68,9 +68,7 @@ angular.module('bookingCalendarApp',['ngMaterial'])
 
 
 
-        $scope.toggleLeft = buildToggler('left');
         $scope.toggleRight = buildToggler('right');
-
         function buildToggler(componentId) {
             return function() {
                 $mdSidenav(componentId).toggle();
@@ -132,10 +130,15 @@ angular.module('bookingCalendarApp',['ngMaterial'])
             }
         }
 
+
+        $scope.$on('showToast', function(event, args) {
+            $scope.showCustomToast();
+        });
+
         $scope.showCustomToast = function() {
             $mdToast.show({
                 hideDelay   : 3000,
-                position    : 'bottom right',
+                position    : 'top right',
                 controller  : 'ToastCtrl',
                 templateUrl : '../../views/toasts/toast.html'
             });
@@ -168,9 +171,8 @@ angular.module('bookingCalendarApp',['ngMaterial'])
 
             })
                 .then(function(answer) {
-                    if(typeof answer == String) {
-                        $scope.showCustomToast();
-                    }
+                    //also shown if delete dialog opens
+                    //$scope.showCustomToast();
                 }, function() {
                     //if canceled
                 });
@@ -181,6 +183,7 @@ angular.module('bookingCalendarApp',['ngMaterial'])
             });
         };
     })
+
     .controller('ToastCtrl', function($scope, $mdToast, $mdDialog) {
         $scope.closeToast = function() {
             if (isDlgOpen) return;
