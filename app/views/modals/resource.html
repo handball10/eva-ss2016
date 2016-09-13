@@ -16,7 +16,7 @@
             <label>Name</label>
             <input required="required" name="name" ng-model="name">
             <div ng-messages="resourceForm.name.$error">
-                <div ng-message="required">Bitte ausfüllen</div>
+                <div ng-message="required">Bitte Namen eingeben</div>
             </div>
         </md-input-container>
         </md-content>
@@ -27,7 +27,7 @@
             <input required type="number" step="any" name="rate" ng-model="size" min="1"
                    max="10"  />
             <div ng-messages="resourceForm.size.$error">
-                <div ng-message="required">Bitte ausfüllen</div>
+                <div ng-message="required">Personenanzahl von 1 bis 10</div>
             </div>
         </md-input-container>
         </md-content>
