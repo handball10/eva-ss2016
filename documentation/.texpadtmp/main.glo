@@ -1,50 +1,50 @@
-\glossaryentry{Hypertext Markup Language?\glossentry{gls-html}|setentrycounter[]{page}\glsnumberformat}{25}
-\glossaryentry{HTML?\glossentry{html}|setentrycounter[]{page}\glsnumberformat}{25}
-\glossaryentry{Quick Response Code?\glossentry{gls-qrcode}|setentrycounter[]{page}\glsnumberformat}{25}
-\glossaryentry{QR?\glossentry{qrcode}|setentrycounter[]{page}\glsnumberformat}{25}
-\glossaryentry{JavaScript Object Notation?\glossentry{gls-json}|setentrycounter[]{page}\glsnumberformat}{25}
-\glossaryentry{JSON?\glossentry{json}|setentrycounter[]{page}\glsnumberformat}{25}
-\glossaryentry{JavaFX?\glossentry{javafx}|setentrycounter[]{page}\glsnumberformat}{25}
-\glossaryentry{Extensible Markup Language?\glossentry{gls-xml}|setentrycounter[]{page}\glsnumberformat}{25}
-\glossaryentry{XML?\glossentry{xml}|setentrycounter[]{page}\glsnumberformat}{25}
-\glossaryentry{User Interface?\glossentry{gls-ui}|setentrycounter[]{page}\glsnumberformat}{25}
-\glossaryentry{UI?\glossentry{ui}|setentrycounter[]{page}\glsnumberformat}{25}
-\glossaryentry{Graphical User Interface?\glossentry{gls-gui}|setentrycounter[]{page}\glsnumberformat}{25}
-\glossaryentry{GUI?\glossentry{gui}|setentrycounter[]{page}\glsnumberformat}{25}
-\glossaryentry{Cascading Style Sheet?\glossentry{gls-css}|setentrycounter[]{page}\glsnumberformat}{25}
-\glossaryentry{CSS?\glossentry{css}|setentrycounter[]{page}\glsnumberformat}{25}
-\glossaryentry{Hypertext Transfer Protocol?\glossentry{gls-http}|setentrycounter[]{page}\glsnumberformat}{25}
-\glossaryentry{HTTP?\glossentry{http}|setentrycounter[]{page}\glsnumberformat}{25}
-\glossaryentry{Uniform Resource Locator?\glossentry{gls-url}|setentrycounter[]{page}\glsnumberformat}{25}
-\glossaryentry{URL?\glossentry{url}|setentrycounter[]{page}\glsnumberformat}{25}
-\glossaryentry{Plain Old Java Object?\glossentry{gls-pojo}|setentrycounter[]{page}\glsnumberformat}{25}
-\glossaryentry{POJO?\glossentry{pojo}|setentrycounter[]{page}\glsnumberformat}{25}
-\glossaryentry{Token?\glossentry{token}|setentrycounter[]{page}\glsnumberformat}{25}
-\glossaryentry{Structured Query Language?\glossentry{gls-sql}|setentrycounter[]{page}\glsnumberformat}{25}
-\glossaryentry{SQL?\glossentry{sql}|setentrycounter[]{page}\glsnumberformat}{25}
-\glossaryentry{Database Management System?\glossentry{gls-dbms}|setentrycounter[]{page}\glsnumberformat}{25}
-\glossaryentry{DBMS?\glossentry{dbms}|setentrycounter[]{page}\glsnumberformat}{25}
-\glossaryentry{Cascading Style Sheet?\glossentry{gls-css}|setentrycounter[]{page}\glsnumberformat}{27}
-\glossaryentry{CSS?\glossentry{css}|setentrycounter[]{page}\glsnumberformat}{27}
-\glossaryentry{Database Management System?\glossentry{gls-dbms}|setentrycounter[]{page}\glsnumberformat}{27}
-\glossaryentry{DBMS?\glossentry{dbms}|setentrycounter[]{page}\glsnumberformat}{27}
-\glossaryentry{Graphical User Interface?\glossentry{gls-gui}|setentrycounter[]{page}\glsnumberformat}{27}
-\glossaryentry{GUI?\glossentry{gui}|setentrycounter[]{page}\glsnumberformat}{27}
 \glossaryentry{Hypertext Markup Language?\glossentry{gls-html}|setentrycounter[]{page}\glsnumberformat}{27}
 \glossaryentry{HTML?\glossentry{html}|setentrycounter[]{page}\glsnumberformat}{27}
-\glossaryentry{Hypertext Transfer Protocol?\glossentry{gls-http}|setentrycounter[]{page}\glsnumberformat}{27}
-\glossaryentry{HTTP?\glossentry{http}|setentrycounter[]{page}\glsnumberformat}{27}
+\glossaryentry{Quick Response Code?\glossentry{gls-qrcode}|setentrycounter[]{page}\glsnumberformat}{27}
+\glossaryentry{QR?\glossentry{qrcode}|setentrycounter[]{page}\glsnumberformat}{27}
 \glossaryentry{JavaScript Object Notation?\glossentry{gls-json}|setentrycounter[]{page}\glsnumberformat}{27}
 \glossaryentry{JSON?\glossentry{json}|setentrycounter[]{page}\glsnumberformat}{27}
+\glossaryentry{JavaFX?\glossentry{javafx}|setentrycounter[]{page}\glsnumberformat}{27}
+\glossaryentry{Extensible Markup Language?\glossentry{gls-xml}|setentrycounter[]{page}\glsnumberformat}{27}
+\glossaryentry{XML?\glossentry{xml}|setentrycounter[]{page}\glsnumberformat}{27}
+\glossaryentry{User Interface?\glossentry{gls-ui}|setentrycounter[]{page}\glsnumberformat}{27}
+\glossaryentry{UI?\glossentry{ui}|setentrycounter[]{page}\glsnumberformat}{27}
+\glossaryentry{Graphical User Interface?\glossentry{gls-gui}|setentrycounter[]{page}\glsnumberformat}{27}
+\glossaryentry{GUI?\glossentry{gui}|setentrycounter[]{page}\glsnumberformat}{27}
+\glossaryentry{Cascading Style Sheet?\glossentry{gls-css}|setentrycounter[]{page}\glsnumberformat}{27}
+\glossaryentry{CSS?\glossentry{css}|setentrycounter[]{page}\glsnumberformat}{27}
+\glossaryentry{Hypertext Transfer Protocol?\glossentry{gls-http}|setentrycounter[]{page}\glsnumberformat}{27}
+\glossaryentry{HTTP?\glossentry{http}|setentrycounter[]{page}\glsnumberformat}{27}
+\glossaryentry{Uniform Resource Locator?\glossentry{gls-url}|setentrycounter[]{page}\glsnumberformat}{27}
+\glossaryentry{URL?\glossentry{url}|setentrycounter[]{page}\glsnumberformat}{27}
 \glossaryentry{Plain Old Java Object?\glossentry{gls-pojo}|setentrycounter[]{page}\glsnumberformat}{27}
 \glossaryentry{POJO?\glossentry{pojo}|setentrycounter[]{page}\glsnumberformat}{27}
-\glossaryentry{Quick Response Code?\glossentry{gls-qrcode}|setentrycounter[]{page}\glsnumberformat}{28}
-\glossaryentry{QR?\glossentry{qrcode}|setentrycounter[]{page}\glsnumberformat}{28}
-\glossaryentry{Structured Query Language?\glossentry{gls-sql}|setentrycounter[]{page}\glsnumberformat}{28}
-\glossaryentry{SQL?\glossentry{sql}|setentrycounter[]{page}\glsnumberformat}{28}
-\glossaryentry{User Interface?\glossentry{gls-ui}|setentrycounter[]{page}\glsnumberformat}{28}
-\glossaryentry{UI?\glossentry{ui}|setentrycounter[]{page}\glsnumberformat}{28}
-\glossaryentry{Uniform Resource Locator?\glossentry{gls-url}|setentrycounter[]{page}\glsnumberformat}{28}
-\glossaryentry{URL?\glossentry{url}|setentrycounter[]{page}\glsnumberformat}{28}
-\glossaryentry{Extensible Markup Language?\glossentry{gls-xml}|setentrycounter[]{page}\glsnumberformat}{28}
-\glossaryentry{XML?\glossentry{xml}|setentrycounter[]{page}\glsnumberformat}{28}
+\glossaryentry{Token?\glossentry{token}|setentrycounter[]{page}\glsnumberformat}{27}
+\glossaryentry{Structured Query Language?\glossentry{gls-sql}|setentrycounter[]{page}\glsnumberformat}{27}
+\glossaryentry{SQL?\glossentry{sql}|setentrycounter[]{page}\glsnumberformat}{27}
+\glossaryentry{Database Management System?\glossentry{gls-dbms}|setentrycounter[]{page}\glsnumberformat}{27}
+\glossaryentry{DBMS?\glossentry{dbms}|setentrycounter[]{page}\glsnumberformat}{27}
+\glossaryentry{Cascading Style Sheet?\glossentry{gls-css}|setentrycounter[]{page}\glsnumberformat}{29}
+\glossaryentry{CSS?\glossentry{css}|setentrycounter[]{page}\glsnumberformat}{29}
+\glossaryentry{Database Management System?\glossentry{gls-dbms}|setentrycounter[]{page}\glsnumberformat}{29}
+\glossaryentry{DBMS?\glossentry{dbms}|setentrycounter[]{page}\glsnumberformat}{29}
+\glossaryentry{Graphical User Interface?\glossentry{gls-gui}|setentrycounter[]{page}\glsnumberformat}{29}
+\glossaryentry{GUI?\glossentry{gui}|setentrycounter[]{page}\glsnumberformat}{29}
+\glossaryentry{Hypertext Markup Language?\glossentry{gls-html}|setentrycounter[]{page}\glsnumberformat}{29}
+\glossaryentry{HTML?\glossentry{html}|setentrycounter[]{page}\glsnumberformat}{29}
+\glossaryentry{Hypertext Transfer Protocol?\glossentry{gls-http}|setentrycounter[]{page}\glsnumberformat}{29}
+\glossaryentry{HTTP?\glossentry{http}|setentrycounter[]{page}\glsnumberformat}{29}
+\glossaryentry{JavaScript Object Notation?\glossentry{gls-json}|setentrycounter[]{page}\glsnumberformat}{29}
+\glossaryentry{JSON?\glossentry{json}|setentrycounter[]{page}\glsnumberformat}{29}
+\glossaryentry{Plain Old Java Object?\glossentry{gls-pojo}|setentrycounter[]{page}\glsnumberformat}{29}
+\glossaryentry{POJO?\glossentry{pojo}|setentrycounter[]{page}\glsnumberformat}{29}
+\glossaryentry{Quick Response Code?\glossentry{gls-qrcode}|setentrycounter[]{page}\glsnumberformat}{30}
+\glossaryentry{QR?\glossentry{qrcode}|setentrycounter[]{page}\glsnumberformat}{30}
+\glossaryentry{Structured Query Language?\glossentry{gls-sql}|setentrycounter[]{page}\glsnumberformat}{30}
+\glossaryentry{SQL?\glossentry{sql}|setentrycounter[]{page}\glsnumberformat}{30}
+\glossaryentry{User Interface?\glossentry{gls-ui}|setentrycounter[]{page}\glsnumberformat}{30}
+\glossaryentry{UI?\glossentry{ui}|setentrycounter[]{page}\glsnumberformat}{30}
+\glossaryentry{Uniform Resource Locator?\glossentry{gls-url}|setentrycounter[]{page}\glsnumberformat}{30}
+\glossaryentry{URL?\glossentry{url}|setentrycounter[]{page}\glsnumberformat}{30}
+\glossaryentry{Extensible Markup Language?\glossentry{gls-xml}|setentrycounter[]{page}\glsnumberformat}{30}
+\glossaryentry{XML?\glossentry{xml}|setentrycounter[]{page}\glsnumberformat}{30}
