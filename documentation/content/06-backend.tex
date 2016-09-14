@@ -20,7 +20,7 @@ Wie bereits in dem Kapitel Models erläutert, existieren die folgenden Gruppen:
 \item customers
 \item resources
 \end{itemize}
-
+%TODO Image backend_database Text: Struktur der Datenbank
 Jede Gruppe kann beliebig viele Untergruppen oder Objekte besitzen. Dabei gibt es keine Einschränkungen.\\
 Die Daten in den Objekten sind in der JSON-typischen Key:Value-Notation abgelegt.
 Identifiziert werden die Objekte über einzigartige Schlüssel, die als ID fungieren.
@@ -35,7 +35,7 @@ Wie die Organisation der Daten in der Datenbank im JSON-Format angelegt ist, wer
 
        
        
-\begin{lstlisting}[language=JSON, label=code_exampleRegistrationRequest, caption=Beispielhafte Antwort auf eine Registrierungsanfrage]
+\begin{lstlisting}[language=JSON, label=code_AccessRuleDatabase, caption=Beispiel-Konfiguration für Datenbankzugriffe]
 		{
          "rules": {
            ".read": "auth != null",
@@ -82,6 +82,7 @@ beliebig viele weitere OAuth-Services hinzufügen.\\
 
 In der vorliegenden Anwendung wurde das Email-Passwort-Verfahren verwendet, da analog zum Zugriffsschutz auch hier nur ausgewählte Benutzer Zugriff auf die Anwendung erhalten und somit
 keine Authentifizierung über weitere Dienste nötig sind.
+%TODO Bild backend_authentication Text: Tabelle mit Email/Passwort-Benutzern
 \\
 Wie diese Anmeldung in der Anwendung abläuft, wird im entsprechenden Kapitel im Bereich Frontend erläutert.
 

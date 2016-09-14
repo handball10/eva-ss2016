@@ -4,3 +4,89 @@ Demnach sind einzelne Datensätze über Models organisiert. Diese Models werden 
 Im nachfolgenden werden der Aufbau und die Funktionsweise beider Konstrukte erläutert.
 
 \subsubsection{Models}
+
+Als Model bezeichnet man eine Klasse, die die Struktur eines Objektes beschreibt. Ein Model hat einen Constructur, über welchen sich ein neues Objekt dieses Types generieren lässt.
+Im Fall der vorliegenden Anwendung bilden drei verschiedene Models die Datenstruktur des Systems ab.\\
+Dazu gehören:
+\begin{description}
+\item[Booking]\hfill \\
+Hält eine Buchung
+\item[Customer]\hfill \\
+Beschreibt den Kunden
+\item[Resource]\hfill \\
+Beschreibt das vermietete Objekt
+\end{description}
+
+Über ein Model lässt sich ein Objekt eines spezifischen Types generieren.
+Innerhalb der AngularJS-Anwendung wird das Model als Factory-Service implementiert. Dies ermöglicht es, beliebig viele Instanzen dieses Models zu generieren.
+Im nachfolgenden der Aufbau des Resource-Models:
+
+\begin{lstlisting}[language=Javascript, label=code_ResourceModel, caption=Hauptteil des Reosurce-Models]
+angular.module('bookingCalendarApp')
+    .factory('Resource', function ($log) {
+        function Resource(properties){
+
+            var self = this;
+
+            this.Id    = undefined;
+            this.Size  = undefined;
+            this.Name  = undefined;
+
+            function extend(properties){
+                [...]
+            }
+
+            extend(properties);
+
+        }
+
+        return Resource;
+    });
+\end{lstlisting}
+
+Wesentlicher Bestandteil des Models sind seine Properties, welche die beschreibbaren Felder darstellen. Bei jeder Instanziierung wird die Methode \texttt{extend\(\)} aufgerufen, welche die
+übergebenen Werte auf das Model überträgt.
+Innerhalb der Anwendung können Models in allen möglichen Komponenten verwendet werden. Zu beachten ist, dass es anders als bei komplett objektorientierten Sprachen wie bspw. Java,
+keine Getter- oder Setter-Methoden gibt und die Properties des Models alle als Public angesehen werden können.
+
+
+\subsubsection{Remote Objects}
+Der Service \texttt{RemoteObjects} agiert als Factory zum Erstellen einer Collection für spezifische Models. Sie ist über einen Angular-Service als Singleton-Klasse implementiert und besitzt
+ nur eine Mthode zum Generieren einer neuen Collection.
+
+ \begin{lstlisting}[language=Javascript, label=code_RemoteObject, caption=Code des RemoteObjects-Service]
+ angular.module('bookingCalendarApp')
+     .service('RemoteObject', function (Collection) {
+         var service = {};
+         service.createCollection = function(name, path, Model, realtime){
+
+             if(!name || !path || !Model){
+                 throw new Error('remoteObject:: Missing parameter in Object')
+             }
+              return new Collection({
+                 name : name,
+                 path : path,
+                 realtime : realtime,
+                 Model : Model
+             });
+         };
+         return service;
+     });
+\end{lstlisting}
+
+Wie zu sehen, fordert die Factory bei der Instanziierung bis zu vier Parameter. Über den Parameter \texttt{name} wird der Name der Collection bestimmt, \texttt{path} ist der Pfad, unter welchem die Objekte dieses Types
+innerhalb von Firebase gefunden werden können, \textt{Model} ist das Model-Objekt und \texttt{realtime} ein Indikator, ob die Collection auf Echtzeit-Updates der Datenbank hören soll.
+
+Rückgabewert der Methode \texttt{createCollection()} ist immer die Collection des jeweiligen Model-Types.
+Wie diese Collections funktionieren, wird im nächsten Kapitel erläutert.
+
+\subsection{Collections}
+
+Eine Collection bezeichnet eine Art Sammlung für einen bestimmten Datentypen. Sie stellt Funktionen zur Verfügung, mit welchen der Entwickler einfach Datenbank-Abfragen generieren und Daten speichern kann.
+Ebenso wie der RemoteObjects-Service, ist auch eine Collection als Service imlementiert, sodass nur jeweils eine für jedes Model existieren kann.
+
+\subsubsection{Instanziierung}
+
+\subsubsection{Methoden}
+
+\subsubsection[Echtzeit-Anbindung]
