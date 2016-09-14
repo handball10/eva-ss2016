@@ -32,7 +32,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.2.6}fullcalender}{5}{subsection.2.2.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {3}Projekt}{7}{chapter.3}
+\contentsline {chapter}{\numberline {3}Projektvorbereitung}{7}{chapter.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.1}Zielsetzung}{7}{section.3.1}
 \defcounter {refsection}{0}\relax 
@@ -44,32 +44,44 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.2.3}Funktionen}{8}{subsection.3.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Aufbau Projekt}{11}{chapter.4}
+\contentsline {chapter}{\numberline {4}Projektumsetzung}{11}{chapter.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.1}Projektstruktur}{11}{section.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.1}projekt kickstarten}{11}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.1}Projekt kickstarten}{11}{subsection.4.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.2}grunt serve}{11}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.2}grunt serve}{12}{subsection.4.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Frontend}{11}{section.4.2}
+\contentsline {section}{\numberline {4.2}Frontend}{12}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.1}Login}{11}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.1}Login}{12}{subsection.4.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.2}Hauptseite}{12}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.2}Hauptseite}{13}{subsection.4.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Header}{12}{subsubsection*.3}
+\contentsline {subsubsection}{Header}{13}{subsubsection*.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Main}{13}{subsubsection*.5}
+\contentsline {subsubsection}{Main}{14}{subsubsection*.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.3}Kunde}{14}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.3}Kunde}{15}{subsection.4.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.4}Objekt}{16}{subsection.4.2.4}
+\contentsline {subsection}{\numberline {4.2.4}Objekt}{17}{subsection.4.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.5}Buchung}{17}{subsection.4.2.5}
+\contentsline {subsection}{\numberline {4.2.5}Buchung}{18}{subsection.4.2.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.6}Kalender}{19}{subsection.4.2.6}
+\contentsline {subsection}{\numberline {4.2.6}Kalender}{20}{subsection.4.2.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}Backend}{19}{section.4.3}
+\contentsline {section}{\numberline {4.3}Backend}{20}{section.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Fazit}{21}{chapter.5}
+\contentsline {subsection}{\numberline {4.3.1}Echtzeit-Datenbank}{20}{subsection.4.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Organisation}{20}{subsubsection*.12}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Zugriffsverwaltung}{21}{subsubsection*.13}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Lesen, Schreiben, Echtzeit-Synchronisation}{21}{subsubsection*.14}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.2}Authentifizierung}{22}{subsection.4.3.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.3}Weitere Firebase-Funktionen}{22}{subsection.4.3.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {5}Fazit}{23}{chapter.5}
