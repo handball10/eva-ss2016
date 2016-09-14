@@ -30,9 +30,26 @@ Die Erstellung des Kontrollers erfolgt über den Befehl \\
 Über diesen Befehl generiert Yeoman nun einen Angular-Controller, der in dem entsprechenden controller-Ordner abgelegt wird. Dieser Controller ist bereits mit der existierenden Anwendung
  verknüpft. Zudem wird das JS-File direkt in die \textit{index.html}-Datei eingebunden.\\
  Zusammengefasst erleichtert es die Verwendung eines Generators, wie in diesem Falle Yeoman, Grundlagen für eine Anwendung zu schaffen und diese in ihrer Entwicklung vornzutreiben.
-\subsection{grunt serve}
 
-%TODO write something about the structur and kickstart and so on
+\subsection{Grunt Tasks}
+
+Wie bereits im vorausgeggangenen Abschnitt erwähnt, generiert Yeoman eine Javascript-Datei namens \textit{Gruntfile.js}. Diese beinhaltet vorgefertigte Grunt-Tasks zum Entwickeln, Test und
+Deployen/Builden der Anwendung. Nachfolgend wird auf die beiden wichtigsten tasks eingegangen.
+
+\subsubsection{serve}
+Der \textit{serve}-Task ist der Task, der während der Entwicklung zum Einsatz kommt. Über ihn wird auf \textit{http://localhost} ein lokaler Server gestartet, auf welchem
+die zu entwickelnde Anwendung erreichbar ist. Im Hintergrund wird zudem zwischen Grunt und dem Browser eine Socket-Verbindung zum Livereload aufgebaut. Der Zweck dieser Verbindung ist,
+dass sobald der Entwickler in der Entwicklungsumgebung eine Änderung an Projekt-Dateien wie z.B. an Javascript- oder Sass-Dateien Macht, automatisch ein Refresh des Browserfensters angestoßen wird.
+Darüber erspart sich der Entwickler den zusätzlichen Tastendruck beim Ansehen/Testen der Seite.\\
+Damit das Erkennen von Änderungen möglich ist, startet der \textit{serve}-Task Datei-Watcher, welche auf beliebige Dateien angesetzt werden können. Diese reagieren auf Änderungen und führen
+mit dem Datei-Typ verknüpfte Subtasks \(z.B. Kompillieren von Sass-Dateien zu CSS-Dateien\) aus.
+
+\subsubsection{build}
+Bei diesem Task handelt es sich um den Build-Task der Anwendung. Seine Aufgabe ist es, aus dem entwickelten Code eine fertige Anwendung zu generieren.
+Zu seinen Aufgaben gehört das Kompillieren von Sass zu CSS, Zusammenführen von CSS- und Javascript-Dateien, Minimieren von Javascript \(dazu kann noch ein "Uglyfier" hinzugeschaltet werden, der neben
+der Minimierung des Javascript-Codes diesen auch unleserlich macht\), Zusammenfassen der HTML-Templates, Kopieren aller benötigten Ressourcen wie Grafiken und Fonts und letztendlich Generieren
+eines \textit{dist}-Ordners, der die gesamte Anwendung enthält.\\
+Um die Anwendung nun zu publizieren, ist nur noch der Inhalt des \textit{dist}-Ordners nötig.
 
 \section{Frontend}
 Der für den Nutzer sichtbare Bereich.
@@ -216,11 +233,10 @@ Um eine Buchung bearbeiten zu können muss diese anders als beim Kunden oder Obj
 \end{figure}
 
 
-Wird ein Dialog bestätigt wird erscheint für drei Sekunden am oberen rechten Fensterrand ein Nachricht. Ein sogenannter Toast fährt herunter und zeigt die Erfolgsmeldung und einen Button zum schließen an. In der mobilen Ansicht fährt der Dialog, in voller Bildschirmbreite, von unten herein. 
+Wird ein Dialog bestätigt, erscheint für drei Sekunden am oberen rechten Fensterrand ein Nachricht. Ein sogenannter Toast fährt herunter und zeigt die Erfolgsmeldung und einen Button zum schließen an. In der mobilen Ansicht fährt der Dialog, in voller Bildschirmbreite, von unten herein.
 
 \subsection{Kalender}
 
 %TODO write text about the main calender
  
 \section{Backend}
-\input{06-backend}
