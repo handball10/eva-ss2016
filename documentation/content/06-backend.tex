@@ -32,12 +32,18 @@ Behandelt werden diese Schlüssel wie Zeichenketten und erfahren somit keiner sp
 Firebase bietet dem Administrator sehr flexible Zugriffsregeln, mit welchen die exakte Steuerung von Lese- und Schreibzugriffen möglich ist.
 Die Ausgangskonfiguration beschränkt das Lesen und Schreiben von Datensätzen auf eingeloggte Benutzer. Auf die Authentifizierung-Möglichkeiten wird in dem Kapitel Authentifizierung eingegangen.\\
 Wie die Organisation der Daten in der Datenbank im JSON-Format angelegt ist, werden auch die Regeln als JSON-Notation hinterlegt.
-\texttt{\{
-         "rules": \{
+
+       
+       
+\begin{lstlisting}[language=JSON, label=code_exampleRegistrationRequest, caption=Beispielhafte Antwort auf eine Registrierungsanfrage]
+		{
+         "rules": {
            ".read": "auth != null",
            ".write": "auth != null"
-         \}
-       \}}
+         }
+  		}
+\end{lstlisting}
+
 Der hier dargestellte Konfigurationsabschnitt zeigt die Regeln für den Lese- und Schreibzugriff auf die gesamte Datenbank. Demnach dürfen nur eingeloggte Benutzer lesen und schreiben. Firebase ermöglicht es, für jede Gruppe eine separate Konfiguration zu generieren.
 Entscheidend dafür, ob Daten gelesen oder geschrieben werden dürfen ist das Ergebnis des Ausdrucks bei \texttt{.read} und \texttt{.write}. Diese müssen jeweils bei ihrer Ausführung zu einem boolschen Wert evaluieren. Dabei können diese Regeln eine beliebige
 Komplexität aufweisen.
