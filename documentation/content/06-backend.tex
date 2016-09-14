@@ -32,14 +32,14 @@ Behandelt werden diese Schlüssel wie Zeichenketten und erfahren somit keiner sp
 Firebase bietet dem Administrator sehr flexible Zugriffsregeln, mit welchen die exakte Steuerung von Lese- und Schreibzugriffen möglich ist.
 Die Ausgangskonfiguration beschränkt das Lesen und Schreiben von Datensätzen auf eingeloggte Benutzer. Auf die Authentifizierung-Möglichkeiten wird in dem Kapitel Authentifizierung eingegangen.\\
 Wie die Organisation der Daten in der Datenbank im JSON-Format angelegt ist, werden auch die Regeln als JSON-Notation hinterlegt.
-\textt{\{
+\texttt{\{
          "rules": \{
            ".read": "auth != null",
            ".write": "auth != null"
          \}
        \}}
 Der hier dargestellte Konfigurationsabschnitt zeigt die Regeln für den Lese- und Schreibzugriff auf die gesamte Datenbank. Demnach dürfen nur eingeloggte Benutzer lesen und schreiben. Firebase ermöglicht es, für jede Gruppe eine separate Konfiguration zu generieren.
-Entscheidend dafür, ob Daten gelesen oder geschrieben werden dürfen ist das Ergebnis des Ausdrucks bei \textt{.read} und \textt{.write}. Diese müssen jeweils bei ihrer Ausführung zu einem boolschen Wert evaluieren. Dabei können diese Regeln eine beliebige
+Entscheidend dafür, ob Daten gelesen oder geschrieben werden dürfen ist das Ergebnis des Ausdrucks bei \texttt{.read} und \texttt{.write}. Diese müssen jeweils bei ihrer Ausführung zu einem boolschen Wert evaluieren. Dabei können diese Regeln eine beliebige
 Komplexität aufweisen.
 In der vorliegenden Anwendung wurde auf eine komplexe und spezifische Konfiguration verzichtet, da der Anwendungsfall keine spezielle Behandlung von verschiedenen Benutzern fordert.
 Alle Datensätze können nur von authentifizierten Benutzern gelesen und geschrieben werden.
@@ -49,14 +49,21 @@ Der entscheidende Punkt bei der Auswahl der Backend-Platform war der Aspekt der 
 Um eine Echtzeit-Anwendung zu realisieren, sollten Daten, die bei Client A generiert, verändert oder gelöscht wurden, bei Client B ohne ein Neuladen der gesamten Anwendung aktualisiert werden.\\
 Diese Synchronisation wird von Firebase durch die Verwendung der Web-Socket-Technologie ermöglicht. Technisch gesehen basiert dies auf dem Austausch von Nachrichten. Dabei baut die Anwendung eine konstante Verbindung
 zu dem Firebase-Server auf. Sobald eine Daten-Transaktion abgeschlossen ist, sendet Firebase eine Nachricht an alle verbundenen Clients. Bei der Entwicklung kann der Entwickler entscheiden, ob er auf etwaige Nachrichten reagieren möchte.
-Bei den Nachrichten wird zwischen fünf verschiedenen Ereignissen unterschieden\:
-\begin[itemize]
-\item{\textbf{value} Allgemeine Änderung an einer Gruppe}
-\item{\textbf{child_added} Einer Grupper wird ein neues Element hinzugefügt}
-\item{\textbf{child_changed} In einer Grupper ändert sich ein eizelnes Kind-Element}
-\item{\textbf{child_removed} Ein Element wird aus einer Gruppe entfernt}
-\item{\textbf{child_moved} Die Reihenfolge eines Kind-Elements verändert sich}
-\end{itemize}
+Bei den Nachrichten wird zwischen fünf verschiedenen Ereignissen unterschieden:
+
+\begin{description}
+\item[value]\hfill \\
+Allgemeine Änderung an einer Gruppe
+\item[child\_added]\hfill \\ 
+Einer Gruppe wird ein neues Element hinzugefügt
+\item[child\_changed]\hfill \\ 
+In einer Gruppe ändert sich ein einzelnes Kind-Element
+\item[child\_removed]\hfill \\ 
+Ein Element wird aus einer Gruppe entfernt
+\item[child\_moved]\hfill \\ 
+Die Reihenfolge eines Kind-Elements verändert sich
+\end{description}
+
 
 Wie dieses Feature in die entwickelte Anwendung integriert wurde, wird im Kapitel Collections genauert erläutert.
 
