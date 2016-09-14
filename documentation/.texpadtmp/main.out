@@ -19,7 +19,7 @@
 \BOOKMARK [2][-]{subsection.3.2.1}{Backend}{section.3.2}% 19
 \BOOKMARK [2][-]{subsection.3.2.2}{Frontend}{section.3.2}% 20
 \BOOKMARK [2][-]{subsection.3.2.3}{Funktionen}{section.3.2}% 21
-\BOOKMARK [0][-]{chapter.4}{Projektumsetzung}{}% 22
+\BOOKMARK [0][-]{chapter.4}{Entwicklung des Prototypen}{}% 22
 \BOOKMARK [1][-]{section.4.1}{Projektstruktur}{chapter.4}% 23
 \BOOKMARK [2][-]{subsection.4.1.1}{Projekt kickstarten}{section.4.1}% 24
 \BOOKMARK [2][-]{subsection.4.1.2}{Grunt Tasks}{section.4.1}% 25
@@ -31,15 +31,7 @@
 \BOOKMARK [2][-]{subsection.4.2.5}{Buchung}{section.4.2}% 31
 \BOOKMARK [2][-]{subsection.4.2.6}{Kalender}{section.4.2}% 32
 \BOOKMARK [1][-]{section.4.3}{Backend}{chapter.4}% 33
-\BOOKMARK [1][-]{section.4.4}{Frontend}{chapter.4}% 34
-\BOOKMARK [2][-]{subsection.4.4.1}{Login}{section.4.4}% 35
-\BOOKMARK [2][-]{subsection.4.4.2}{Hauptseite}{section.4.4}% 36
-\BOOKMARK [2][-]{subsection.4.4.3}{Kunde}{section.4.4}% 37
-\BOOKMARK [2][-]{subsection.4.4.4}{Objekt}{section.4.4}% 38
-\BOOKMARK [2][-]{subsection.4.4.5}{Buchung}{section.4.4}% 39
-\BOOKMARK [2][-]{subsection.4.4.6}{Kalender}{section.4.4}% 40
-\BOOKMARK [1][-]{section.4.5}{Backend}{chapter.4}% 41
-\BOOKMARK [2][-]{subsection.4.5.1}{Echtzeit-Datenbank}{section.4.5}% 42
-\BOOKMARK [2][-]{subsection.4.5.2}{Authentifizierung}{section.4.5}% 43
-\BOOKMARK [2][-]{subsection.4.5.3}{Weitere Firebase-Funktionen}{section.4.5}% 44
-\BOOKMARK [0][-]{chapter.5}{Fazit}{}% 45
+\BOOKMARK [2][-]{subsection.4.3.1}{Echtzeit-Datenbank}{section.4.3}% 34
+\BOOKMARK [2][-]{subsection.4.3.2}{Authentifizierung}{section.4.3}% 35
+\BOOKMARK [2][-]{subsection.4.3.3}{Weitere Firebase-Funktionen}{section.4.3}% 36
+\BOOKMARK [0][-]{chapter.5}{Fazit}{}% 37
