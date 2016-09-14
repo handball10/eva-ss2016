@@ -3,7 +3,33 @@ Im folgenden wird anhand der verschiedener Bereiche die Funktionsweise des Progr
 
 
 \section{Projektstruktur}
-\subsection{projekt kickstarten}
+\subsection{Projekt kickstarten}
+Zu Beginn der Entwicklung war es nötig, eine Basis für die Anwendung zu haben. Zu dieser Basis gehörten
+\begin{itemize}
+\item \textbf{GitHub Repository} zur Versionsverwaltung des Codes
+\item \textbf{Konfigurations-Einstellungen in package.json} zur Verwaltung der von nodeJS benötigten Pakete
+\item \textbf{Konfigurations-Einstellungen in bower.json} zur Verwaltung der Pakete des FrontEnds
+\item \textbf{Grundfile.js} mit allen Tasks, die während der Entwicklung und zum Deployment zum Einsatz kommen
+\item \textbf{Ordner-Struktur} für Module und die eigentliche Anwendung
+\end{itemize}
+
+Dies per Hand zu machen, ist generell sehr fehleranfällig und benötigt einige Zeit. Aus diesen Gründen wurde hierbei die NodeJS-Kickstarter-Anwendung \textit{yeoman.io} verwendet.
+Diese Anwendung stellt verschiedene Generatoren zur Verfügung, mit welchen sich unterschiedlichste Anwendungen kickstarten lassen. Aktuell umfasst die Generatoren-Bilbliothek mehr als 4800 verschiedene
+Generator-Module.\\
+Die vorliegende Anwendung wurde mithilfe des Generators "angular" gekickstartet. "angular" ist ein offizielles vom Yeoman-Team entwickeltes Modul.
+Über den Konsolenbefehl\\
+\texttt{yo generator:angular App}\\
+generiert Yeoman alle oben genannten Strukturen, Dateien der Boilerplate-Angular-Anwendung und Test-Methoden.
+Da es sich bei AngularJS-Anwendungen meistens um Single-Page-Anwendungen handelt, ist die Ausgangdatei die \textit{index.html}-Datei im App-Ordner.
+In dieser Datei werden alle Javascript-Module und CSS-Bibliothenek zusammengeführt. Dabei zeichnet sich ein großer Vorteil von der Verwendung von Yeoman heraus:
+In der HTML-Datei befinden sich Marker, mit welchen die Bereiche markiert sind, in denen Javascripte und Stylesheets eingebaut werden. Installiert ein Benutzer über Bower neue Module, so erfolgt das Einbinden automatisch.
+Gesteuert wird dieser Prozess von dem \texttt{serve}-Task in \textit{Gruntfile.js}.\\
+Eine weitere sehr nützliche Funktion, ist die Möglichkeit, neue AngularJS-Module, wie z.B. Controller, Services oder Direktiven direkt über die Kommandozeile hinzuzufügen.
+Die Erstellung des Kontrollers erfolgt über den Befehl \\
+\texttt{yo angular:controller ControllerName}\\
+Über diesen Befehl generiert Yeoman nun einen Angular-Controller, der in dem entsprechenden controller-Ordner abgelegt wird. Dieser Controller ist bereits mit der existierenden Anwendung
+ verknüpft. Zudem wird das JS-File direkt in die \textit{index.html}-Datei eingebunden.\\
+ Zusammengefasst erleichtert es die Verwendung eines Generators, wie in diesem Falle Yeoman, Grundlagen für eine Anwendung zu schaffen und diese in ihrer Entwicklung vornzutreiben.
 \subsection{grunt serve}
 
 %TODO write something about the structur and kickstart and so on
