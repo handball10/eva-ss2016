@@ -26,9 +26,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.2.3}Compass}{5}{subsection.2.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.4}ngDialog?}{5}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.4}Yeoman}{5}{subsection.2.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.5}fullcalender}{5}{subsection.2.2.5}
+\contentsline {subsection}{\numberline {2.2.5}ngDialog?}{5}{subsection.2.2.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.6}fullcalender}{5}{subsection.2.2.6}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {3}Projekt}{7}{chapter.3}
 \defcounter {refsection}{0}\relax 
@@ -46,6 +48,10 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.1}Projektstruktur}{11}{section.4.1}
 \defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.1.1}projekt kickstarten}{11}{subsection.4.1.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.1.2}grunt serve}{11}{subsection.4.1.2}
+\defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.2}Frontend}{11}{section.4.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.2.1}Login}{11}{subsection.4.2.1}
@@ -54,16 +60,16 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Header}{12}{subsubsection*.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Main}{13}{subsubsection*.4}
+\contentsline {subsubsection}{Main}{13}{subsubsection*.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.3}Kunde}{13}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.3}Kunde}{14}{subsection.4.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.4}Objekt}{15}{subsection.4.2.4}
+\contentsline {subsection}{\numberline {4.2.4}Objekt}{16}{subsection.4.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.5}Buchung}{16}{subsection.4.2.5}
+\contentsline {subsection}{\numberline {4.2.5}Buchung}{17}{subsection.4.2.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.6}Kalender}{16}{subsection.4.2.6}
+\contentsline {subsection}{\numberline {4.2.6}Kalender}{19}{subsection.4.2.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}Backend}{16}{section.4.3}
+\contentsline {section}{\numberline {4.3}Backend}{19}{section.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Fazit}{17}{chapter.5}
+\contentsline {chapter}{\numberline {5}Fazit}{21}{chapter.5}

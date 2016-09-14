@@ -19,8 +19,8 @@ Da es sich hierbei um eine Betriebsinterne Software handelt wird eine Registrier
 
 \begin{figure}[H]
 \centering\includegraphics[width=0.5\textwidth]{images/frontend_login.png}
-\caption{Frontend \texttt{Login}}
-\label{Login}
+\caption{Anmeldeformular}
+\label{frontend_login}
 \end{figure}
 
 \subsection{Hauptseite}
@@ -28,15 +28,15 @@ Die Hauptseite ist sehr schlicht aufgebaut und teilt sich auf in zwei Teile.
 
 \begin{figure}[H]
 \centering\includegraphics[width=1\textwidth]{images/frontend_mainpage.png}
-\caption{Frontend \texttt{Hauptseite}}
-\label{Hauptseite}
+\caption{Hauptseite}
+\label{frontend_
+mainpage}
 \end{figure}
 
 \subsubsection{Header}
 Im Header befinden sich neben dem Programmlogo auch folgende vier Button:
 
 
-\begin{minipage}{0.6\textwidth}
 \begin{description}
 \item[Kunde]\hfill \\
 Ein Dialog öffnet sich in dem Kunden hinzugefügt, bearbeitet oder gelöscht werden können.
@@ -49,14 +49,23 @@ Nach der Bestätigung eines Dialogs wird der Nutzer abgemeldet und auf die Login
 \end{description}
 
 Sobald die Fenstergröße kleiner oder die Größe eines durchschnittlichen Tablets erreicht hat, werden die Buttons ausgeblendet. Stattdessen erscheint ein Symbol das bei Klick eine Seitennavigation einblendet in der sich alle Buttons befinden.
-\end{minipage}
-\hspace{0.05\textwidth}
-\begin{minipage}{0.35\textwidth}
-\includegraphics[width=\textwidth]{images/frontend_header_small.png}
-\end{minipage}
 
-
-
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[t]{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/frontend_header_small.png}
+        \label{frontend_header_small}
+        \caption{Ansicht auf Mobilgeräten}
+    \end{minipage}% <- sonst wird hier ein Leerzeichen eingefügt
+    \hfill
+    \begin{minipage}[t]{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/frontend_header_small_navigation.png}
+        \label{frontend_header_small_navigation}
+        \caption{Seitennavigation auf Mobil}
+    \end{minipage}
+\end{figure}
 
 
 \subsubsection{Main}
@@ -72,7 +81,30 @@ Alle Tage des aktuellen Monats werden als Spalten angezeigt. Die Buchungen werde
 \subsection{Kunde}
 Zusammen mit dem Objekt bildet der Kunde eine Buchung. Für die Kundeninformationen wurden alle Felder aus dem Projektzielen implementiert. Zudem sind alle Felder ausgenommen der Zusatzinformationen und der Firma Pflicht und werden beim Abschicken des Formulars überprüft, ob sie leer sind. Um die Eingabe des Geburtstages zu vereinfachen wurde ein für Tag, Monat und Jahr jeweils ein Dropdown-Menü bereitgestellt. Da das Mindestalter für Buchungen 18 Jahre ist, ist das höchste auszuwählende Jahr immer 18 Jahre vom aktuellen gerechnet. Das Datum wird im UNIX TIMESTAMP gespeichert. Sind alle Felder korrekt ausgefüllt, kann das Formular abgeschickt werden. Sobald die \texttt{submit} Funktion im Controller aufgerufen wird, werden alle Felder aus dem View einem \texttt{customer} JSON-Objekt gespeichert. Diese werden dem \texttt{Customer} Model übergeben und das Dialog geschlossen. 
 
-Soll ein bestehender Kunde bearbeitet werden muss dieser zunächst über das Suchfeld gesucht werden. Mittels des Lupensymbol im Kopfbereich des Dialog wird die Suchleiste ein oder ausgeblendet. Sobald das Suchfeld fokussiert wird, wird eine Funktion im Controller angestoßen welche alle Kunden mit Vor und Nachname als Auswahlmöglichkeit auflistet. Dafür wird die Liste aller Kunden im Model angefordert. Dieses Liefert ein Array mit allen Kundenobjekten. Bei einer hohen Anzahl an Kunden kann sich die Suche schwierig gestalten. Aus diesem Grund kann der Kunde durch eintippen von Buchstaben gefiltert werden. Jeder weitere Buchstabe schränkt die Suche nach dem Vornamen ein und es werden nur Kunden angezeigt dessen Vornamen die eingegebene Zeichenkette beinhalten. 
+Soll ein bestehender Kunde bearbeitet werden muss dieser zunächst über das Suchfeld gesucht werden. Mittels des Lupensymbol im Kopfbereich des Dialog wird die Suchleiste ein oder ausgeblendet. Sobald das Suchfeld fokussiert wird, wird eine Funktion im Controller angestoßen welche alle Kunden mit Vor und Nachname als Auswahlmöglichkeit auflistet. Dafür wird die Liste aller Kunden im Model angefordert. Dieses Liefert ein Array mit allen Kundenobjekten. Bei einer hohen Anzahl an Kunden kann sich die Suche schwierig gestalten. Aus diesem Grund kann der Kunde durch eintippen von Buchstaben gefiltert werden. Jeder weitere Buchstabe schränkt die Suche nach dem Vornamen ein und es werden nur Kunden angezeigt dessen Nachname die eingegebene Zeichenkette beinhalten. 
+
+\begin{figure}[H]
+\centering\includegraphics[width=0.5\textwidth]{images/frontend_customer_search.png}
+\caption{Kundensuche}
+\label{customer_search}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[t]{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/frontend_customer_new.png}
+        \label{frontend_customer_new}
+        \caption{Neuen Kunden erstellen}
+    \end{minipage}% <- sonst wird hier ein Leerzeichen eingefügt
+    \hfill
+    \begin{minipage}[t]{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/frontend_customer_edit.png}
+        \label{frontend_customer_edit}
+        \caption{Kunden bearbeiten}
+    \end{minipage}
+\end{figure}
 
 Wurde ein Kunde ausgewählt, werden alle Daten aus dem JSON-Objekt ausgelesen und in die Input Felder eingefügt. Gleichzeitig wird ein Button angezeigt der das Löschen eines Kunden aus der Datenbank ermöglicht. Um einem Fehler vorzubeugen muss zusätzlich noch ein Dialog bestätigt werden. Wird dieser bestätigt übergibt der Controller dem Model die UUID des Kunden in einer \texttt{delete} Funktion. 
 %TODO delete customer in model
@@ -81,25 +113,37 @@ Wenn Daten verändert wurden, können diese wie auch beim Hinzufügen eines neue
 
 Soll weder ein neuer Kunde hinzugefügt noch ein bestehender bearbeitet werden kann das Dialog über den \grqq Abbrechen\glqq Button, das \grqq X\glqq oder einen Klick ausserhalb des Dialogs geschlossen werden. Für den Controller ist das ein und die selbe Funktion. Dieser ruft lediglich die \texttt{hide} Methode des Dialogs auf und das Dialogfenster wird ausgeblendet. Dabei werden auch alle Daten aus den Feldern entfernt.
 
-\begin{figure}[H]
-    \centering
-    \begin{minipage}[t]{0.49\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{images/frontend_customer_new.png}
-        \caption{Neuen Kunden erstellen}
-    \end{minipage}% <- sonst wird hier ein Leerzeichen eingefügt
-    \hfill
-    \begin{minipage}[t]{0.49\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{images/frontend_customer_edit.png}
-        \caption{Kunden bearbeiten}
-    \end{minipage}
-\end{figure}
+
 
 
 
 \subsection{Objekt}
-Als Objekt wird eine Ferienwohnung oder Haus bezeichnet. Wie auch beim Kunden können Objekte verschiedene Informationen gespeichert werden. Die beiden gewünschten Felder aus den Projektzielen wurden übernommen. Dazu gehört die Eingabe des Namens in ein Textfeld. Wird das Feld fokussiert und ohne Eingabe verlassen erscheint eine Fehlermeldung mit dem Hinweis das Feld auszufüllen. Wird dieser Hinweis ignoriert und der Nutzer versucht das Formular abzuschicken, überprüft der View, ob alle als Pflicht gekennzeichneten Felder ausgefüllt wurden und der \texttt{submit} Button gedrückt wurde. Ist eines dieser Angaben \texttt{false} wird das Formular erst gar nicht abgeschickt. Auch bei der Angabe der maximalen Personenanzahl wurde darauf geachtet Falscheingaben abzufangen. Standardmäßig ist das minimum von 1 eingestellt. Der Nutzer hat die Möglichkeit mit Hilfe von Pfeilen den Wert zu Verändern. Die Maximale Anzahl von Personen ist 10 für jedes Objekt. Da es auch möglich ist Manuell eine Zahl einzugeben, wird ebenfalls überprüft, ob sich die Zahl in der Range zwischen 1 und 10 befindet. Ist dies nicht der Fall wird ein Hinweis ausgegeben und das Formular kann nicht abgeschickt werden. Sind alle Angaben korrekt und der \texttt{submit} Button wird betätigt wird das Formular abgeschickt. Im Controller wird eine Funktion aufgerufen in der die Daten aus den Feldern in ein JSON-Objekt gespeichert werden. Dieses wird der \texttt{upsert} Methode des Models übergeben. 
+Als Objekt wird eine Ferienwohnung oder Haus bezeichnet. Wie auch beim Kunden können Objekte verschiedene Informationen gespeichert werden. Die beiden gewünschten Felder aus den Projektzielen wurden übernommen. Dazu gehört die Eingabe des Namens in ein Textfeld. Wird das Feld fokussiert und ohne Eingabe verlassen erscheint eine Fehlermeldung mit dem Hinweis das Feld auszufüllen. Wird dieser Hinweis ignoriert und der Nutzer versucht das Formular abzuschicken, überprüft der View, ob alle als Pflicht gekennzeichneten Felder ausgefüllt wurden und der \texttt{submit} Button gedrückt wurde. Ist eines dieser Angaben \texttt{false} wird das Formular erst gar nicht abgeschickt.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[t]{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/frontend_resource_new.png}
+        \label{frontend_resource_new}
+        \caption{Objekt erstellen}
+    \end{minipage}% <- sonst wird hier ein Leerzeichen eingefügt
+    \hfill
+    \begin{minipage}[t]{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/frontend_resource_edit.png}
+        \label{frontend_resource_edit}
+        \caption{Objekt bearbeiten}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+\centering\includegraphics[width=0.5\textwidth]{images/frontend_resource_fail.png}
+\caption{Löschen Bestätigungsdialog}
+\label{frontend_resource_fail}
+\end{figure}
+
+ Auch bei der Angabe der maximalen Personenanzahl wurde darauf geachtet Falscheingaben abzufangen. Standardmäßig ist das minimum von 1 eingestellt. Der Nutzer hat die Möglichkeit mit Hilfe von Pfeilen den Wert zu Verändern. Die Maximale Anzahl von Personen ist 10 für jedes Objekt. Da es auch möglich ist Manuell eine Zahl einzugeben, wird ebenfalls überprüft, ob sich die Zahl in der Range zwischen 1 und 10 befindet. Ist dies nicht der Fall wird ein Hinweis ausgegeben und das Formular kann nicht abgeschickt werden. Sind alle Angaben korrekt und der \texttt{submit} Button wird betätigt wird das Formular abgeschickt. Im Controller wird eine Funktion aufgerufen in der die Daten aus den Feldern in ein JSON-Objekt gespeichert werden. Dieses wird der \texttt{upsert} Methode des Models übergeben. 
 
 Um ein bereits existierendes Objekt bearbeiten zu können muss dies anders als bei den Kunden in der Auflistung in der main ausgewählt werden. Auch hier werden die Daten anhand der UUID aus der Datenbank geladen und in die Felder eingefügt. Zusätzlich wird der Button zum Löschen des Objektes angezeigt. Die Besonderheit bei der Änderung von Daten ist eine Eigenschaft im JSON-Objekt in dem die Informationen der Felder gespeichert werden. Neben des Namens und der Personenanzahl wird die ID des Objektes gespeichert. Ist, wie bei einer Änderung, bereits eine UUID vorhanden, wird diese als Wert gespeichert. Wird eine Objekt neu hinzugefügt ist der Wert \texttt{undefined}. Diese Information erlaubt wird in der \texttt{upsert} Methode des Models abgefragt und dementsprechend ein neues Objekt hinzugefügt oder ein bestehendes aktualisiert.
 %TODO how works upsert at model
@@ -110,7 +154,42 @@ Eine Buchung ist ein Zusammenschluss aus Kunde, Objekt, Personenanzahl, Startdat
 %TODO load data from model
 Wenn eine neue Buchung hinzugefügt wird, wird zunächst die Auswahl der Personenanzahl ausgeblendet. Erst wenn ein Objekt im Suchfeld ausgewählt wurde, wird die Auswahl in form eines Dropdown-Menüs im View angezeigt. Im Controller wird vorher die maximale Personenanzahl des ausgewählten Objektes aus dem JSON-Objekt entnommen und somit die zur Auswahl stehenden Zahlen ermittelt. So zeigt das Dropdown-Menü nur genau die Anzahl von Personen an die dieses Objekt zur verfügung stellt. Für das Startdatum und Enddatum wurden, anders als beim Kunden, ein Datepicker zur verfügung gestellt, der es dem Nutzer erlaubt das Datum durch einfache Auswahl in einem Kalender festzulegen. Standardmäßig ist das aktuelle Datum eingestellt.
 
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[t]{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/frontend_booking_new.png}
+        \label{frontend_booking_new}
+        \caption{Objekt erstellen}
+    \end{minipage}% <- sonst wird hier ein Leerzeichen eingefügt
+    \hfill
+    \begin{minipage}[t]{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/frontend_booking_calender.png}
+        \label{frontend_booking_calender}
+        \caption{Objekt Fehlereingabe}
+    \end{minipage}
+\end{figure}
+
 Um eine Buchung bearbeiten zu können muss diese anders als beim Kunden oder Objekt zunächst in der Buchungsübersicht gesucht werden. Wurde die passende Buchung gefunden und ausgewählt, öffnet sich das Modal mit den hinterlegten Daten. Hier wird die Personenauswahl angezeigt und mit dem eingetragenem Wert vordefiniert. Auch hier besteht die Möglichkeit durch den angezeigten Löschen-Button die Buchung aus der Datenbank zu entfernen.  
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[t]{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/frontend_booking_delete_dialog.png}
+        \label{frontend_booking_delete_dialog}
+        \caption{Objekt erstellen}
+    \end{minipage}% <- sonst wird hier ein Leerzeichen eingefügt
+    \hfill
+    \begin{minipage}[t]{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/frontend_toast.png}
+        \label{frontend_toast}
+        \caption{Objekt Fehlereingabe}
+    \end{minipage}
+\end{figure}
+
 
 Wird ein Dialog bestätigt wird erscheint für drei Sekunden am oberen rechten Fensterrand ein Nachricht. Ein sogenannter Toast fährt herunter und zeigt die Erfolgsmeldung und einen Button zum schließen an. In der mobilen Ansicht fährt der Dialog, in voller Bildschirmbreite, von unten herein. 
 
