@@ -10,22 +10,25 @@
 \BOOKMARK [2][-]{subsection.2.2.1}{Firebase}{section.2.2}% 10
 \BOOKMARK [2][-]{subsection.2.2.2}{AngularJS Material Design}{section.2.2}% 11
 \BOOKMARK [2][-]{subsection.2.2.3}{Compass}{section.2.2}% 12
-\BOOKMARK [2][-]{subsection.2.2.4}{ngDialog?}{section.2.2}% 13
-\BOOKMARK [2][-]{subsection.2.2.5}{fullcalender}{section.2.2}% 14
-\BOOKMARK [0][-]{chapter.3}{Projekt}{}% 15
-\BOOKMARK [1][-]{section.3.1}{Zielsetzung}{chapter.3}% 16
-\BOOKMARK [1][-]{section.3.2}{Umsetzung}{chapter.3}% 17
-\BOOKMARK [2][-]{subsection.3.2.1}{Backend}{section.3.2}% 18
-\BOOKMARK [2][-]{subsection.3.2.2}{Frontend}{section.3.2}% 19
-\BOOKMARK [2][-]{subsection.3.2.3}{Funktionen}{section.3.2}% 20
-\BOOKMARK [0][-]{chapter.4}{Aufbau Projekt}{}% 21
-\BOOKMARK [1][-]{section.4.1}{Projektstruktur}{chapter.4}% 22
-\BOOKMARK [1][-]{section.4.2}{Frontend}{chapter.4}% 23
-\BOOKMARK [2][-]{subsection.4.2.1}{Login}{section.4.2}% 24
-\BOOKMARK [2][-]{subsection.4.2.2}{Hauptseite}{section.4.2}% 25
-\BOOKMARK [2][-]{subsection.4.2.3}{Kunde}{section.4.2}% 26
-\BOOKMARK [2][-]{subsection.4.2.4}{Objekt}{section.4.2}% 27
-\BOOKMARK [2][-]{subsection.4.2.5}{Buchung}{section.4.2}% 28
-\BOOKMARK [2][-]{subsection.4.2.6}{Kalender}{section.4.2}% 29
-\BOOKMARK [1][-]{section.4.3}{Backend}{chapter.4}% 30
-\BOOKMARK [0][-]{chapter.5}{Fazit}{}% 31
+\BOOKMARK [2][-]{subsection.2.2.4}{Yeoman}{section.2.2}% 13
+\BOOKMARK [2][-]{subsection.2.2.5}{ngDialog?}{section.2.2}% 14
+\BOOKMARK [2][-]{subsection.2.2.6}{fullcalender}{section.2.2}% 15
+\BOOKMARK [0][-]{chapter.3}{Projekt}{}% 16
+\BOOKMARK [1][-]{section.3.1}{Zielsetzung}{chapter.3}% 17
+\BOOKMARK [1][-]{section.3.2}{Umsetzung}{chapter.3}% 18
+\BOOKMARK [2][-]{subsection.3.2.1}{Backend}{section.3.2}% 19
+\BOOKMARK [2][-]{subsection.3.2.2}{Frontend}{section.3.2}% 20
+\BOOKMARK [2][-]{subsection.3.2.3}{Funktionen}{section.3.2}% 21
+\BOOKMARK [0][-]{chapter.4}{Aufbau Projekt}{}% 22
+\BOOKMARK [1][-]{section.4.1}{Projektstruktur}{chapter.4}% 23
+\BOOKMARK [2][-]{subsection.4.1.1}{projekt kickstarten}{section.4.1}% 24
+\BOOKMARK [2][-]{subsection.4.1.2}{grunt serve}{section.4.1}% 25
+\BOOKMARK [1][-]{section.4.2}{Frontend}{chapter.4}% 26
+\BOOKMARK [2][-]{subsection.4.2.1}{Login}{section.4.2}% 27
+\BOOKMARK [2][-]{subsection.4.2.2}{Hauptseite}{section.4.2}% 28
+\BOOKMARK [2][-]{subsection.4.2.3}{Kunde}{section.4.2}% 29
+\BOOKMARK [2][-]{subsection.4.2.4}{Objekt}{section.4.2}% 30
+\BOOKMARK [2][-]{subsection.4.2.5}{Buchung}{section.4.2}% 31
+\BOOKMARK [2][-]{subsection.4.2.6}{Kalender}{section.4.2}% 32
+\BOOKMARK [1][-]{section.4.3}{Backend}{chapter.4}% 33
+\BOOKMARK [0][-]{chapter.5}{Fazit}{}% 34
