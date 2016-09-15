@@ -148,6 +148,73 @@ Die \texttt{insert}-Methode dient zum Einfügen neuer Datensätze. Dabei nimmt d
  };
  \end{lstlisting}
 
+ Wie bereits zu sehen verwendet die \texttt{insert}-Methode ein \textit{deferred}-Objekt. Im vorausgegangenen Abschnitt wird erwähnt, dass durch die Collection die Asynchronität durch dieses
+ Promise-Chain aufgebrochen. Zunächst erfolgt ein Zugriff auf das Referenz-Ojekt und der Aufruf seiner \texttt{push}-Methode. Die \texttt{push}-Methode erwartet ein beliebiges Objekt
+ und legt dieses in der Datenbank ab. Anschließend wird das abgespeicherte Objekt von der Datenbank zurückgeliefert.
+ Das empfangene Objekt wird über das Promise-Chain zurückgegeben.
+ orteil dieses Promise-Chain ist, dass Funktionen, die von dem Ergebnis abhängig sind, in einfachen Funktionsaufrufen nacheinander aufgerufen werden können.\\
+ Alle Methoden mit Datenbank-Zugriff verwenden das Promise-Chain.
 
+ \subsubsubsection{remove}
+Bei der \texttt{remove}-Methode wird nur die \texttt{remove}-Funktion der Datenbank-Referenz aufgerufen. Wichtig ist hierbei, dass eine neue temporäre Referenz generiert wird, die nur
+auf dieses Objekt (über dessen Id) zeigt.
+
+\subsubsubsection{upsert}
+Die \texttt{upsert}-Methode ist eine Kombination aus \textit{insert} und \textit{update}. Besitzt das Model, welches der Funktion übergeben wurde eine Id, so wird ein \texttt[set]-Aufruf auf die Referenz
+dieses Objektes gesendet. Über \textit{set} können dem referenzierten Objekt beliebige Felder gesetzten und geändert werden.\\
+Für den Fall, dass keine Id vorhanden ist, wird die \texttt{insert}-Methode aufgerufen.
+
+\subsubsubsection{find, list}
+Bei \texttt{find} und \texttt{list} handelt es sich um zwei fast identische Methoden. \texttt{list} bietet die Möglichkeit, das gesamte Datenpaket einer Referenz zu empfangen.
+Mit \texttt{find} lässt sich nach einem Datensatz suchen. Um einen solchen zu finden, muss ein Such-Objekt übergeben werden.
+Ein Suchobjekt besteht aus Key-Value-Paaren. Die Keys müssen dabei auf die Properties eines Objektes in der Datenbank passen.
+Die Ergebnisse werden wie gewohnt in einem Promise-Chain zurückgegeben.
 
 \subsubsection{Echtzeit-Anbindung}
+Um den Anspruch zu erfüllen, dass eine automatische Synchronisierung der Daten erfolgt, musste über die Collections ein System implemntiert werden, welches
+auf die Ereignisse reagiert, die von Firebase bei Daten-Änderungen gefeuert werden.\\
+Jede Instanz der Web-Anwendung ist über eine Web-Socket-Verbindung mit der Firebase-Datenbank verbunden.
+Über diese Verbindung erfolgt sämtliche Kommunikation mit der Datenbank. Zum einen werden Daten gesendet, zum anderen Nachrichten über Ereignisse verschickt.\\
+Bei den Ereignissen wird zwischen vier verschiedenen Ereignissen unterschieden:
+\begin{description}
+\item[child_added]\hfill \\
+Zu der Referenz wird ein neues Objekt hinzugefügt
+\item[child_changed]\hfill \\
+Ein Objekt erfährt ein Update
+\item[child_removed]\hfill \\
+Ein objekt der Referenz wird entfernt
+\item[value]\hfill \\
+Indiziert eine allgemeine Änderung auf dem Referenz-Objekt
+\end{description}
+
+Auf diese Events registriert die Collection-Klasse jeweils einen Listener:
+
+ \begin{lstlisting}[language=Javascript, label=code_CollectionListenerBnding, caption=Registrierung der Event-Handler von Datnebank-Events]
+function bindRealTimeHandlers(){
+    reference.on('child_added', dataAdd);
+    reference.on('child_changed', dataChange);
+    reference.on('child_removed', dataRemove);
+    reference.on('value', datasetChange);
+}
+\end{lstlisting}
+
+Die registrierten Event-Listener empfangen die Daten, die von der Datenbank mit der Nachricht mitgesendet werden.
+Anschließend wird in der gesamten Angular-Anwendung ein Event getriggert, welches wiederum die Daten enthält.
+Dadurch kann an jeder Stelle in der Anwendung - egal ob Controller, Service oder Direktive - auf die Ereignisse reagiert werden.
+Im Falle der vorliegenden, liegen die Listener alle im \textit{Calendar-Controller} und updaten die Daten im Kalender.
+
+Nachfolgend ein Code-Beispiel, welches auf das Hinzufügen eines Wohnungs-Objekts reagiert:
+
+ \begin{lstlisting}[language=Javascript, label=code_CollectionCUtomListener, caption=Event-Handler für hinzukommende Ressourcen]
+ $rootScope.$on('Resource::added', addRemoteRessource);
+function addRemoteRessource(event, addedRessource){
+    calendarInstance.fullCalendar('addResource',{
+        d : addedRessource.Id,
+        title : addedRessource.Name
+    });
+}
+\end{lstlisting}
+
+Sobald ein neues Ressourcen-Objekt eintrifft, wird dem Kalender diese Ressource hinzugefügt.\\
+
+Zusammengefasst stellt Firebase eine perfekte Platform zur schnellen Datensynchronisation bereit.
