@@ -6,32 +6,39 @@
 \BOOKMARK [2][-]{subsection.2.1.3}{NPM}{section.2.1}% 6
 \BOOKMARK [2][-]{subsection.2.1.4}{Bower}{section.2.1}% 7
 \BOOKMARK [2][-]{subsection.2.1.5}{Sass}{section.2.1}% 8
-\BOOKMARK [1][-]{section.2.2}{Verwendete Pakete}{chapter.2}% 9
-\BOOKMARK [2][-]{subsection.2.2.1}{Firebase}{section.2.2}% 10
-\BOOKMARK [2][-]{subsection.2.2.2}{AngularJS Material Design}{section.2.2}% 11
-\BOOKMARK [2][-]{subsection.2.2.3}{Compass}{section.2.2}% 12
-\BOOKMARK [2][-]{subsection.2.2.4}{Yeoman}{section.2.2}% 13
-\BOOKMARK [2][-]{subsection.2.2.5}{ngDialog?}{section.2.2}% 14
-\BOOKMARK [2][-]{subsection.2.2.6}{fullcalender}{section.2.2}% 15
-\BOOKMARK [0][-]{chapter.3}{Projektvorbereitung}{}% 16
-\BOOKMARK [1][-]{section.3.1}{Zielsetzung}{chapter.3}% 17
-\BOOKMARK [1][-]{section.3.2}{Umsetzung}{chapter.3}% 18
-\BOOKMARK [2][-]{subsection.3.2.1}{Backend}{section.3.2}% 19
-\BOOKMARK [2][-]{subsection.3.2.2}{Frontend}{section.3.2}% 20
-\BOOKMARK [2][-]{subsection.3.2.3}{Funktionen}{section.3.2}% 21
-\BOOKMARK [0][-]{chapter.4}{Entwicklung des Prototypen}{}% 22
-\BOOKMARK [1][-]{section.4.1}{Projektstruktur}{chapter.4}% 23
-\BOOKMARK [2][-]{subsection.4.1.1}{Projekt kickstarten}{section.4.1}% 24
-\BOOKMARK [2][-]{subsection.4.1.2}{Grunt Tasks}{section.4.1}% 25
-\BOOKMARK [1][-]{section.4.2}{Frontend}{chapter.4}% 26
-\BOOKMARK [2][-]{subsection.4.2.1}{Login}{section.4.2}% 27
-\BOOKMARK [2][-]{subsection.4.2.2}{Hauptseite}{section.4.2}% 28
-\BOOKMARK [2][-]{subsection.4.2.3}{Kunde}{section.4.2}% 29
-\BOOKMARK [2][-]{subsection.4.2.4}{Objekt}{section.4.2}% 30
-\BOOKMARK [2][-]{subsection.4.2.5}{Buchung}{section.4.2}% 31
-\BOOKMARK [2][-]{subsection.4.2.6}{Kalender}{section.4.2}% 32
-\BOOKMARK [1][-]{section.4.3}{Backend}{chapter.4}% 33
-\BOOKMARK [2][-]{subsection.4.3.1}{Echtzeit-Datenbank}{section.4.3}% 34
-\BOOKMARK [2][-]{subsection.4.3.2}{Authentifizierung}{section.4.3}% 35
-\BOOKMARK [2][-]{subsection.4.3.3}{Weitere Firebase-Funktionen}{section.4.3}% 36
-\BOOKMARK [0][-]{chapter.5}{Fazit}{}% 37
+\BOOKMARK [2][-]{subsection.2.1.6}{Yeoman}{section.2.1}% 9
+\BOOKMARK [1][-]{section.2.2}{Verwendete Pakete}{chapter.2}% 10
+\BOOKMARK [2][-]{subsection.2.2.1}{Firebase}{section.2.2}% 11
+\BOOKMARK [2][-]{subsection.2.2.2}{AngularJS Material Design}{section.2.2}% 12
+\BOOKMARK [2][-]{subsection.2.2.3}{Compass}{section.2.2}% 13
+\BOOKMARK [2][-]{subsection.2.2.4}{fullcalender}{section.2.2}% 14
+\BOOKMARK [0][-]{chapter.3}{Projektvorbereitung}{}% 15
+\BOOKMARK [1][-]{section.3.1}{Zielsetzung}{chapter.3}% 16
+\BOOKMARK [1][-]{section.3.2}{Umsetzung}{chapter.3}% 17
+\BOOKMARK [2][-]{subsection.3.2.1}{Backend}{section.3.2}% 18
+\BOOKMARK [2][-]{subsection.3.2.2}{Frontend}{section.3.2}% 19
+\BOOKMARK [2][-]{subsection.3.2.3}{Funktionen}{section.3.2}% 20
+\BOOKMARK [0][-]{chapter.4}{Projektstruktur}{}% 21
+\BOOKMARK [1][-]{section.4.1}{Projekt anlegen}{chapter.4}% 22
+\BOOKMARK [1][-]{section.4.2}{Grunt Tasks}{chapter.4}% 23
+\BOOKMARK [2][-]{subsection.4.2.1}{serve}{section.4.2}% 24
+\BOOKMARK [2][-]{subsection.4.2.2}{build}{section.4.2}% 25
+\BOOKMARK [0][-]{chapter.5}{Frontend}{}% 26
+\BOOKMARK [1][-]{section.5.1}{Login}{chapter.5}% 27
+\BOOKMARK [1][-]{section.5.2}{Hauptseite}{chapter.5}% 28
+\BOOKMARK [2][-]{subsection.5.2.1}{Header}{section.5.2}% 29
+\BOOKMARK [2][-]{subsection.5.2.2}{Main}{section.5.2}% 30
+\BOOKMARK [1][-]{section.5.3}{Kunde}{chapter.5}% 31
+\BOOKMARK [1][-]{section.5.4}{Objekt}{chapter.5}% 32
+\BOOKMARK [1][-]{section.5.5}{Buchung}{chapter.5}% 33
+\BOOKMARK [1][-]{section.5.6}{Kalender}{chapter.5}% 34
+\BOOKMARK [0][-]{chapter.6}{Backend}{}% 35
+\BOOKMARK [1][-]{subsection.6.0.1}{Echtzeit-Datenbank}{chapter.6}% 36
+\BOOKMARK [2][-]{subsection.6.0.2}{Organisation}{subsection.6.0.1}% 37
+\BOOKMARK [2][-]{subsection.6.0.3}{Zugriffsverwaltung}{subsection.6.0.1}% 38
+\BOOKMARK [2][-]{subsection.6.0.4}{Lesen, Schreiben, Echtzeit-Synchronisation}{subsection.6.0.1}% 39
+\BOOKMARK [1][-]{section.6.1}{Authentifizierung}{chapter.6}% 40
+\BOOKMARK [1][-]{section.6.2}{Weitere Firebase-Funktionen}{chapter.6}% 41
+\BOOKMARK [2][-]{subsection.6.2.1}{Technische Umsetzung der Datenbank-Anbindung}{section.6.2}% 42
+\BOOKMARK [2][-]{subsection.6.2.2}{Collections}{section.6.2}% 43
+\BOOKMARK [0][-]{chapter.7}{Fazit}{}% 44
