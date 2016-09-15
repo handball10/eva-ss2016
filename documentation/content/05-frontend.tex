@@ -88,7 +88,7 @@ Diese werden beim Abschicken des Formulars geprüft, ob sie leer sind. Um die Ei
  abgeschickt werden. Sobald die \texttt{submit} Funktion im Controller aufgerufen wird, werden alle Felder aus dem View in einem \texttt{customer}
  JSON-Objekt gespeichert. Diese werden dem \texttt{Customer} Model übergeben und das Dialog geschlossen.
 
-\begin{lstlisting}[language=JavaScript, label=code_exampleRegistrationRequest, caption=Beispielhafte Antwort auf eine Registrierungsanfrage]
+\begin{lstlisting}[language=JavaScript, label=code_exampleRegistrationRequest, caption=submit Methode im customer Controller]
 
 		$scope.submit = function () {
             $scope.birthday = new Date($scope.yearOfBirth + '-' + $scope.monthOfBirth + '-' + $scope.dayOfBirth).getTime();
@@ -184,7 +184,7 @@ Als Objekt wird eine Ferienwohnung oder Haus bezeichnet. Wie auch beim Kunden k�
  der die Daten aus den Feldern in ein JSON-Objekt gespeichert werden. Dieses wird der \texttt{upsert} Methode des Models übergeben. Die Überprüfung der
  Personenanzahl findet im View statt.
  
- \begin{lstlisting}[language=HTML, label=code_exampleRegistrationRequest, caption=Beispielhafte Antwort auf eine Registrierungsanfrage]
+ \begin{lstlisting}[language=HTML, label=code_exampleRegistrationRequest, caption=Validierung der Personenanzahl im View]
 		<input required type="number" step="any" name="rate" ng-model="size" min="1" max="10"  />
             <div ng-messages="resourceForm.size.$error">
                 <div ng-message="required">Personenanzahl von 1 bis 10</div>
@@ -281,7 +281,7 @@ Die Events, welche im Hintergund liegen werden automatisch nach dem Verschieben 
 Eine Aktualisierung mit der Datenbank erfolgt jedoch nicht. Hierfür steht die Callback-Methode \texttt{eventDrop} bereit, welche durch die Kalender-Konfiguration
 durch eine eigene überschrieben werden kann. Im Falle der vorliegenden Buchungs-Anwendung wird dabei der folgende ode ausgeführt:
 
- \begin{lstlisting}[language=Javascript, label=code_exampleUpdateBooking, caption=Aktualisierungscode nach einem Drag\'nDrop-Event]
+ \begin{lstlisting}[language=Javascript, label=code_exampleUpdateBooking, caption=Aktualisierungscode nach einem Drag n Drop-Event]
 function updateBooking(event){
     var newEvent = {
         Id : event.id || event.Id,

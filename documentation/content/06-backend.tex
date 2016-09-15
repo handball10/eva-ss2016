@@ -1,19 +1,18 @@
 \chapter{Backend}
-% Documents\Medieninformatik\Master\EvA\eva-ss2016
 Für die entwickelte Anwendung kommt die Plattform \"Firebase\" von Google zum Einsatz.
 \\
-Diese stellt neben einer Echtzeit-Datenbank, Authentifizierungs-Funktionen und Cloud-Messaging, auch Speicherplatz sowei ein Hosting für Web-Apps zur Verfügung.
+Diese stellt neben einer Echtzeit-Datenbank, Authentifizierungs-Funktionen und Cloud-Messaging, auch Speicherplatz soweit ein Hosting für Web-Apps zur Verfügung.
 In der Basis-Version, welche auch für die Entwicklung der vorliegenden Anwendung verwendet wurde, ist die Nutzung kostenlos. Für höhere Leistungsansprüche stehen kostenpflichtige Pakete zur Verfügung.\\
 Im nachfolgenden erfolgt eine Erläuterung der einzelnen Komponenten, die von der Anwendung benutzt werden.
 
-\subsection{Echtzeit-Datenbank}
+\section{Echtzeit-Datenbank}
 Bei der von Firebase verwendeten Datenbank handelt es sich um eine sog. NoSQL-Datenbank. Im Gegensatz zu anderen Datenbank-Systemen wie bspw. MySQL, erfolgt die Abspeicherung der Daten dokumentenbasiert im JSON-Format.
 Dokumentenbasiert bedeutet, dass einzelne Einträge der Datenbank als Objekte abgelegt werden. Dabei sind diese Objekte von Grund auf nicht an Schemata gebunden und können beliebige Strukturen beinhalten.
 Dabei können auch Objekte, die von ihrer Gruppierung her gleich sind, unterschiedlich viele und anders typisierte Daten beinhalten.\\
 
 
-\subsection{Organisation}
-Die Bennenung der Gruppen von Datensätzen ist von Firebase sehr flexibel gestaltet und ermöglicht beliebige Namen.
+\section{Organisation}
+Die Benennung der Gruppen von Datensätzen ist von Firebase sehr flexibel gestaltet und ermöglicht beliebige Namen.
 Wie bereits in dem Kapitel Models erläutert, existieren die folgenden Gruppen:
 \begin{itemize}
 \item bookings
@@ -52,7 +51,7 @@ Identifiziert werden die Objekte über einzigartige Schlüssel, die als ID fungi
 Weiterhin können über diese Keys Beziehungen zu anderen Objekten aufgebaut werden.
 Behandelt werden diese Schlüssel wie Zeichenketten und erfahren somit keiner speziellen Behandlung sofern sie als Werte eines Objektes abgelegt sind.
 
-\subsection{Zugriffsverwaltung}
+\section{Zugriffsverwaltung}
 Firebase bietet dem Administrator sehr flexible Zugriffsregeln, mit welchen die exakte Steuerung von Lese- und Schreibzugriffen möglich ist.
 Die Ausgangskonfiguration beschränkt das Lesen und Schreiben von Datensätzen auf eingeloggte Benutzer. Auf die Authentifizierung-Möglichkeiten wird in dem Kapitel Authentifizierung eingegangen.\\
 Wie die Organisation der Daten in der Datenbank im JSON-Format angelegt ist, werden auch die Regeln als JSON-Notation hinterlegt.
@@ -74,7 +73,7 @@ Komplexität aufweisen.
 In der vorliegenden Anwendung wurde auf eine komplexe und spezifische Konfiguration verzichtet, da der Anwendungsfall keine spezielle Behandlung von verschiedenen Benutzern fordert.
 Alle Datensätze können nur von authentifizierten Benutzern gelesen und geschrieben werden.
 
-\subsection{Lesen, Schreiben, Echtzeit-Synchronisation}
+\section{Lesen, Schreiben, Echtzeit-Synchronisation}
 Der entscheidende Punkt bei der Auswahl der Backend-Platform war der Aspekt der Echtzeit-Synchronisation der Datenbank zwischen den angemeldeten Clients.
 Um eine Echtzeit-Anwendung zu realisieren, sollten Daten, die bei Client A generiert, verändert oder gelöscht wurden, bei Client B ohne ein Neuladen der gesamten Anwendung aktualisiert werden.\\
 Diese Synchronisation wird von Firebase durch die Verwendung der Web-Socket-Technologie ermöglicht. Technisch gesehen basiert dies auf dem Austausch von Nachrichten. Dabei baut die Anwendung eine konstante Verbindung
@@ -95,7 +94,7 @@ Die Reihenfolge eines Kind-Elements verändert sich
 \end{description}
 
 
-Wie dieses Feature in die entwickelte Anwendung integriert wurde, wird im Kapitel Collections genauert erläutert.
+Wie dieses Feature in die entwickelte Anwendung integriert wurde, wird im Kapitel Collections genauer erläutert.
 
 \section{Authentifizierung}
 Bei fast jeder zu entwickelnden Anwendung steht das Thema Nutzer-Authentifizierung auf dem Plan. Standardmäßig erfolgen Implementierungen, die Benutzer mit Hilfe von Email/Benutzernamen und Passwort authentifizieren.

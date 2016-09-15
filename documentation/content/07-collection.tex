@@ -21,12 +21,12 @@ firebase.initializeApp(config);
 window.database = firebase.database();
 \end{lstlisting}
 
-Im weiteren Verlauf des Konifgurations-Scriptes wird ein Firebase-Datenbank-Objekt erstellt. Dieses bietet alle nötigen Funktionalitäten, um später mit der Datenbank arbeiten zu können.
+Im weiteren Verlauf des Konifigurations-Scriptes wird ein Firebase-Datenbank-Objekt erstellt. Dieses bietet alle nötigen Funktionalitäten, um später mit der Datenbank arbeiten zu können.
 Damit jeder beliebige Javascript-Code darauf zugreifen kann, erfolgt die Speicherung als Property des globalen \texttt{window}-Objektes.
 
 \subsubsection{Models}
 
-Als Model bezeichnet man eine Klasse, die die Struktur eines Objektes beschreibt. Ein Model hat einen Constructur, über welchen sich ein neues Objekt dieses Types generieren lässt.
+Als Model bezeichnet man eine Klasse, die die Struktur eines Objektes beschreibt. Ein Model hat einen Constructor, über welchen sich ein neues Objekt dieses Types generieren lässt.
 Im Fall der vorliegenden Anwendung bilden drei verschiedene Models die Datenstruktur des Systems ab.\\
 Dazu gehören:
 \begin{description}
@@ -70,7 +70,7 @@ keine Getter- oder Setter-Methoden gibt und die Properties des Models alle als P
 
 \subsubsection{Remote Objects}
 Der Service \texttt{RemoteObjects} agiert als Factory zum Erstellen einer Collection für spezifische Models. Sie ist über einen Angular-Service als Singleton-Klasse implementiert und besitzt
- nur eine Mthode zum Generieren einer neuen Collection.
+ nur eine Methode zum Generieren einer neuen Collection.
 
  \begin{lstlisting}[language=Javascript, label=code_RemoteObject, caption=Code des RemoteObjects-Service]
  angular.module('bookingCalendarApp')
@@ -102,10 +102,10 @@ Wie diese Collections funktionieren, wird im nächsten Kapitel erläutert.
 \subsection{Collections}
 
 Eine Collection bezeichnet eine Art Sammlung für einen bestimmten Datentypen. Sie stellt Funktionen zur Verfügung, mit welchen der Entwickler einfach Datenbank-Abfragen generieren und Daten speichern kann.
-Ebenso wie der RemoteObjects-Service, ist auch eine Collection als Service imlementiert, sodass nur jeweils einer für jedes Model existieren kann.
+Ebenso wie der RemoteObjects-Service, ist auch eine Collection als Service implementiert, sodass nur jeweils einer für jedes Model existieren kann.
 
 \subsubsection{Instanziierung}
-Über den Service textit[RemoteObject] wird die neue Collection instanziiert. Wie bereits beschrieben werden Name, Pfad, Model und Realtime-Indikator an den Konstruktor der Collection übergeben.
+Über den Service \texttt{RemoteObject} wird die neue Collection instanziiert. Wie bereits beschrieben werden Name, Pfad, Model und Realtime-Indikator an den Konstruktor der Collection übergeben.
 Zunächst werden alle übergebenen Parameter in interne Variablen geschrieben.
 Anschließend wird ein Referenzobjekt mithilfe der Firebase-Bibliothek zur Datenbank generiert
 
@@ -130,7 +130,11 @@ sagen, dass dieser Service viele Vorteile bietet:
 
 Nachfolgend eine Erläuterung der einzelnen Methoden.
 
-\subsubsection{insert}
+
+
+\begin{description}
+
+\item[insert]\hfill \\
 Die \texttt{insert}-Methode dient zum Einfügen neuer Datensätze. Dabei nimmt diese als Argument das einzufügende Model mit den Daten entgegen.
  \begin{lstlisting}[language=Javascript, label=code_CollectionInsert, caption=Insert-Methode einer Collection]
  this.insert = function(model){
@@ -149,47 +153,51 @@ Die \texttt{insert}-Methode dient zum Einfügen neuer Datensätze. Dabei nimmt d
  \end{lstlisting}
 
  Wie bereits zu sehen verwendet die \texttt{insert}-Methode ein \textit{deferred}-Objekt. Im vorausgegangenen Abschnitt wird erwähnt, dass durch die Collection die Asynchronität durch dieses
- Promise-Chain aufgebrochen. Zunächst erfolgt ein Zugriff auf das Referenz-Ojekt und der Aufruf seiner \texttt{push}-Methode. Die \texttt{push}-Methode erwartet ein beliebiges Objekt
+ Promise-Chain aufgebrochen. Zunächst erfolgt ein Zugriff auf das Referenz-Objekt und der Aufruf seiner \texttt{push}-Methode. Die \texttt{push}-Methode erwartet ein beliebiges Objekt
  und legt dieses in der Datenbank ab. Anschließend wird das abgespeicherte Objekt von der Datenbank zurückgeliefert.
  Das empfangene Objekt wird über das Promise-Chain zurückgegeben.
- orteil dieses Promise-Chain ist, dass Funktionen, die von dem Ergebnis abhängig sind, in einfachen Funktionsaufrufen nacheinander aufgerufen werden können.\\
+ Vorteil dieses Promise-Chain ist, dass Funktionen, die von dem Ergebnis abhängig sind, in einfachen Funktionsaufrufen nacheinander aufgerufen werden können.\\
  Alle Methoden mit Datenbank-Zugriff verwenden das Promise-Chain.
 
- \subsubsubsection{remove}
+\item[remove]\hfill \\
 Bei der \texttt{remove}-Methode wird nur die \texttt{remove}-Funktion der Datenbank-Referenz aufgerufen. Wichtig ist hierbei, dass eine neue temporäre Referenz generiert wird, die nur
 auf dieses Objekt (über dessen Id) zeigt.
 
-\subsubsubsection{upsert}
-Die \texttt{upsert}-Methode ist eine Kombination aus \textit{insert} und \textit{update}. Besitzt das Model, welches der Funktion übergeben wurde eine Id, so wird ein \texttt[set]-Aufruf auf die Referenz
-dieses Objektes gesendet. Über \textit{set} können dem referenzierten Objekt beliebige Felder gesetzten und geändert werden.\\
+\item[upsert]\hfill \\
+Die \texttt{upsert}-Methode ist eine Kombination aus \texttt{insert} und \texttt{update}. Besitzt das Model, welches der Funktion übergeben wurde eine Id, so wird ein \texttt{set}-Aufruf auf die Referenz
+dieses Objektes gesendet. Über \texttt{set} können dem referenzierten Objekt beliebige Felder gesetzten und geändert werden.\\
 Für den Fall, dass keine Id vorhanden ist, wird die \texttt{insert}-Methode aufgerufen.
 
-\subsubsubsection{find, list}
+\item[find, list]\hfill \\
 Bei \texttt{find} und \texttt{list} handelt es sich um zwei fast identische Methoden. \texttt{list} bietet die Möglichkeit, das gesamte Datenpaket einer Referenz zu empfangen.
 Mit \texttt{find} lässt sich nach einem Datensatz suchen. Um einen solchen zu finden, muss ein Such-Objekt übergeben werden.
 Ein Suchobjekt besteht aus Key-Value-Paaren. Die Keys müssen dabei auf die Properties eines Objektes in der Datenbank passen.
 Die Ergebnisse werden wie gewohnt in einem Promise-Chain zurückgegeben.
 
+
+\end{description}
+
 \subsubsection{Echtzeit-Anbindung}
-Um den Anspruch zu erfüllen, dass eine automatische Synchronisierung der Daten erfolgt, musste über die Collections ein System implemntiert werden, welches
+Um den Anspruch zu erfüllen, dass eine automatische Synchronisierung der Daten erfolgt, musste über die Collections ein System implementiert werden, welches
 auf die Ereignisse reagiert, die von Firebase bei Daten-Änderungen gefeuert werden.\\
 Jede Instanz der Web-Anwendung ist über eine Web-Socket-Verbindung mit der Firebase-Datenbank verbunden.
 Über diese Verbindung erfolgt sämtliche Kommunikation mit der Datenbank. Zum einen werden Daten gesendet, zum anderen Nachrichten über Ereignisse verschickt.\\
 Bei den Ereignissen wird zwischen vier verschiedenen Ereignissen unterschieden:
+
 \begin{description}
-\item[child_added]\hfill \\
+\item[child\_added]\hfill \\
 Zu der Referenz wird ein neues Objekt hinzugefügt
-\item[child_changed]\hfill \\
+\item[child\_changed]\hfill \\
 Ein Objekt erfährt ein Update
-\item[child_removed]\hfill \\
-Ein objekt der Referenz wird entfernt
+\item[child\_removed]\hfill \\
+Ein Objekt der Referenz wird entfernt
 \item[value]\hfill \\
 Indiziert eine allgemeine Änderung auf dem Referenz-Objekt
 \end{description}
 
 Auf diese Events registriert die Collection-Klasse jeweils einen Listener:
 
- \begin{lstlisting}[language=Javascript, label=code_CollectionListenerBnding, caption=Registrierung der Event-Handler von Datnebank-Events]
+ \begin{lstlisting}[language=Javascript, label=code_CollectionListenerBnding, caption=Registrierung der Event-Handler von Datenbank-Events]
 function bindRealTimeHandlers(){
     reference.on('child_added', dataAdd);
     reference.on('child_changed', dataChange);
