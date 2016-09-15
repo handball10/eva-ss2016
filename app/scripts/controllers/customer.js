@@ -35,7 +35,10 @@ angular.module('bookingCalendarApp')
 
 
         $scope.submit = function () {
-            $scope.birthday = new Date($scope.yearOfBirth + '-' + $scope.monthOfBirth + '-' + $scope.dayOfBirth).getTime();
+            $scope.birthday = new Date($scope.yearOfBirth + '-'
+                + $scope.monthOfBirth + '-'
+                + $scope.dayOfBirth).getTime();
+
             var customer = new Customer({
                 Company: $scope.company,
                 FirstName: $scope.firstname,
