@@ -3,6 +3,27 @@ Um die Arbeit mit Datensätzen und Daten-Listen zu erleichtern, wurde ein System
 Demnach sind einzelne Datensätze über Models organisiert. Diese Models werden in typisierten Collections zusammengefasst.
 Im nachfolgenden werden der Aufbau und die Funktionsweise beider Konstrukte erläutert.
 
+\subsubsection{Konfiguration für Firebase}
+
+Für jede Anwendung, die auf den Firebase-Service zugreif, muss zunächst in der Firebase-Console ein API-Key generiert werden. Er identifiziert die Anwendung bei Firebase.
+Mit der Konfiguration kommen zudem die URL zur authentifizierung sowie Adressen für Storage und Datenbank mit.
+
+\begin{lstlisting}[language=Javascript, label=code_APIConfig, caption=Konfiguration des Frontends]
+var config = {
+    apiKey: "AIzaSyD5n8G5I9feSfmW9gr59YwhDsG93Z5m4fM",
+    authDomain: "eva-ss2016.firebaseapp.com",
+    databaseURL: "https://eva-ss2016.firebaseio.com",
+    storageBucket: "eva-ss2016.appspot.com"
+};
+
+firebase.initializeApp(config);
+
+window.database = firebase.database();
+\end{lstlisting}
+
+Im weiteren Verlauf des Konifgurations-Scriptes wird ein Firebase-Datenbank-Objekt erstellt. Dieses bietet alle nötigen Funktionalitäten, um später mit der Datenbank arbeiten zu können.
+Damit jeder beliebige Javascript-Code darauf zugreifen kann, erfolgt die Speicherung als Property des globalen \texttt{window}-Objektes.
+
 \subsubsection{Models}
 
 Als Model bezeichnet man eine Klasse, die die Struktur eines Objektes beschreibt. Ein Model hat einen Constructur, über welchen sich ein neues Objekt dieses Types generieren lässt.
@@ -21,7 +42,7 @@ Beschreibt das vermietete Objekt
 Innerhalb der AngularJS-Anwendung wird das Model als Factory-Service implementiert. Dies ermöglicht es, beliebig viele Instanzen dieses Models zu generieren.
 Im nachfolgenden der Aufbau des Resource-Models:
 
-\begin{lstlisting}[language=Javascript, label=code_ResourceModel, caption=Hauptteil des Reosurce-Models]
+\begin{lstlisting}[language=Javascript, label=code_ResourceModel, caption=Hauptteil des Resource-Models]
 angular.module('bookingCalendarApp')
     .factory('Resource', function ($log) {
         function Resource(properties){
@@ -35,11 +56,8 @@ angular.module('bookingCalendarApp')
             function extend(properties){
                 [...]
             }
-
             extend(properties);
-
         }
-
         return Resource;
     });
 \end{lstlisting}
@@ -74,8 +92,9 @@ Der Service \texttt{RemoteObjects} agiert als Factory zum Erstellen einer Collec
      });
 \end{lstlisting}
 
-Wie zu sehen, fordert die Factory bei der Instanziierung bis zu vier Parameter. Über den Parameter \texttt{name} wird der Name der Collection bestimmt, \texttt{path} ist der Pfad, unter welchem die Objekte dieses Types
-innerhalb von Firebase gefunden werden können, \texttt{Model} ist das Model-Objekt und \texttt{realtime} ein Indikator, ob die Collection auf Echtzeit-Updates der Datenbank hören soll.
+Wie zu sehen, fordert die Factory bei der Instanziierung bis zu vier Parameter. Über den Parameter \texttt{name} wird der Name der Collection bestimmt, \texttt{path} ist der Pfad,
+unter welchem die Objekte dieses Types innerhalb von Firebase abgelegt sind, \texttt{Model} ist das Model-Objekt und \texttt{realtime} ein Indikator,
+ob die Collection auf Echtzeit-Updates der Datenbank hören soll.
 
 Rückgabewert der Methode \texttt{createCollection()} ist immer die Collection des jeweiligen Model-Types.
 Wie diese Collections funktionieren, wird im nächsten Kapitel erläutert.
@@ -83,10 +102,52 @@ Wie diese Collections funktionieren, wird im nächsten Kapitel erläutert.
 \subsection{Collections}
 
 Eine Collection bezeichnet eine Art Sammlung für einen bestimmten Datentypen. Sie stellt Funktionen zur Verfügung, mit welchen der Entwickler einfach Datenbank-Abfragen generieren und Daten speichern kann.
-Ebenso wie der RemoteObjects-Service, ist auch eine Collection als Service imlementiert, sodass nur jeweils eine für jedes Model existieren kann.
+Ebenso wie der RemoteObjects-Service, ist auch eine Collection als Service imlementiert, sodass nur jeweils einer für jedes Model existieren kann.
 
 \subsubsection{Instanziierung}
+Über den Service textit[RemoteObject] wird die neue Collection instanziiert. Wie bereits beschrieben werden Name, Pfad, Model und Realtime-Indikator an den Konstruktor der Collection übergeben.
+Zunächst werden alle übergebenen Parameter in interne Variablen geschrieben.
+Anschließend wird ein Referenzobjekt mithilfe der Firebase-Bibliothek zur Datenbank generiert
+
+ \begin{lstlisting}[language=Javascript, label=code_CollectionReference, caption=Befehl zum Generieren einer Firebase-Referenz]
+ var reference = $window.database.ref(this.path);
+\end{lstlisting}
+
+Diese Referenz wird in der gesamten Collection von Methoden verwendet, die Daten abfragen. Zudem greift der Mechanismus der Echtzeit-Funktionalitäten auf dieses Referenz-Objekt zu.
 
 \subsubsection{Methoden}
+Nachdem nun die Vorbereitungen abgeschlossen wurden, ist ein Blick auf die von der Collection zur Verfügung gestellten Methoden zu werden.
+Im Umfang enthalten sind standardmäßig \texttt{insert}, \texttt{remove}, \texttt{upsert} und \texttt{find}. Zusätzlich existiert die Methode \texttt{list}.
+
+Eventuell stellt sich die Frage, warum die Implementierung eines Collection-Services angestrebt wurde, da sich alle Datenbank-Operationen auch manuell ansteuern lassen. Hierzu lässt sich
+sagen, dass dieser Service viele Vorteile bietet:
+\begin{itemize}
+\item{Code wird nur einmal geschrieben}
+\item{Code lässt sich beliebig oft wiederverwenden}
+\item{Wartbarkeit ist deutlich größer}
+\item{Asynchronität von Anfragen wird durch Promise-Chaining entfernt}
+\end{itemize}
+
+Nachfolgend eine Erläuterung der einzelnen Methoden.
+
+\subsubsubsection{insert}
+Die \texttt{insert}-Methode dient zum Einfügen neuer Datensätze. Dabei nimmt diese als Argument das einzufügende Model mit den Daten entgegen.
+ \begin{lstlisting}[language=Javascript, label=code_CollectionInsert, caption=Insert-Methode einer Collection]
+ this.insert = function(model){
+     var deferred = $q.defer();
+     reference
+         .push(prepareModel(model))
+         .then(function(result){
+             deferred.resolve(result);
+         })
+         .catch(function(error){
+             deferred.reject(error);
+         })
+     ;
+     return deferred.promise;
+ };
+ \end{lstlisting}
+
+
 
 \subsubsection{Echtzeit-Anbindung}
