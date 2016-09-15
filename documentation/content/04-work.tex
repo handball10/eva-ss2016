@@ -1,9 +1,7 @@
-\chapter{Entwicklung des Prototypen}
-Im folgenden wird anhand der verschiedener Bereiche die Funktionsweise des Programmes erläutert. 
+\chapter {Projektstruktur}
+Im diesem Kapitel wird die grundlegende Projektstruktur und das Anlegen des Projektes beschrieben.
 
-
-\section{Projektstruktur}
-\subsection{Projekt kickstarten}
+\section{Projekt anlegen}
 Zu Beginn der Entwicklung war es nötig, eine Basis für die Anwendung zu haben. Zu dieser Basis gehörten
 \begin{itemize}
 \item \textbf{GitHub Repository} zur Versionsverwaltung des Codes
@@ -31,14 +29,22 @@ Die Erstellung des Kontrollers erfolgt über den Befehl \\
  verknüpft. Zudem wird das JS-File direkt in die \textit{index.html}-Datei eingebunden.\\
  Zusammengefasst erleichtert es die Verwendung eines Generators, wie in diesem Falle Yeoman, Grundlagen für eine Anwendung zu schaffen und diese in ihrer Entwicklung vornzutreiben.
 
- %TODO Image project_structure Text: Projektstruktur nach Kickstart durch Yeoman
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[t]{0.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/project_structure.jpg}
+        \label{project_structure}
+        \caption{Angelegte Projektstruktur}
+    \end{minipage}
+\end{figure}
 
-\subsection{Grunt Tasks}
 
-Wie bereits im vorausgeggangenen Abschnitt erwähnt, generiert Yeoman eine Javascript-Datei namens \textit{Gruntfile.js}. Diese beinhaltet vorgefertigte Grunt-Tasks zum Entwickeln, Test und
+\section{Grunt Tasks}
+Wie bereits im vorausgegangenen Abschnitt erwähnt, generiert Yeoman eine Javascript-Datei namens \textit{Gruntfile.js}. Diese beinhaltet vorgefertigte Grunt-Tasks zum Entwickeln, Test und
 Deployen/Builden der Anwendung. Nachfolgend wird auf die beiden wichtigsten tasks eingegangen.
 
-\subsubsection{serve}
+\subsection{serve}
 Der \textit{serve}-Task ist der Task, der während der Entwicklung zum Einsatz kommt. Über ihn wird auf \textit{http://localhost} ein lokaler Server gestartet, auf welchem
 die zu entwickelnde Anwendung erreichbar ist. Im Hintergrund wird zudem zwischen Grunt und dem Browser eine Socket-Verbindung zum Livereload aufgebaut. Der Zweck dieser Verbindung ist,
 dass sobald der Entwickler in der Entwicklungsumgebung eine Änderung an Projekt-Dateien wie z.B. an Javascript- oder Sass-Dateien Macht, automatisch ein Refresh des Browserfensters angestoßen wird.
@@ -46,9 +52,9 @@ Darüber erspart sich der Entwickler den zusätzlichen Tastendruck beim Ansehen/
 Damit das Erkennen von Änderungen möglich ist, startet der \textit{serve}-Task Datei-Watcher, welche auf beliebige Dateien angesetzt werden können. Diese reagieren auf Änderungen und führen
 mit dem Datei-Typ verknüpfte Subtasks \(z.B. Kompillieren von Sass-Dateien zu CSS-Dateien\) aus.
 
-\subsubsection{build}
+\subsection{build}
 Bei diesem Task handelt es sich um den Build-Task der Anwendung. Seine Aufgabe ist es, aus dem entwickelten Code eine fertige Anwendung zu generieren.
-Zu seinen Aufgaben gehört das Kompillieren von Sass zu CSS, Zusammenführen von CSS- und Javascript-Dateien, Minimieren von Javascript \(dazu kann noch ein "Uglyfier" hinzugeschaltet werden, der neben
-der Minimierung des Javascript-Codes diesen auch unleserlich macht\), Zusammenfassen der HTML-Templates, Kopieren aller benötigten Ressourcen wie Grafiken und Fonts und letztendlich Generieren
+Zu seinen Aufgaben gehört das Kompillieren von Sass zu CSS, Zusammenführen von CSS- und Javascript-Dateien, Minimieren von Javascript (dazu kann noch ein \glqq Uglyfier \grqq hinzugeschaltet werden, der neben
+der Minimierung des Javascript-Codes diesen auch unleserlich macht), Zusammenfassen der HTML-Templates, Kopieren aller benötigten Ressourcen wie Grafiken und Fonts und letztendlich Generieren
 eines \textit{dist}-Ordners, der die gesamte Anwendung enthält.\\
 Um die Anwendung nun zu publizieren, ist nur noch der Inhalt des \textit{dist}-Ordners nötig.

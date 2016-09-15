@@ -1,25 +1,27 @@
 \chapter{Projektvorbereitung}
-Durch die in der Einleitung erwähnte Problemstellung ergeben sich folgende Zielsetzung und Umsetzung.
+Aus der in der Einleitung beschriebenen Problemstellung ergeben sich vor der eigentlichen Umsetzung in Form eines Prototypen eine Zielsetzung und die Umsetzung dieser.
+
 \section{Zielsetzung}
-Prototypische Entwicklung einer Software zur Verwaltung von Buchungen für Ferienhäuser und Wohnungen. Eine der Anforderungen an die Software war die Nutzung auf verschiedenen Endgeräten. Das hat zur folge, dass auch die Betriebssysteme variieren können. Daraus ergibt sich, dass die Anwendung plattformunabhängig nutzbar sein muss. 
+Prototypische Entwicklung einer Software zur Verwaltung von Buchungen für Ferienhäuser und Wohnungen. Eine der Anforderungen an die Software ist die Nutzung auf verschiedenen Endgeräten. Das hat zur folge, dass zu dem auch die Betriebssysteme variieren können. Daraus ergibt sich, dass die Anwendung plattformunabhängig nutzbar sein muss. 
 
-Für diesen Fall eignet sich eine Webanwendung besonders gut. Sie ist von jedem Gerät aus nutzbar und benötigt in der Regel nicht mehr als einen Internetbrowser. Auch die Installation eines extra Programmes erübrigt sich. Allerdings ist eine stetige Internetverbindung Voraussetzung. In Anbetracht der weiteren Bedingungen an die Software ist diese aber auch bei einer nativ installieren Anwendung Voraussetzung, da sie für den stetigen abgleich der Daten zwingend vorhanden sein muss. Das Ziel ist es also eine Webanwendung mit einer Benutzeroberfläche zu erstellen die auf jedem Gerät angezeigt werden kann sofern es über Internet und einen entsprechenden Browser verfügt. Des weiteren wird ein entsprechendes Backend benötigt, dass die Daten speichert.
-
-Weitere Anforderungen an die Anwendungen sind die Verwaltung von Kunden, der zu vermietbaren Ferienhäuser und Wohnungen sowie die eigentliche Buchung. Das ganze soll übersichtlich dargestellt werden und einfach und schnell benutzbar sein.
-
-
+Für diesen Fall eignet sich eine Webanwendung besonders gut. Sie ist von jedem Gerät aus nutzbar und benötigt in der Regel nicht mehr als einen aktuellen Internetbrowser. Auch die Installation eines extra Programmes erübrigt sich damit. Der Nachteil an einer Webanwendung ist,  dass eine stetige Internetverbindung Voraussetzung ist. In Anbetracht der weiteren Bedingungen an die Software wäre diese aber auch bei einer nativ installierten Anwendung Voraussetzung, da sie für den stetigen Abgleich der Daten zwingend vorhanden sein muss. 
+Das Ziel ist es also eine Webanwendung mit einer Benutzeroberfläche zu erstellen, die auf jedem Gerät angezeigt werden kann sofern es über Internet und einen entsprechenden Browser verfügt. Des weiteren wird ein entsprechendes Backend benötigt, dass die Daten für die Authentifizierung, der Kunden, der Objekte und der Buchungen speichert.
+Weitere Anforderungen an die Anwendungen selbst ist die gleichzeitige Verwaltung von Kunden, der zu vermietbaren Ferienhäuser und Wohnungen sowie die eigentliche Buchung. Das ganze soll übersichtlich dargestellt werden und einfach, intuitiv und schnell benutzbar sein.
+\newpage
 \section{Umsetzung}
 
 Für die Umsetzung der eigentlichen Webanwendung kommen JavaScript, HTML und CSS zum Einsatz. Zu dem werden die in Kapitel \ref{chap_2} genannten Frameworks und Tools zur Unterstützung eingesetzt. 
+
 \subsection{Backend}
-Für das speichern der Daten soll die in Firebase integrierte Objektbasierte Datenbank zum Einsatz kommen. Ebenfalls übernimmt ein weiterer Dienst von Firebase die Authentifizierung bei der Anmeldung.
+Für das Speichern der Daten soll die in Firebase integrierte Objektbasierte Datenbank zum Einsatz kommen. Ebenfalls übernimmt ein weiterer Dienst die Authentifizierung bei der Anmeldung.
 
 \subsection{Frontend}
-Neben den oben genannten Script- und Auszeichnungsprachen soll für die Logik und Strukturierung der Anwendung das Framework AngularJS genutzt werden. Dazu passend soll das Layout mittels der Angular Version von Materialize gestaltet werden. 
+Neben den oben genannten Script- und Auszeichnungsprachen soll für die Logik und Strukturierung der Anwendung das Framework AngularJS genutzt werden. Dazu passend soll das Layout mittels der Angular Version von Material gestaltet werden. 
 
 \subsection{Funktionen}
-Die Funktionen sollen sinnvoll in die Webanwendung integriert werden. Dabei sollen sie schnell und ohne Umwege erreichbar sein. Zu den Hauptfunktionen zählt das Hinzufügen und Bearbeiten von Kundendaten, Ferienwohnungen und der Buchung selbst. 
-Folgende Informationen sollten für jeden Kunden zur eindeutigen Identifizierung gespeichert werden:
+Die Funktionen sollen sinnvoll in die Webanwendung integriert werden. Dabei sollen sie schnell und ohne Umwege erreichbar sein. Zu den Hauptfunktionen zählt das Hinzufügen und Bearbeiten von Kundendaten, Ferienwohnungen und der eigentlichen Buchung selbst. 
+
+Das Formular zum Hinzufügen von Kunden und Wohnungen soll folgende Informationen beinhalten:
 \begin{itemize} 
 \item Firma (Falls vorhanden)
 \item Vor- und Nachname
@@ -29,14 +31,18 @@ Folgende Informationen sollten für jeden Kunden zur eindeutigen Identifizierung
 \item Geburtstag 
 \item Feld für Zusatzinformationen
 \end{itemize}
+Für das Bearbeiten oder Löschen eines Kunden soll es möglich sein, diesen über eine Suche zu ermitteln und die Daten anschließend im Formular anzeigen zu lassen.
+\\
 
-Die zu vermietenden Ferienhäuser und Wohnungen sollten folgenden Attribute haben:
+Das Formular zum Hinzufügen von Ferienhäuser und Wohnungen soll folgende Informationen beinhalten:
 \begin{itemize} 
 \item Name des Objektes
 \item Anzahl der Personen die es maximal beherbergen kann
 \end{itemize}
+Für das Formular zum Bearbeiten eines Objekts soll dieses in der Liste ausgewählt werden. Die Daten werden anschließend angezeigt und können bearbeitet oder gelöscht werden.  
+\\
 
-Um eine Buchung zu erstellen sollte die folgenden Informationen festgehalten werden:
+Das Formular zum Hinzufügen von Buchungen soll folgende Informationen beinhalten:
 \begin{itemize} 
 \item Kunde, der das Objekt bucht
 \item Objekt, das gebucht wird
@@ -45,6 +51,5 @@ Um eine Buchung zu erstellen sollte die folgenden Informationen festgehalten wer
 \item Enddatum
 \end{itemize}
 
-Um eine bessere Übersicht über die Buchungen zu bekommen, sollen diese optisch in einem Kalender dargestellt werden.
-
-
+Ein wichtiger Bestandteil dieser Software ist die Darstellung der aktuellen Buchungen. Sie soll sowohl übersichtlich sein als auch intuitiv zu bedienen sein. Eine Kalenderansicht mit der Auflistung aller Objekte und dessen Buchungen soll dem Nutzer einen schnellen Überblick verschaffen. Dazu soll das in \ref{chap_2} vorgestellte  \texttt{fullcallender}-Framework zum Einsatz kommen. Dieses bietet die Möglichkeit die Buchungen in einer Kalenderansicht darzustellen. Für eine gute Übersicht soll das ganze in der Monatsansicht und die Buchungen in Blöcken angezeigt werden.
+Wird auf ein Block geklickt soll sich automatisch die Buchung mit der Möglichkeit zur Änderung und Löschung öffnen. 
