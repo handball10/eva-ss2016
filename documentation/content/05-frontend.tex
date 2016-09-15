@@ -147,7 +147,7 @@ Als Objekt wird eine Ferienwohnung oder Haus bezeichnet. Wie auch beim Kunden k�
 \end{figure}
 
 
- Auch bei der Angabe der maximalen Personenanzahl wurde darauf geachtet Falscheingaben abzufangen. Standardmäßig ist eine Mindestpersonenanzahl von 1 eingestellt. Der Nutzer hat die Möglichkeit mit Hilfe von Pfeilen den Wert zu Verändern. Die Maximale Anzahl von Personen ist 10 pro Objekt. Da es auch möglich ist Manuell eine Zahl einzugeben wird ebenfalls überprüft, ob sich die Zahl zwischen 1 und 10 befindet. Ist dies nicht der Fall wird ein Hinweis ausgegeben und das Formular kann nicht abgeschickt werden. Sind alle Angaben korrekt und der \texttt{submit} Button wird betätigt wird das Formular abgeschickt. Im Controller wird eine Funktion aufgerufen in der die Daten aus den Feldern in ein JSON-Objekt gespeichert werden. Dieses wird der \texttt{upsert} Methode des Models übergeben. Die Überprüfung der Personenanzahl findet im View statt. 
+ Auch bei der Angabe der maximalen Personenanzahl wurde darauf geachtet Falscheingaben abzufangen. Standardmäßig ist eine Mindestpersonenanzahl von 1 eingestellt. Der Nutzer hat die Möglichkeit mit Hilfe von Pfeilen den Wert zu Verändern. Die Maximale Anzahl von Personen ist 10 pro Objekt. Da es auch möglich ist Manuell eine Zahl einzugeben wird ebenfalls überprüft, ob sich die Zahl zwischen 1 und 10 befindet. Ist dies nicht der Fall wird ein Hinweis ausgegeben und das Formular kann nicht abgeschickt werden. Sind alle Angaben korrekt und der \texttt{submit} Button wird betätigt, wird das Formular abgeschickt. Im Controller wird eine Funktion aufgerufen in der die Daten aus den Feldern in ein JSON-Objekt gespeichert werden. Dieses wird der \texttt{upsert} Methode des Models übergeben. Die Überprüfung der Personenanzahl findet im View statt. 
  
  \begin{lstlisting}[language=HTML, label=code_exampleRegistrationRequest, caption=Beispielhafte Antwort auf eine Registrierungsanfrage]
 		<input required type="number" step="any" name="rate" ng-model="size" min="1" max="10"  />
@@ -158,7 +158,7 @@ Als Objekt wird eine Ferienwohnung oder Haus bezeichnet. Wie auch beim Kunden k�
  
  
 
-Um ein bereits existierendes Objekt bearbeiten zu können muss dies anders als bei den Kunden in der Auflistung im Kalender ausgewählt werden (Abbildung \ref{frontend_resource_edit}). Auch hier werden die Daten anhand der UUID aus der Datenbank geladen und in die Felder eingefügt. Zusätzlich wird der Button zum Löschen des Objektes angezeigt. Die Besonderheit bei der Änderung von Daten ist eine Eigenschaft im JSON-Objekt in dem die Informationen der Felder gespeichert werden. Neben dem Namen und der Personenanzahl wird die ID des Objektes gespeichert. Ist, wie bei einer Änderung, bereits eine UUID vorhanden, wird diese als Wert gespeichert. Wird eine Objekt neu hinzugefügt ist die ID \texttt{undefined}. Diese Information wird in der \texttt{upsert} Methode des Models abgefragt und dementsprechend ein neues Objekt hinzugefügt oder ein bestehendes aktualisiert.
+Um ein bereits existierendes Objekt bearbeiten zu können muss dies anders als bei den Kunden in der Auflistung im Kalender ausgewählt werden (Abbildung \ref{frontend_resource_edit}). Auch hier werden die Daten anhand der UUID aus der Datenbank geladen und in die Felder eingefügt. Zusätzlich wird der Button zum Löschen des Objektes angezeigt. Die Besonderheit bei der Änderung von Daten ist eine Eigenschaft im JSON-Objekt in dem die Informationen der Felder gespeichert werden. Neben dem Namen und der Personenanzahl wird die ID des Objektes gespeichert. Ist, wie bei einer Änderung, bereits eine UUID vorhanden, wird diese als Wert gespeichert. Wird ein Objekt neu hinzugefügt, ist die ID \texttt{undefined}. Diese Information wird in der \texttt{upsert} Methode des Models abgefragt und dementsprechend ein neues Objekt hinzugefügt oder ein bestehendes aktualisiert.
 
 
 
@@ -215,7 +215,7 @@ Um eine Buchung bearbeiten zu können muss diese, anders als beim Kunden oder Ob
 \end{figure}
 
 
-Wird ein Dialog bestätigt wird erscheint für drei Sekunden am oberen rechten Fensterrand ein Nachricht (Abbildung\ref{frontend_toast} sky). Ein sogenannter Toast fährt herunter und zeigt die Erfolgsmeldung und einen Button zum schließen an. In der mobilen Ansicht fährt der Dialog, in voller Bildschirmbreite, von unten herein. 
+Wird ein Dialog bestätigt, wird erscheint für drei Sekunden am oberen rechten Fensterrand ein Nachricht (Abbildung\ref{frontend_toast} sky). Ein sogenannter Toast fährt herunter und zeigt die Erfolgsmeldung und einen Button zum schließen an. In der mobilen Ansicht fährt der Dialog, in voller Bildschirmbreite, von unten herein. 
 
 \section{Kalender}
 
