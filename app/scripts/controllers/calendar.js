@@ -65,7 +65,7 @@ angular.module('bookingCalendarApp')
                             return false
                         },
                         resourceAreaWidth : '20%',
-                        timeFormat : 'HH:mm',
+                        timeFormat : 'DD.MM.YYYY',
                         lang : 'de',
                         defaultView: 'timelineMonth',
 
@@ -86,7 +86,8 @@ angular.module('bookingCalendarApp')
                                 $(this).remove();
                             }
                         },
-                        displayEventTime : false,
+                        displayEventTime : true,
+                        displayEventEnd : true,
                         eventReceive: function(event) { // called when a proper external event is dropped
                             console.log('eventReceive', event);
                         },
