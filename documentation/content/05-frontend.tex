@@ -72,6 +72,7 @@ Alle Tage des aktuellen Monats werden als Spalten dargestellt. Die Buchungen wer
 Zusammen mit dem Objekt bildet der Kunde eine Buchung. Für die Kundeninformationen wurden alle Felder aus dem Projektzielen implementiert (Abbildung \ref{frontend_customer_new}). Zudem sind alle Felder ausgenommen der Zusatzinformationen und der Firma Pflicht. Diese werden beim Abschicken des Formulars geprüft, ob sie leer sind. Um die Eingabe des Geburtstages zu vereinfachen wurde jeweils für Tag, Monat und Jahr ein Dropdown-Menü bereitgestellt. Da das Mindestalter für Buchungen 18 Jahre ist, ist das höchste auszuwählende Jahr immer 18 Jahre vom aktuellen aus gerechnet. Alle Zeitangaben werden im UNIX TIMESTAMP gespeichert. Sind alle Felder korrekt ausgefüllt, kann das Formular abgeschickt werden. Sobald die \texttt{submit} Funktion im Controller aufgerufen wird, werden alle Felder aus dem View in einem \texttt{customer} JSON-Objekt gespeichert. Diese werden dem \texttt{Customer} Model übergeben und das Dialog geschlossen. 
 
 \begin{lstlisting}[language=JavaScript, label=code_exampleRegistrationRequest, caption=Beispielhafte Antwort auf eine Registrierungsanfrage]
+
 		$scope.submit = function () {
             $scope.birthday = new Date($scope.yearOfBirth + '-' + $scope.monthOfBirth + '-' + $scope.dayOfBirth).getTime();
             var customer = new Customer({
@@ -215,8 +216,36 @@ Um eine Buchung bearbeiten zu können muss diese, anders als beim Kunden oder Ob
 \end{figure}
 
 
-Wird ein Dialog bestätigt, wird erscheint für drei Sekunden am oberen rechten Fensterrand ein Nachricht (Abbildung\ref{frontend_toast} sky). Ein sogenannter Toast fährt herunter und zeigt die Erfolgsmeldung und einen Button zum schließen an. In der mobilen Ansicht fährt der Dialog, in voller Bildschirmbreite, von unten herein. 
+
+Wird ein Dialog bestätigt, erscheint für drei Sekunden am oberen rechten Fensterrand ein Nachricht (Abbildung\ref{frontend_toast} sky). Ein sogenannter Toast fährt herunter und zeigt die Erfolgsmeldung und einen Button zum schließen an. In der mobilen Ansicht fährt der Dialog, in voller Bildschirmbreite, von unten herein. 
 
 \section{Kalender}
+% TODO Image frontent_calendar Text Fullcalendar in Tmeline-Ansicht
+Der Kalender ist der Hautbestandteil der Anwendung. Auf ihm kann der Benutzer alle Buchungen einsehen und editieren. Hinzu kommt die Verwaltung der Mietobjekte.
+Diese sind auf der linken Seite aufgelistet. Auf der horizontlen Achse des Kalenders befinden sich die einzelnen Tage eines Monats sowie die vorhandenen Buchungen.\\
+Dank der umfangreichen Konfigurations-Möglichkeiten kann der Kalender in seinem Verhalten sehr gut angepasst werden.
+Einen Teil dieser Anpassungen wir im nachfolgenden erläutert.
 
-%TODO write text about the main calender
+\subsubsection{Drag'n Drop}
+Der Kalender bietet die Möglichkeit, Events mittels Drag'n Drop innerhalb dieses zu verschieben. Dieses Verhalten wird von der Option \texttt{droppable = true} freigeschaltet.
+Die Events, welche im Hintergund liegen werden automatisch nach dem Verschieben aktualisiert.
+Eine Aktualisierung mit der Datenbank erfolgt jedoch nicht. Hierfür steht die Callback-Methode \texttt{eventDrop} bereit, welche durch die Kalender-Konfiguration durch eine eigene überschrieben
+werden kann. Im Falle der vorliegenden Buchungs-Anwendung wird dabei der folgende ode ausgeführt:
+
+ \begin{lstlisting}[language=Javascript, label=code_exampleUpdateBooking, caption=Aktualisierungscode nach einem Drag\'nDrop-Event]
+function updateBooking(event){
+    var newEvent = {
+        Id : event.id || event.Id,
+        Resource : event.resourceId,
+        StartDate : event.start.toDate(),
+        EndDate   : event.end.toDate(),
+        Customer  : event.customerId,
+        Size : event.size
+
+    };
+    Bookings.upsert(new Booking(newEvent));
+}
+ \end{lstlisting}
+
+ Diese Funktion erstellt aus dem Kalendar-Event ein neues Model und ruft die Upsert-Methode der Buchungs-Collection auf.
+ Diese entscheidet, ob eine neue Buchung hinzukommt oder eine bestehende geupdated wird.
