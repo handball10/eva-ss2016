@@ -90,8 +90,6 @@ angular.module('bookingCalendarApp')
                 $scope.myEndDate   = items.end.toDate();
                 $scope.resourceID  = items.resource.id;
 
-                $log.log(items.resource);
-
                 Resources.find({id : items.resource.id}).then(function(resourceResult){
                     if(resourceResult) {
                         resource.searchText = resourceResult.Name;
@@ -130,13 +128,6 @@ angular.module('bookingCalendarApp')
                     });
                 });
             }
-
-
-
-
-
-
-
         }
 
         $scope.submit = function () {
@@ -161,6 +152,7 @@ angular.module('bookingCalendarApp')
         $scope.cancel = function() {
             $mdDialog.cancel();
         };
+
         $scope.delete = function(bookingID){
             var confirm = $mdDialog.confirm()
                 .title('Buchung löschen?')

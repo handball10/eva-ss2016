@@ -1,6 +1,6 @@
 [0] Config.pm:324> INFO - This is Biber 2.1
 [0] Config.pm:327> INFO - Logfile is '/Users/Stefan/Documents/workspace/eva-ss2016/documentation/.texpadtmp/main.blg'
-[29] biber-darwin:276> INFO - === Thu Sep 15, 2016, 16:54:58
+[29] biber-darwin:276> INFO - === Thu Sep 15, 2016, 22:06:16
 [29] Biber.pm:333> INFO - Reading '/Users/Stefan/Documents/workspace/eva-ss2016/documentation/.texpadtmp/main.bcf'
 [94] Biber.pm:645> INFO - Found 0 citekeys in bib section 0
 [94] Utils.pm:146> WARN - The file '/Users/Stefan/Documents/workspace/eva-ss2016/documentation/.texpadtmp/main.bcf' does not contain any citations!

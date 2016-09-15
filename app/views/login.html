@@ -17,15 +17,16 @@
                                     <form name="loginForm">
                                       <md-input-container class="md-block">
                                         <label>E-Mail Adresse</label>
-                                        <input required name="email" type="email" ng-model="authe.email">
+                                        <input required name="email" type="email" ng-model="auth.email">
                                       </md-input-container>
                                       <md-input-container class="md-block">
                                         <label>Passwort</label>
-                                        <input required name="password" ng-model="authe.password" type="password">
+                                        <input required name="password" ng-model="auth.password" type="password">
                                       </md-input-container>
                                     </form>
+                                      <span ng-show="errorMessage" class="error-info">Passwort und / oder E-Mail nicht
+                                          korrekt</span>
                                   </md-content>
-                                    <span ng-show="errorMessage" class="error-info">Passwort oder Email nicht korrekt</span>
                                     <md-button class="md-raised md-primary" ng-click="submit()">Anmelden</md-button>
                                 </div>
                             </span>
