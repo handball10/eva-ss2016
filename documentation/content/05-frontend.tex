@@ -1,12 +1,20 @@
 \chapter{Frontend}
-In diesem Kapitel wird die prototypische Entwicklung des Frontend beschrieben. Dabei werden anhand der verschiedenen Bereiche die Umsetzung der Projektstruktur und die Funktionsweise des Programmes erläutert.
+In diesem Kapitel wird die prototypische Entwicklung des Frontend beschrieben. Dabei werden anhand der verschiedenen Bereiche die Umsetzung der
+Projektstruktur und die Funktionsweise des Programmes erläutert.
 
 \section{Login}
-Da die Software, wie in den Projektzielen erwähnt, nicht nur intern im Büro sondern auch von extern aus erreichbar sein muss, ist es nötig eine Authentifizierung einzurichten damit unbefugte keine Möglichkeiten haben die Daten zu verändern oder einzusehen. Um die Software nutzen zu können, benötigt der Bearbeiter eine gültige Kombination aus E-Mail und Passwort. Schon bei der Eingabe der Daten wird überprüft, ob die Felder leer sind oder es sich überhaupt um eine E-Mail handelt. Dabei wird abgefragt, ob ein (at)-Zeichen vorhanden ist und darauf ein Punkt folgt.
+Da die Software, wie in den Projektzielen erwähnt, nicht nur intern im Büro sondern auch von extern aus erreichbar sein muss, ist es nötig eine Authentifizierung
+einzurichten damit unbefugte keine Möglichkeiten haben die Daten zu verändern oder einzusehen. Um die Software nutzen zu können, benötigt der Bearbeiter eine gültige
+Kombination aus E-Mail und Passwort. Schon bei der Eingabe der Daten wird überprüft, ob die Felder leer sind oder es sich überhaupt um eine E-Mail handelt. Dabei wird
+abgefragt, ob ein (at)-Zeichen vorhanden ist und darauf ein Punkt folgt.
 
-Sobald das Formular abgeschickt wurde, werden die Daten zunächst im \texttt{login.js} Controller entgegengenommen. Von da aus werden diese an den Authenticate-Service weitergegeben um sie von da aus an das Backend weiter zu reichen. In Firebase werden sie dann mit den hinterlegten Daten verglichen. Sind E-Mail und Passwort nicht korrekt oder nicht vorhanden, wird eine Fehlermeldung zurückgegeben die der Controller im View anzeigt. Sofern alle Angaben korrekt sind, wird der Nutzer weiter zu der Hauptseite geleitet. 
+Sobald das Formular abgeschickt wurde, werden die Daten zunächst im \texttt{login.js} Controller entgegengenommen. Von da aus werden diese an den Authenticate-Service
+weitergegeben um sie von da aus an das Backend weiter zu reichen. In Firebase werden sie dann mit den hinterlegten Daten verglichen. Sind E-Mail und Passwort nicht
+korrekt oder nicht vorhanden, wird eine Fehlermeldung zurückgegeben die der Controller im View anzeigt. Sofern alle Angaben korrekt sind, wird der Nutzer weiter zu
+der Hauptseite geleitet.
 
-Da es sich hierbei um eine Betriebsinterne Software handelt, wird eine Registrierung nicht benötigt. Die Emailadresse und das Passwort werden Manuell im Backend hinzugefügt, bearbeitet oder entfernt. 
+Da es sich hierbei um eine Betriebsinterne Software handelt, wird eine Registrierung nicht benötigt.
+Die Emailadresse und das Passwort werden Manuell im Backend hinzugefügt, bearbeitet oder entfernt.
 Die Folgende Abbildung \ref{frontend_login} zeigt, wie der Anmeldebildschirm aussieht. 
 
 \begin{figure}[H]
@@ -16,7 +24,8 @@ Die Folgende Abbildung \ref{frontend_login} zeigt, wie der Anmeldebildschirm aus
 \end{figure}
 
 \section{Hauptseite}
-Aus den in den Projektzielen gesteckten Bedingungen ergibt sich in Abbildung \ref{frontend_mainpage} gezeigte Hauptseite. Diese ist schlicht aufgebaut bietet jedoch gleichzeitig alle gewünschten Funktionen, die mit einem Klick erreicht werden können.
+Aus den in den Projektzielen gesteckten Bedingungen ergibt sich in Abbildung \ref{frontend_mainpage} gezeigte Hauptseite.
+Diese ist schlicht aufgebaut bietet jedoch gleichzeitig alle gewünschten Funktionen, die mit einem Klick erreicht werden können.
 
 \begin{figure}[H]
 \centering\includegraphics[width=1\textwidth]{images/frontend_mainpage.png}
@@ -38,7 +47,9 @@ Ein Dialog öffnet sich in dem eine neue Buchung hinzugefügt werden kann.
 Nach der Bestätigung eines Dialogs wird der Nutzer abgemeldet und auf die Login-Seite verwiesen. 
 \end{description}
 
-Sobald die Fenstergröße kleiner ist oder die Größe eines durchschnittlichen Tablets erreicht wurde, werden die Buttons im Kopfbereich ausgeblendet (Abbildung \ref{frontend_header_small}). Stattdessen erscheint ein Symbol das bei Klick eine Seitennavigation einblendet in der sich alle Buttons befinden (Abbildung \ref{frontend_header_small_navigation}).
+Sobald die Fenstergröße kleiner ist oder die Größe eines durchschnittlichen Tablets erreicht wurde, werden die Buttons im Kopfbereich ausgeblendet
+(Abbildung \ref{frontend_header_small}). Stattdessen erscheint ein Symbol das bei Klick eine Seitennavigation einblendet in der sich alle Buttons befinden
+ (Abbildung \ref{frontend_header_small_navigation}).
 
 \begin{figure}[H]
     \centering
@@ -69,7 +80,13 @@ Alle Tage des aktuellen Monats werden als Spalten dargestellt. Die Buchungen wer
 \end{description}
 
 \section{Kunde}
-Zusammen mit dem Objekt bildet der Kunde eine Buchung. Für die Kundeninformationen wurden alle Felder aus dem Projektzielen implementiert (Abbildung \ref{frontend_customer_new}). Zudem sind alle Felder ausgenommen der Zusatzinformationen und der Firma Pflicht. Diese werden beim Abschicken des Formulars geprüft, ob sie leer sind. Um die Eingabe des Geburtstages zu vereinfachen wurde jeweils für Tag, Monat und Jahr ein Dropdown-Menü bereitgestellt. Da das Mindestalter für Buchungen 18 Jahre ist, ist das höchste auszuwählende Jahr immer 18 Jahre vom aktuellen aus gerechnet. Alle Zeitangaben werden im UNIX TIMESTAMP gespeichert. Sind alle Felder korrekt ausgefüllt, kann das Formular abgeschickt werden. Sobald die \texttt{submit} Funktion im Controller aufgerufen wird, werden alle Felder aus dem View in einem \texttt{customer} JSON-Objekt gespeichert. Diese werden dem \texttt{Customer} Model übergeben und das Dialog geschlossen. 
+Zusammen mit dem Objekt bildet der Kunde eine Buchung. Für die Kundeninformationen wurden alle Felder aus dem Projektzielen
+implementiert (Abbildung \ref{frontend_customer_new}). Zudem sind alle Felder ausgenommen der Zusatzinformationen und der Firma Pflicht.
+Diese werden beim Abschicken des Formulars geprüft, ob sie leer sind. Um die Eingabe des Geburtstages zu vereinfachen wurde jeweils für Tag,
+ Monat und Jahr ein Dropdown-Menü bereitgestellt. Da das Mindestalter für Buchungen 18 Jahre ist, ist das höchste auszuwählende Jahr immer 18
+ Jahre vom aktuellen aus gerechnet. Alle Zeitangaben werden im UNIX TIMESTAMP gespeichert. Sind alle Felder korrekt ausgefüllt, kann das Formular
+ abgeschickt werden. Sobald die \texttt{submit} Funktion im Controller aufgerufen wird, werden alle Felder aus dem View in einem \texttt{customer}
+ JSON-Objekt gespeichert. Diese werden dem \texttt{Customer} Model übergeben und das Dialog geschlossen.
 
 \begin{lstlisting}[language=JavaScript, label=code_exampleRegistrationRequest, caption=Beispielhafte Antwort auf eine Registrierungsanfrage]
 
@@ -94,7 +111,12 @@ Zusammen mit dem Objekt bildet der Kunde eine Buchung. Für die Kundeninformatio
         };
 \end{lstlisting}
 
-Soll ein bestehender Kunde bearbeitet werden (Abbildung \ref{frontend_customer_edit}) muss dieser zunächst über das in Abbildung \ref{frontend_customer_search} gezeigte Suchfeld ermittelt werden. Mit einem Klick auf das Lupensymbol im Kopfbereich des Dialog wird die Suchleiste ein oder ausgeblendet. Sobald das Suchfeld fokussiert wird, wird eine Funktion im Controller angestoßen, welche alle Kunden mit Vor und Nachname als Auswahlmöglichkeit auflistet. Dafür wird die Liste aller Kunden im Model aus der Datenbank angefordert. Dieses Liefert ein Array mit allen Kundenobjekten. Bei einer hohen Anzahl an Kunden kann sich die Suche schwierig gestalten. Aus diesem Grund kann der Kunde durch eintippen von Buchstaben gefiltert werden. Jeder weitere Buchstabe schränkt die Suche nach dem Kunden ein und es werden nur Kunden angezeigt dessen Nachname die eingegebene Zeichenkette beinhalten. 
+Soll ein bestehender Kunde bearbeitet werden (Abbildung \ref{frontend_customer_edit}) muss dieser zunächst über das in Abbildung \ref{frontend_customer_search}
+gezeigte Suchfeld ermittelt werden. Mit einem Klick auf das Lupensymbol im Kopfbereich des Dialog wird die Suchleiste ein oder ausgeblendet. Sobald das Suchfeld
+fokussiert wird, wird eine Funktion im Controller angestoßen, welche alle Kunden mit Vor und Nachname als Auswahlmöglichkeit auflistet. Dafür wird die Liste aller
+Kunden im Model aus der Datenbank angefordert. Dieses Liefert ein Array mit allen Kundenobjekten. Bei einer hohen Anzahl an Kunden kann sich die Suche schwierig
+gestalten. Aus diesem Grund kann der Kunde durch eintippen von Buchstaben gefiltert werden. Jeder weitere Buchstabe schränkt die Suche nach dem Kunden ein und es
+werden nur Kunden angezeigt dessen Nachname die eingegebene Zeichenkette beinhalten.
 
 \begin{figure}[H]
 \centering\includegraphics[width=0.5\textwidth]{images/frontend_customer_search.png}
@@ -119,12 +141,18 @@ Soll ein bestehender Kunde bearbeitet werden (Abbildung \ref{frontend_customer_e
     \end{minipage}
 \end{figure}
 
-Wurde ein Kunde ausgewählt, werden alle Daten aus dem JSON-Objekt ausgelesen und in die jeweiligen Input Felder eingefügt. Gleichzeitig wird ein Button zum löschen angezeigt. Um bei der Löschung einem Fehler vorzubeugen muss zusätzlich noch ein Dialog bestätigt werden. Ist das der Fall übergibt der Controller dem Model die UUID des Kunden in einer \texttt{delete} Funktion. 
+Wurde ein Kunde ausgewählt, werden alle Daten aus dem JSON-Objekt ausgelesen und in die jeweiligen Input Felder eingefügt.
+Gleichzeitig wird ein Button zum löschen angezeigt. Um bei der Löschung einem Fehler vorzubeugen muss zusätzlich noch ein Dialog bestätigt werden.
+Ist das der Fall übergibt der Controller dem Model die UUID des Kunden in einer \texttt{delete} Funktion.
 %TODO delete customer in model
 
-Wenn Daten verändert wurden können diese wie auch beim Hinzufügen eines neuen Kunden ganz normal bestätigt werden. Im Controller wird die \texttt{upsert} Funktion des Model aufgerufen. Je nachdem, ob es sich dabei um einen bestehenden Eintrag in der Datenbank handelt oder der Eintrag bereits vorhanden ist wird ein \texttt{Update} oder \texttt{Insert} durchgeführt. 
+Wenn Daten verändert wurden können diese wie auch beim Hinzufügen eines neuen Kunden ganz normal bestätigt werden.
+Im Controller wird die \texttt{upsert} Funktion des Model aufgerufen. Je nachdem, ob es sich dabei um einen bestehenden
+Eintrag in der Datenbank handelt oder der Eintrag bereits vorhanden ist wird ein \texttt{Update} oder \texttt{Insert} durchgeführt.
 
-Soll weder ein neuer Kunde hinzugefügt noch ein bestehender bearbeitet werden kann das Dialog über den \grqq Abbrechen\glqq  Button, das \grqq X\glqq  oder einen Klick ausserhalb des Dialogs geschlossen werden. Für den Controller ist das ein und die selbe Funktion. Dieser ruft die \texttt{hide} Methode des Dialogs auf und das Dialogfenster wird ausgeblendet. Dabei werden auch alle Daten aus den Feldern entfernt.
+Soll weder ein neuer Kunde hinzugefügt noch ein bestehender bearbeitet werden kann das Dialog über den \grqq Abbrechen\glqq  Button, das \grqq X\glqq  oder einen
+Klick ausserhalb des Dialogs geschlossen werden. Für den Controller ist das ein und die selbe Funktion. Dieser ruft die \texttt{hide} Methode des Dialogs auf und
+das Dialogfenster wird ausgeblendet. Dabei werden auch alle Daten aus den Feldern entfernt.
 
 
 \section{Objekt}
@@ -148,7 +176,13 @@ Als Objekt wird eine Ferienwohnung oder Haus bezeichnet. Wie auch beim Kunden k�
 \end{figure}
 
 
- Auch bei der Angabe der maximalen Personenanzahl wurde darauf geachtet Falscheingaben abzufangen. Standardmäßig ist eine Mindestpersonenanzahl von 1 eingestellt. Der Nutzer hat die Möglichkeit mit Hilfe von Pfeilen den Wert zu Verändern. Die Maximale Anzahl von Personen ist 10 pro Objekt. Da es auch möglich ist Manuell eine Zahl einzugeben wird ebenfalls überprüft, ob sich die Zahl zwischen 1 und 10 befindet. Ist dies nicht der Fall wird ein Hinweis ausgegeben und das Formular kann nicht abgeschickt werden. Sind alle Angaben korrekt und der \texttt{submit} Button wird betätigt, wird das Formular abgeschickt. Im Controller wird eine Funktion aufgerufen in der die Daten aus den Feldern in ein JSON-Objekt gespeichert werden. Dieses wird der \texttt{upsert} Methode des Models übergeben. Die Überprüfung der Personenanzahl findet im View statt. 
+ Auch bei der Angabe der maximalen Personenanzahl wurde darauf geachtet Falscheingaben abzufangen.
+ Standardmäßig ist eine Mindestpersonenanzahl von 1 eingestellt. Der Nutzer hat die Möglichkeit mit Hilfe von Pfeilen den Wert zu Verändern.
+ Die Maximale Anzahl von Personen ist 10 pro Objekt. Da es auch möglich ist Manuell eine Zahl einzugeben wird ebenfalls überprüft,
+ ob sich die Zahl zwischen 1 und 10 befindet. Ist dies nicht der Fall wird ein Hinweis ausgegeben und das Formular kann nicht abgeschickt werden.
+ Sind alle Angaben korrekt und der \texttt{submit} Button wird betätigt, wird das Formular abgeschickt. Im Controller wird eine Funktion aufgerufen in
+ der die Daten aus den Feldern in ein JSON-Objekt gespeichert werden. Dieses wird der \texttt{upsert} Methode des Models übergeben. Die Überprüfung der
+ Personenanzahl findet im View statt.
  
  \begin{lstlisting}[language=HTML, label=code_exampleRegistrationRequest, caption=Beispielhafte Antwort auf eine Registrierungsanfrage]
 		<input required type="number" step="any" name="rate" ng-model="size" min="1" max="10"  />
@@ -159,7 +193,12 @@ Als Objekt wird eine Ferienwohnung oder Haus bezeichnet. Wie auch beim Kunden k�
  
  
 
-Um ein bereits existierendes Objekt bearbeiten zu können muss dies anders als bei den Kunden in der Auflistung im Kalender ausgewählt werden (Abbildung \ref{frontend_resource_edit}). Auch hier werden die Daten anhand der UUID aus der Datenbank geladen und in die Felder eingefügt. Zusätzlich wird der Button zum Löschen des Objektes angezeigt. Die Besonderheit bei der Änderung von Daten ist eine Eigenschaft im JSON-Objekt in dem die Informationen der Felder gespeichert werden. Neben dem Namen und der Personenanzahl wird die ID des Objektes gespeichert. Ist, wie bei einer Änderung, bereits eine UUID vorhanden, wird diese als Wert gespeichert. Wird ein Objekt neu hinzugefügt, ist die ID \texttt{undefined}. Diese Information wird in der \texttt{upsert} Methode des Models abgefragt und dementsprechend ein neues Objekt hinzugefügt oder ein bestehendes aktualisiert.
+Um ein bereits existierendes Objekt bearbeiten zu können muss dies anders als bei den Kunden in der Auflistung im Kalender ausgewählt
+werden (Abbildung \ref{frontend_resource_edit}). Auch hier werden die Daten anhand der UUID aus der Datenbank geladen und in die Felder eingefügt.
+Zusätzlich wird der Button zum Löschen des Objektes angezeigt. Die Besonderheit bei der Änderung von Daten ist eine Eigenschaft im JSON-Objekt in dem
+die Informationen der Felder gespeichert werden. Neben dem Namen und der Personenanzahl wird die ID des Objektes gespeichert. Ist, wie bei einer Änderung,
+bereits eine UUID vorhanden, wird diese als Wert gespeichert. Wird ein Objekt neu hinzugefügt, ist die ID \texttt{undefined}. Diese Information wird in der
+\texttt{upsert} Methode des Models abgefragt und dementsprechend ein neues Objekt hinzugefügt oder ein bestehendes aktualisiert.
 
 
 
@@ -173,11 +212,17 @@ Um ein bereits existierendes Objekt bearbeiten zu können muss dies anders als b
 
   
 \section{Buchung}
-Eine Buchung ist ein Zusammenschluss aus Kunde, Objekt, Personenanzahl, Startdatum und Enddatum. Wie bei der Bearbeitung von Kunden, kann der Nutzer den Kunden über ein Suchfeld filtern und Auswählen. In diesem Fall gibt es die selbe funktioniert für das Objekt. 
+Eine Buchung ist ein Zusammenschluss aus Kunde, Objekt, Personenanzahl, Startdatum und Enddatum. Wie bei der Bearbeitung von Kunden,
+kann der Nutzer den Kunden über ein Suchfeld filtern und Auswählen. In diesem Fall gibt es dieselbe Funktion für das Buchungsobjekt- Objekt.
 
 %TODO load data from model
 
-Wenn eine neue Buchung hinzugefügt wird, wird zunächst die Auswahl der Personenanzahl ausgeblendet (Abbildung \ref{frontend_booking_new}). Erst wenn ein Objekt im Suchfeld ausgewählt wurde, wird die Auswahl in form eines Dropdown-Menüs im View angezeigt. Im Controller wird vorher die maximale Personenanzahl des ausgewählten Objektes aus dem JSON-Objekt entnommen und somit die zur Auswahl stehenden Zahlen ermittelt. So zeigt das Dropdown-Menü nur genau die Anzahl von Personen an die dieses Objekt zur Verfügung stellt. Für das Startdatum und Enddatum wurden, anders als beim Kunden, ein Datepicker bereit gestellt, der es dem Nutzer erlaubt das Datum durch einfache Auswahl in einem Kalender festzulegen (Abbildung \ref{frontend_booking_calender}). Für diesen ist Standardmäßig das aktuelle Datum eingestellt.
+Wenn eine neue Buchung hinzugefügt wird, wird zunächst die Auswahl der Personenanzahl ausgeblendet (Abbildung \ref{frontend_booking_new}).
+Erst wenn ein Objekt im Suchfeld ausgewählt wurde, wird die Auswahl in form eines Dropdown-Menüs im View angezeigt.
+Im Controller wird vorher die maximale Personenanzahl des ausgewählten Objektes aus dem JSON-Objekt entnommen und somit
+die zur Auswahl stehenden Zahlen ermittelt. So zeigt das Dropdown-Menü nur genau die Anzahl von Personen an die dieses Objekt zur Verfügung stellt.
+Für das Startdatum und Enddatum wurden, anders als beim Kunden, ein Datepicker bereit gestellt, der es dem Nutzer erlaubt das Datum durch einfache Auswahl in
+einem Kalender festzulegen (Abbildung \ref{frontend_booking_calender}). Für diesen ist Standardmäßig das aktuelle Datum eingestellt.
 
 \begin{figure}[H]
     \centering
@@ -196,7 +241,9 @@ Wenn eine neue Buchung hinzugefügt wird, wird zunächst die Auswahl der Persone
     \end{minipage}
 \end{figure}
 
-Um eine Buchung bearbeiten zu können muss diese, anders als beim Kunden oder Objekt, zunächst in der Buchungsübersicht gesucht werden. Hier wird die Personenauswahl angezeigt und ist mit dem eingetragenem Wert vordefiniert. Auch hier besteht die Möglichkeit, durch den angezeigten Löschen-Button die Buchung aus der Datenbank zu entfernen (Abbildung \ref{frontend_booking_delete_dialog}).  
+Um eine Buchung bearbeiten zu können muss diese, anders als beim Kunden oder Objekt, zunächst in der Buchungsübersicht gesucht werden.
+Hier wird die Personenauswahl angezeigt und ist mit dem eingetragenem Wert vordefiniert. Auch hier besteht die Möglichkeit, durch den
+angezeigten Löschen-Button die Buchung aus der Datenbank zu entfernen (Abbildung \ref{frontend_booking_delete_dialog}).
 
 \begin{figure}[H]
     \centering
@@ -217,10 +264,13 @@ Um eine Buchung bearbeiten zu können muss diese, anders als beim Kunden oder Ob
 
 
 
-Wird ein Dialog bestätigt, erscheint für drei Sekunden am oberen rechten Fensterrand ein Nachricht (Abbildung\ref{frontend_toast} sky). Ein sogenannter Toast fährt herunter und zeigt die Erfolgsmeldung und einen Button zum schließen an. In der mobilen Ansicht fährt der Dialog, in voller Bildschirmbreite, von unten herein. 
+Wird ein Dialog bestätigt, erscheint für drei Sekunden am oberen rechten Fensterrand ein Nachricht (Abbildung\ref{frontend_toast} sky).
+Ein sogenannter Toast fährt herunter und zeigt die Erfolgsmeldung und einen Button zum schließen an. In der mobilen Ansicht fährt der Dialog,
+in voller Bildschirmbreite, von unten herein.
 
 \section{Kalender}
-Der Kalender ist der Hautbestandteil der Anwendung (Abbildung \ref{frontend_mainpage}). Auf ihm kann der Benutzer alle Buchungen einsehen und editieren. Hinzu kommt die Verwaltung der Mietobjekte.
+Der Kalender ist der Hautbestandteil der Anwendung (Abbildung \ref{frontend_mainpage}). Auf ihm kann der Benutzer alle Buchungen einsehen und editieren.
+Hinzu kommt die Verwaltung der Mietobjekte.
 Diese sind auf der linken Seite aufgelistet. Auf der horizontlen Achse des Kalenders befinden sich die einzelnen Tage eines Monats sowie die vorhandenen Buchungen.\\
 Dank der umfangreichen Konfigurations-Möglichkeiten kann der Kalender in seinem Verhalten sehr gut angepasst werden.
 Einen Teil dieser Anpassungen wir im nachfolgenden erläutert.
@@ -228,8 +278,8 @@ Einen Teil dieser Anpassungen wir im nachfolgenden erläutert.
 \subsubsection{Drag'n Drop}
 Der Kalender bietet die Möglichkeit, Events mittels Drag'n Drop innerhalb dieses zu verschieben. Dieses Verhalten wird von der Option \texttt{droppable = true} freigeschaltet.
 Die Events, welche im Hintergund liegen werden automatisch nach dem Verschieben aktualisiert.
-Eine Aktualisierung mit der Datenbank erfolgt jedoch nicht. Hierfür steht die Callback-Methode \texttt{eventDrop} bereit, welche durch die Kalender-Konfiguration durch eine eigene überschrieben
-werden kann. Im Falle der vorliegenden Buchungs-Anwendung wird dabei der folgende ode ausgeführt:
+Eine Aktualisierung mit der Datenbank erfolgt jedoch nicht. Hierfür steht die Callback-Methode \texttt{eventDrop} bereit, welche durch die Kalender-Konfiguration
+durch eine eigene überschrieben werden kann. Im Falle der vorliegenden Buchungs-Anwendung wird dabei der folgende ode ausgeführt:
 
  \begin{lstlisting}[language=Javascript, label=code_exampleUpdateBooking, caption=Aktualisierungscode nach einem Drag\'nDrop-Event]
 function updateBooking(event){
@@ -247,4 +297,13 @@ function updateBooking(event){
  \end{lstlisting}
 
  Diese Funktion erstellt aus dem Kalendar-Event ein neues Model und ruft die Upsert-Methode der Buchungs-Collection auf.
- Diese entscheidet, ob eine neue Buchung hinzukommt oder eine bestehende geupdated wird.
+ Hierbei wird die Entscheidung getroffen, ob eine neue Buchung hinzukommt oder eine bestehende geupdated wird.
+
+ \subsubsection{Resizing}
+ Fullcalendar bietet die Möglichkeit, Buchungen mit einem einfachen Resizing zu verändern. Dabei kann der Benutzer einfach an beiden Enden die Buchung anfassen und auf eine beliebige Länge ziehen.
+ Das Updaten der Buchung erfolgt analog zum Updaten bei der Drag'n Drop-Funktion.
+
+\subsubsection{Selektieren}
+Für Anwender ist dieses Feature beim Anlegen von Buchungen sehr nützlich. Hierüber lassen sich aufeinander folgende Tage markieren und die Selektion mit einer Aktion verknüpfen.
+In diesem Fall wird der Dialog zum Erstellen einer neuen Buchung geöffnet.
+Dabei sind die Felder Start-und End-Zeit sowie das Buchungsobjekt bereits befüllt. Anschließend muss lediglich der Kunde sowie die Anzahl der Personen nachgetragen werden.
