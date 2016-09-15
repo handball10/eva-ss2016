@@ -10,10 +10,21 @@
 
 $desktop: 959px;
 
+.login-headline{
+  margin: 10% auto 2rem;
+  width:100%;
+  text-align: center;
+  font-size: 2rem;
+
+  @media (min-width: $desktop) {
+    margin: 15% auto 2rem;
+  }
+}
+
 .login-box{
   width:80%;
   height:100%;
-    margin:200px auto;
+    margin:0px auto;
   @media screen and (min-width: $desktop) {
     width:600px;
   }
@@ -121,3 +132,4 @@ md-toast .md-toast-content {
 .mobile-button{
   width:100%;
 }
+

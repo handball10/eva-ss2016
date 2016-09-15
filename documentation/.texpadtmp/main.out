@@ -11,13 +11,13 @@
 \BOOKMARK [2][-]{subsection.2.2.1}{Firebase}{section.2.2}% 11
 \BOOKMARK [2][-]{subsection.2.2.2}{AngularJS Material Design}{section.2.2}% 12
 \BOOKMARK [2][-]{subsection.2.2.3}{Compass}{section.2.2}% 13
-\BOOKMARK [2][-]{subsection.2.2.4}{fullcalender}{section.2.2}% 14
+\BOOKMARK [2][-]{subsection.2.2.4}{Fullcalender}{section.2.2}% 14
 \BOOKMARK [0][-]{chapter.3}{Projektvorbereitung}{}% 15
 \BOOKMARK [1][-]{section.3.1}{Zielsetzung}{chapter.3}% 16
 \BOOKMARK [1][-]{section.3.2}{Umsetzung}{chapter.3}% 17
-\BOOKMARK [2][-]{subsection.3.2.1}{Backend}{section.3.2}% 18
-\BOOKMARK [2][-]{subsection.3.2.2}{Frontend}{section.3.2}% 19
-\BOOKMARK [2][-]{subsection.3.2.3}{Funktionen}{section.3.2}% 20
+\BOOKMARK [2][-]{subsection.3.2.1}{Frontend}{section.3.2}% 18
+\BOOKMARK [2][-]{subsection.3.2.2}{Funktionen}{section.3.2}% 19
+\BOOKMARK [2][-]{subsection.3.2.3}{Backend}{section.3.2}% 20
 \BOOKMARK [0][-]{chapter.4}{Projektstruktur}{}% 21
 \BOOKMARK [1][-]{section.4.1}{Projekt anlegen}{chapter.4}% 22
 \BOOKMARK [1][-]{section.4.2}{Grunt Tasks}{chapter.4}% 23
