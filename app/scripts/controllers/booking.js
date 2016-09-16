@@ -104,6 +104,7 @@ angular.module('bookingCalendarApp')
                 $scope.bookingID = items;
                 Bookings.find({id : items}).then(function(result){
                     $scope.myStartDate = new Date(result.StartDate);
+
                     $scope.myEndDate = new Date(result.EndDate);
                     $scope.customerID = result.Customer;
                     $scope.resourceID = result.Resource;

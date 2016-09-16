@@ -93,6 +93,7 @@ angular.module('bookingCalendarApp')
                         },
                         eventDrop: updateBooking,
                         eventClick : function( event, jsEvent, view){
+                            $log.log(event);
                             $scope.showBookingDialog(window,event.id);
                         },
 
@@ -133,10 +134,9 @@ angular.module('bookingCalendarApp')
             var bookingsArray = [];
 
             _.mapKeys(bookings, function(item, key){
-
                 bookingsArray.push({
-                    Id : key,
-                    id : key,
+                    Id : item.Id,
+                    id : item.Id,
                     resourceId : item.Resource,
                     start : item.StartDate,
                     end : item.EndDate,
