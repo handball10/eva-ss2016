@@ -32,13 +32,16 @@
 \BOOKMARK [1][-]{section.5.4}{Objekt}{chapter.5}% 32
 \BOOKMARK [1][-]{section.5.5}{Buchung}{chapter.5}% 33
 \BOOKMARK [1][-]{section.5.6}{Kalender}{chapter.5}% 34
-\BOOKMARK [0][-]{chapter.6}{Backend}{}% 35
-\BOOKMARK [1][-]{section.6.1}{Echtzeit-Datenbank}{chapter.6}% 36
-\BOOKMARK [1][-]{section.6.2}{Organisation}{chapter.6}% 37
-\BOOKMARK [1][-]{section.6.3}{Zugriffsverwaltung}{chapter.6}% 38
-\BOOKMARK [1][-]{section.6.4}{Lesen, Schreiben, Echtzeit-Synchronisation}{chapter.6}% 39
-\BOOKMARK [1][-]{section.6.5}{Authentifizierung}{chapter.6}% 40
-\BOOKMARK [1][-]{section.6.6}{Weitere Firebase-Funktionen}{chapter.6}% 41
-\BOOKMARK [2][-]{subsection.6.6.1}{Technische Umsetzung der Datenbank-Anbindung}{section.6.6}% 42
-\BOOKMARK [2][-]{subsection.6.6.2}{Collections}{section.6.6}% 43
-\BOOKMARK [0][-]{chapter.7}{Fazit}{}% 44
+\BOOKMARK [2][-]{subsection.5.6.1}{Drag'n Drop}{section.5.6}% 35
+\BOOKMARK [2][-]{subsection.5.6.2}{Resizing}{section.5.6}% 36
+\BOOKMARK [2][-]{subsection.5.6.3}{Selektion}{section.5.6}% 37
+\BOOKMARK [0][-]{chapter.6}{Backend}{}% 38
+\BOOKMARK [1][-]{section.6.1}{Echtzeit-Datenbank}{chapter.6}% 39
+\BOOKMARK [1][-]{section.6.2}{Organisation}{chapter.6}% 40
+\BOOKMARK [1][-]{section.6.3}{Zugriffsverwaltung}{chapter.6}% 41
+\BOOKMARK [1][-]{section.6.4}{Lesen, Schreiben, Echtzeit-Synchronisation}{chapter.6}% 42
+\BOOKMARK [1][-]{section.6.5}{Authentifizierung}{chapter.6}% 43
+\BOOKMARK [1][-]{section.6.6}{Weitere Firebase-Funktionen}{chapter.6}% 44
+\BOOKMARK [2][-]{subsection.6.6.1}{Technische Umsetzung der Datenbank-Anbindung}{section.6.6}% 45
+\BOOKMARK [2][-]{subsection.6.6.2}{Collections}{section.6.6}% 46
+\BOOKMARK [0][-]{chapter.7}{Fazit}{}% 47

@@ -70,11 +70,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5.6}Kalender}{24}{section.5.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Drag'n Drop}{24}{subsubsection*.11}
+\contentsline {subsection}{\numberline {5.6.1}Drag'n Drop}{24}{subsection.5.6.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Resizing}{24}{subsubsection*.12}
+\contentsline {subsection}{\numberline {5.6.2}Resizing}{24}{subsection.5.6.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Selektion}{25}{subsubsection*.13}
+\contentsline {subsection}{\numberline {5.6.3}Selektion}{25}{subsection.5.6.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {6}Backend}{27}{chapter.6}
 \defcounter {refsection}{0}\relax 
@@ -92,18 +92,18 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {6.6.1}Technische Umsetzung der Datenbank-Anbindung}{31}{subsection.6.6.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Konfiguration f\IeC {\"u}r Firebase}{31}{subsubsection*.16}
+\contentsline {subsubsection}{Konfiguration f\IeC {\"u}r Firebase}{31}{subsubsection*.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Models}{31}{subsubsection*.17}
+\contentsline {subsubsection}{Models}{31}{subsubsection*.14}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Remote Objects}{32}{subsubsection*.18}
+\contentsline {subsubsection}{Remote Objects}{32}{subsubsection*.15}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {6.6.2}Collections}{33}{subsection.6.6.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Instanziierung}{33}{subsubsection*.19}
+\contentsline {subsubsection}{Instanziierung}{33}{subsubsection*.16}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Methoden}{34}{subsubsection*.20}
+\contentsline {subsubsection}{Methoden}{34}{subsubsection*.17}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Echtzeit-Anbindung}{35}{subsubsection*.21}
+\contentsline {subsubsection}{Echtzeit-Anbindung}{35}{subsubsection*.18}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {7}Fazit}{37}{chapter.7}
