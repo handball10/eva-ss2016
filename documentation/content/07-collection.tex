@@ -5,8 +5,8 @@ Im nachfolgenden werden der Aufbau und die Funktionsweise beider Konstrukte erl�
 
 \subsubsection{Konfiguration für Firebase}
 
-Für jede Anwendung, die auf den Firebase-Service zugreif, muss zunächst in der Firebase-Console ein API-Key generiert werden. Er identifiziert die Anwendung bei Firebase.
-Mit der Konfiguration kommen zudem die URL zur authentifizierung sowie Adressen für Storage und Datenbank mit.
+Für jede Anwendung, die auf den Firebase-Service zugreift, muss zunächst in der Firebase-Console ein API-Key generiert werden. Dieser identifiziert die Anwendung bei Firebase.
+Mit der Konfiguration kommen zudem die URL zur Authentifizierung sowie Adressen für Storage und Datenbank mit.
 
 \begin{lstlisting}[language=Javascript, label=code_APIConfig, caption=Konfiguration des Frontends]
 var config = {
@@ -21,8 +21,8 @@ firebase.initializeApp(config);
 window.database = firebase.database();
 \end{lstlisting}
 
-Im weiteren Verlauf des Konifigurations-Scriptes wird ein Firebase-Datenbank-Objekt erstellt. Dieses bietet alle nötigen Funktionalitäten, um später mit der Datenbank arbeiten zu können.
-Damit jeder beliebige Javascript-Code darauf zugreifen kann, erfolgt die Speicherung als Property des globalen \texttt{window}-Objektes.
+Im weiteren Verlauf des Konfigurations-Scriptes wird ein Firebase-Datenbank-Objekt erstellt. Dieses bietet alle nötigen Funktionalitäten, um später mit der Datenbank arbeiten zu können.
+Damit jeder beliebige JavaScript-Code darauf zugreifen kann, erfolgt die Speicherung als Property des globalen \texttt{window}-Objektes.
 
 \subsubsection{Models}
 
@@ -35,7 +35,7 @@ Hält eine Buchung
 \item[Customer]\hfill \\
 Beschreibt den Kunden
 \item[Resource]\hfill \\
-Beschreibt das vermietete Objekt
+Beschreibt das zu vermietende Objekt
 \end{description}
 
 Über ein Model lässt sich ein Objekt eines spezifischen Types generieren.
@@ -62,15 +62,11 @@ angular.module('bookingCalendarApp')
     });
 \end{lstlisting}
 
-Wesentlicher Bestandteil des Models sind seine Properties, welche die beschreibbaren Felder darstellen. Bei jeder Instanziierung wird die Methode \texttt{extend\(\)} aufgerufen, welche die
-übergebenen Werte auf das Model überträgt.
-Innerhalb der Anwendung können Models in allen möglichen Komponenten verwendet werden. Zu beachten ist, dass es anders als bei komplett objektorientierten Sprachen wie bspw. Java,
-keine Getter- oder Setter-Methoden gibt und die Properties des Models alle als Public angesehen werden können.
-
+Wesentlicher Bestandteil des Models sind seine Properties, welche die beschreibbaren Felder darstellen. Bei jeder Instanziierung wird die Methode \texttt{extend()} aufgerufen, welche die übergebenen Werte auf das Model überträgt.
+Innerhalb der Anwendung können Models in allen möglichen Komponenten verwendet werden. Zu beachten ist, dass es anders als bei komplett objektorientierten Sprachen wie beispielsweise. Java, keine \texttt{getter}- oder \texttt{setter}-Methoden gibt und die Properties des Models alle als Public angesehen werden können.
 
 \subsubsection{Remote Objects}
-Der Service \texttt{RemoteObjects} agiert als Factory zum Erstellen einer Collection für spezifische Models. Sie ist über einen Angular-Service als Singleton-Klasse implementiert und besitzt
- nur eine Methode zum Generieren einer neuen Collection.
+Der Service \texttt{RemoteObjects} agiert als Factory zum Erstellen einer Collection für spezifische Models. Sie ist über einen Angular-Service als Singleton-Klasse implementiert und besitzt nur eine Methode zum Generieren einer neuen Collection.
 
  \begin{lstlisting}[language=Javascript, label=code_RemoteObject, caption=Code des RemoteObjects-Service]
  angular.module('bookingCalendarApp')
@@ -92,22 +88,17 @@ Der Service \texttt{RemoteObjects} agiert als Factory zum Erstellen einer Collec
      });
 \end{lstlisting}
 
-Wie zu sehen, fordert die Factory bei der Instanziierung bis zu vier Parameter. Über den Parameter \texttt{name} wird der Name der Collection bestimmt, \texttt{path} ist der Pfad,
-unter welchem die Objekte dieses Types innerhalb von Firebase abgelegt sind, \texttt{Model} ist das Model-Objekt und \texttt{realtime} ein Indikator,
-ob die Collection auf Echtzeit-Updates der Datenbank hören soll.
-
+Wie zu sehen, fordert die Factory bei der Instanziierung bis zu vier Parameter. Über den Parameter \texttt{name} wird der Name der Collection bestimmt, \texttt{path} ist der Pfad, unter welchem die Objekte dieses Types innerhalb von Firebase abgelegt sind, \texttt{Model} ist das Model-Objekt und \texttt{realtime} ein Indikator, ob die Collection auf Echtzeit-Updates der Datenbank hören soll.
 Rückgabewert der Methode \texttt{createCollection()} ist immer die Collection des jeweiligen Model-Types.
-Wie diese Collections funktionieren, wird im nächsten Kapitel erläutert.
+Wie diese Collections funktionieren, wird im folgenden erläutert.
 
 \subsection{Collections}
+\label{subchap_coll}
 
-Eine Collection bezeichnet eine Art Sammlung für einen bestimmten Datentypen. Sie stellt Funktionen zur Verfügung, mit welchen der Entwickler einfach Datenbank-Abfragen generieren und Daten speichern kann.
-Ebenso wie der RemoteObjects-Service, ist auch eine Collection als Service implementiert, sodass nur jeweils einer für jedes Model existieren kann.
+Eine Collection bezeichnet eine Art Sammlung für einen bestimmten Datentyp. Sie stellt Funktionen zur Verfügung, mit welchen der Entwickler einfache Datenbank-Abfragen generieren und Daten speichern kann. Ebenso wie der RemoteObjects-Service, ist auch eine Collection als Service implementiert, sodass nur jeweils einer für jedes Model existieren kann.
 
 \subsubsection{Instanziierung}
-Über den Service \texttt{RemoteObject} wird die neue Collection instanziiert. Wie bereits beschrieben werden Name, Pfad, Model und Realtime-Indikator an den Konstruktor der Collection übergeben.
-Zunächst werden alle übergebenen Parameter in interne Variablen geschrieben.
-Anschließend wird ein Referenzobjekt mithilfe der Firebase-Bibliothek zur Datenbank generiert
+Über den Service \texttt{RemoteObject} wird die neue Collection instanziiert. Wie bereits beschrieben werden Name, Pfad, Model und Realtime-Indikator an den Konstruktor der Collection übergeben. Zunächst werden alle übergebenen Parameter in interne Variablen geschrieben. Anschließend wird ein Referenzobjekt mit Hilfe der Firebase-Bibliothek zur Datenbank generiert
 
  \begin{lstlisting}[language=Javascript, label=code_CollectionReference, caption=Befehl zum Generieren einer Firebase-Referenz]
  var reference = $window.database.ref(this.path);
@@ -116,7 +107,7 @@ Anschließend wird ein Referenzobjekt mithilfe der Firebase-Bibliothek zur Daten
 Diese Referenz wird in der gesamten Collection von Methoden verwendet, die Daten abfragen. Zudem greift der Mechanismus der Echtzeit-Funktionalitäten auf dieses Referenz-Objekt zu.
 
 \subsubsection{Methoden}
-Nachdem nun die Vorbereitungen abgeschlossen wurden, ist ein Blick auf die von der Collection zur Verfügung gestellten Methoden zu werden.
+Nachdem nun die Vorbereitungen abgeschlossen wurden, folgt ein Einblick auf die von der Collection zur Verfügung gestellten Methoden.
 Im Umfang enthalten sind standardmäßig \texttt{insert}, \texttt{remove}, \texttt{upsert} und \texttt{find}. Zusätzlich existiert die Methode \texttt{list}.
 
 Eventuell stellt sich die Frage, warum die Implementierung eines Collection-Services angestrebt wurde, da sich alle Datenbank-Operationen auch manuell ansteuern lassen. Hierzu lässt sich
@@ -124,13 +115,11 @@ sagen, dass dieser Service viele Vorteile bietet:
 \begin{itemize}
 \item{Code wird nur einmal geschrieben}
 \item{Code lässt sich beliebig oft wiederverwenden}
-\item{Wartbarkeit ist deutlich größer}
+\item{Wartbarkeit ist deutlich höher}
 \item{Asynchronität von Anfragen wird durch Promise-Chaining entfernt}
 \end{itemize}
 
 Nachfolgend eine Erläuterung der einzelnen Methoden.
-
-
 
 \begin{description}
 
@@ -152,10 +141,7 @@ Die \texttt{insert}-Methode dient zum Einfügen neuer Datensätze. Dabei nimmt d
  };
  \end{lstlisting}
 
- Wie bereits zu sehen verwendet die \texttt{insert}-Methode ein \textit{deferred}-Objekt. Im vorausgegangenen Abschnitt wird erwähnt, dass durch die Collection die Asynchronität durch dieses
- Promise-Chain aufgebrochen. Zunächst erfolgt ein Zugriff auf das Referenz-Objekt und der Aufruf seiner \texttt{push}-Methode. Die \texttt{push}-Methode erwartet ein beliebiges Objekt
- und legt dieses in der Datenbank ab. Anschließend wird das abgespeicherte Objekt von der Datenbank zurückgeliefert.
- Das empfangene Objekt wird über das Promise-Chain zurückgegeben.
+ Wie bereits zu sehen verwendet die \texttt{insert}-Methode ein \texttt{deferred}-Objekt. Im vorausgegangenen Abschnitt wird erwähnt, dass durch die Collection die Asynchronität durch dieses Promise-Chain aufgebrochen wurde. Zunächst erfolgt ein Zugriff auf das Referenz-Objekt und der Aufruf seiner \texttt{push}-Methode. Die \texttt{push}-Methode erwartet ein beliebiges Objekt und legt dieses in der Datenbank ab. Anschließend wird das abgespeicherte Objekt von der Datenbank zurückgeliefert. Das empfangene Objekt wird über das Promise-Chain zurückgegeben.
  Vorteil dieses Promise-Chain ist, dass Funktionen, die von dem Ergebnis abhängig sind, in einfachen Funktionsaufrufen nacheinander aufgerufen werden können.\\
  Alle Methoden mit Datenbank-Zugriff verwenden das Promise-Chain.
 
@@ -164,26 +150,18 @@ Bei der \texttt{remove}-Methode wird nur die \texttt{remove}-Funktion der Datenb
 auf dieses Objekt (über dessen Id) zeigt.
 
 \item[upsert]\hfill \\
-Die \texttt{upsert}-Methode ist eine Kombination aus \texttt{insert} und \texttt{update}. Besitzt das Model, welches der Funktion übergeben wurde eine Id, so wird ein \texttt{set}-Aufruf auf die Referenz
-dieses Objektes gesendet. Über \texttt{set} können dem referenzierten Objekt beliebige Felder gesetzten und geändert werden.\\
-Für den Fall, dass keine Id vorhanden ist, wird die \texttt{insert}-Methode aufgerufen.
+Die \texttt{upsert}-Methode ist eine Kombination aus \texttt{insert} und \texttt{update}. Besitzt das Model, welches der Funktion übergeben wurde eine Id, so wird ein \texttt{set}-Aufruf auf die Referenz dieses Objektes gesendet. Über \texttt{set} können dem referenzierten Objekt beliebige Felder gesetzten und geändert werden. Für den Fall, dass keine Id vorhanden ist, wird die \texttt{insert}-Methode aufgerufen.
 
 \item[find, list]\hfill \\
-Bei \texttt{find} und \texttt{list} handelt es sich um zwei fast identische Methoden. \texttt{list} bietet die Möglichkeit, das gesamte Datenpaket einer Referenz zu empfangen.
-Mit \texttt{find} lässt sich nach einem Datensatz suchen. Um einen solchen zu finden, muss ein Such-Objekt übergeben werden.
-Ein Suchobjekt besteht aus Key-Value-Paaren. Die Keys müssen dabei auf die Properties eines Objektes in der Datenbank passen.
-Die Ergebnisse werden wie gewohnt in einem Promise-Chain zurückgegeben.
-
+Bei \texttt{find} und \texttt{list} handelt es sich um zwei fast identische Methoden. \texttt{list} bietet die Möglichkeit, das gesamte Datenpaket einer Referenz zu empfangen. Mit \texttt{find} lässt sich nach einem Datensatz suchen. Um einen solchen zu finden, muss ein Such-Objekt übergeben werden. Ein Such-Objekt besteht aus Key-Value-Paaren. Die Keys müssen dabei auf die Properties eines Objektes in der Datenbank passen. Die Ergebnisse werden wie gewohnt in einem Promise-Chain zurückgegeben.
 
 \end{description}
 
 \subsubsection{Echtzeit-Anbindung}
-Um den Anspruch zu erfüllen, dass eine automatische Synchronisierung der Daten erfolgt, musste über die Collections ein System implementiert werden, welches
-auf die Ereignisse reagiert, die von Firebase bei Daten-Änderungen gefeuert werden.\\
-Jede Instanz der Web-Anwendung ist über eine Web-Socket-Verbindung mit der Firebase-Datenbank verbunden.
-Über diese Verbindung erfolgt sämtliche Kommunikation mit der Datenbank. Zum einen werden Daten gesendet, zum anderen Nachrichten über Ereignisse verschickt.\\
+Um den Anspruch zu erfüllen, dass eine automatische Synchronisierung der Daten erfolgt, musste über die Collections ein System implementiert werden, welches auf die Ereignisse reagiert, die von Firebase bei Daten-Änderungen gefeuert werden.\\
+Jede Instanz der Web-Anwendung ist über eine Web-Socket-Verbindung mit der Firebase-Datenbank verbunden. Über diese Verbindung erfolgt sämtliche Kommunikation mit der Datenbank. Zum einen werden Daten gesendet, zum anderen Nachrichten über Ereignisse verschickt.\\
 Bei den Ereignissen wird zwischen vier verschiedenen Ereignissen unterschieden:
-
+%TODO doppelt wie bei 6.4!
 \begin{description}
 \item[child\_added]\hfill \\
 Zu der Referenz wird ein neues Objekt hinzugefügt
@@ -206,12 +184,9 @@ function bindRealTimeHandlers(){
 }
 \end{lstlisting}
 
-Die registrierten Event-Listener empfangen die Daten, die von der Datenbank mit der Nachricht mitgesendet werden.
-Anschließend wird in der gesamten Angular-Anwendung ein Event getriggert, welches wiederum die Daten enthält.
-Dadurch kann an jeder Stelle in der Anwendung - egal ob Controller, Service oder Direktive - auf die Ereignisse reagiert werden.
-Im Falle der vorliegenden, liegen die Listener alle im \textit{Calendar-Controller} und updaten die Daten im Kalender.
+Die registrierten Event-Listener empfangen die Daten, die von der Datenbank mit der Nachricht mitgesendet werden. Anschließend wird in der gesamten Angular-Anwendung ein Event getriggert, welches wiederum die Daten enthält. Dadurch kann an jeder Stelle in der Anwendung - egal ob Controller, Service oder Direktive - auf die Ereignisse reagiert werden. In diesem Falle, liegen die Listener alle im \texttt{Calendar-Controller} und updaten die Daten im Kalender.
 
-Nachfolgend ein Code-Beispiel, welches auf das Hinzufügen eines Wohnungs-Objekts reagiert:
+Nachfolgend ein Code-Beispiel, welches auf das Hinzufügen eines Buchungsobjektes reagiert:
 
  \begin{lstlisting}[language=Javascript, label=code_CollectionCUtomListener, caption=Event-Handler für hinzukommende Ressourcen]
  $rootScope.$on('Resource::added', addRemoteRessource);
@@ -224,5 +199,4 @@ function addRemoteRessource(event, addedRessource){
 \end{lstlisting}
 
 Sobald ein neues Ressourcen-Objekt eintrifft, wird dem Kalender diese Ressource hinzugefügt.\\
-
 Zusammengefasst stellt Firebase eine perfekte Platform zur schnellen Datensynchronisation bereit.
