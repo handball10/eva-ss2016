@@ -1,9 +1,9 @@
 [0] Config.pm:324> INFO - This is Biber 2.1
 [0] Config.pm:327> INFO - Logfile is '/Users/Stefan/Documents/workspace/eva-ss2016/documentation/.texpadtmp/main.blg'
-[29] biber-darwin:276> INFO - === Sat Sep 24, 2016, 17:14:12
-[29] Biber.pm:333> INFO - Reading '/Users/Stefan/Documents/workspace/eva-ss2016/documentation/.texpadtmp/main.bcf'
-[93] Biber.pm:645> INFO - Found 0 citekeys in bib section 0
-[93] Utils.pm:146> WARN - The file '/Users/Stefan/Documents/workspace/eva-ss2016/documentation/.texpadtmp/main.bcf' does not contain any citations!
-[106] bbl.pm:505> INFO - Writing '/Users/Stefan/Documents/workspace/eva-ss2016/documentation/.texpadtmp/main.bbl' with encoding 'UTF-8'
-[107] bbl.pm:596> INFO - Output to /Users/Stefan/Documents/workspace/eva-ss2016/documentation/.texpadtmp/main.bbl
-[107] Biber.pm:106> INFO - WARNINGS: 1
+[27] biber-darwin:276> INFO - === Sun Sep 25, 2016, 16:58:01
+[27] Biber.pm:333> INFO - Reading '/Users/Stefan/Documents/workspace/eva-ss2016/documentation/.texpadtmp/main.bcf'
+[91] Biber.pm:645> INFO - Found 0 citekeys in bib section 0
+[92] Utils.pm:146> WARN - The file '/Users/Stefan/Documents/workspace/eva-ss2016/documentation/.texpadtmp/main.bcf' does not contain any citations!
+[103] bbl.pm:505> INFO - Writing '/Users/Stefan/Documents/workspace/eva-ss2016/documentation/.texpadtmp/main.bbl' with encoding 'UTF-8'
+[103] bbl.pm:596> INFO - Output to /Users/Stefan/Documents/workspace/eva-ss2016/documentation/.texpadtmp/main.bbl
+[104] Biber.pm:106> INFO - WARNINGS: 1

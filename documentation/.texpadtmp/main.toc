@@ -28,7 +28,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.2.3}Compass}{5}{subsection.2.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.4}Fullcalender}{5}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.4}Fullcalendar}{5}{subsection.2.2.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {3}Projektvorbereitung}{7}{chapter.3}
 \defcounter {refsection}{0}\relax 
