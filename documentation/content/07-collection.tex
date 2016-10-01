@@ -161,7 +161,6 @@ Bei \texttt{find} und \texttt{list} handelt es sich um zwei fast identische Meth
 Um den Anspruch zu erfüllen, dass eine automatische Synchronisierung der Daten erfolgt, musste über die Collections ein System implementiert werden, welches auf die Ereignisse reagiert, die von Firebase bei Daten-Änderungen gefeuert werden.\\
 Jede Instanz der Web-Anwendung ist über eine Web-Socket-Verbindung mit der Firebase-Datenbank verbunden. Über diese Verbindung erfolgt sämtliche Kommunikation mit der Datenbank. Zum einen werden Daten gesendet, zum anderen Nachrichten über Ereignisse verschickt.\\
 Bei den Ereignissen wird zwischen vier verschiedenen Ereignissen unterschieden:
-%TODO doppelt wie bei 6.4!
 \begin{description}
 \item[child\_added]\hfill \\
 Zu der Referenz wird ein neues Objekt hinzugefügt

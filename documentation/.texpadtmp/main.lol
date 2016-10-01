@@ -13,14 +13,14 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {6.2}Konfiguration des Frontends}{31}{lstlisting.6.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {6.3}Hauptteil des Resource-Models}{32}{lstlisting.6.3}
+\contentsline {lstlisting}{\numberline {6.3}Hauptteil des Resource-Models}{31}{lstlisting.6.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {6.4}Code des RemoteObjects-Service}{33}{lstlisting.6.4}
+\contentsline {lstlisting}{\numberline {6.4}Code des RemoteObjects-Service}{32}{lstlisting.6.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {6.5}Befehl zum Generieren einer Firebase-Referenz}{34}{lstlisting.6.5}
+\contentsline {lstlisting}{\numberline {6.5}Befehl zum Generieren einer Firebase-Referenz}{33}{lstlisting.6.5}
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {6.6}Insert-Methode einer Collection}{34}{lstlisting.6.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {lstlisting}{\numberline {6.7}Registrierung der Event-Handler von Datenbank-Events}{36}{lstlisting.6.7}
+\contentsline {lstlisting}{\numberline {6.7}Registrierung der Event-Handler von Datenbank-Events}{35}{lstlisting.6.7}
 \defcounter {refsection}{0}\relax 
 \contentsline {lstlisting}{\numberline {6.8}Event-Handler f\IeC {\"u}r hinzukommende Ressourcen}{36}{lstlisting.6.8}

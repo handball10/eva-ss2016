@@ -86,11 +86,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {6.4}Lesen, Schreiben, Echtzeit-Synchronisation}{29}{section.6.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.5}Authentifizierung}{30}{section.6.5}
+\contentsline {section}{\numberline {6.5}Authentifizierung}{29}{section.6.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.6}Weitere Firebase-Funktionen}{31}{section.6.6}
+\contentsline {section}{\numberline {6.6}Weitere Firebase-Funktionen}{30}{section.6.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.6.1}Technische Umsetzung der Datenbank-Anbindung}{31}{subsection.6.6.1}
+\contentsline {subsection}{\numberline {6.6.1}Technische Umsetzung der Datenbank-Anbindung}{30}{subsection.6.6.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Konfiguration f\IeC {\"u}r Firebase}{31}{subsubsection*.13}
 \defcounter {refsection}{0}\relax 
@@ -102,7 +102,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Instanziierung}{33}{subsubsection*.16}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Methoden}{34}{subsubsection*.17}
+\contentsline {subsubsection}{Methoden}{33}{subsubsection*.17}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Echtzeit-Anbindung}{35}{subsubsection*.18}
 \defcounter {refsection}{0}\relax 
