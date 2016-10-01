@@ -4,9 +4,9 @@ In diesem Kapitel wird die prototypische Entwicklung des Frontend beschrieben. D
 Projektstruktur und die Funktionsweise des Programmes erläutert.
 
 \section{Login}
-Da die Software, wie in den Projektzielen erwähnt, nicht nur intern im Büro sondern auch von extern aus erreichbar sein muss, ist es nötig eine Authentifizierung einzurichten damit unbefugte keine Möglichkeiten haben die Daten zu verändern oder einzusehen. Um die Software nutzen zu können, benötigt der Bearbeiter eine gültige Kombination aus E-Mail Adresse und Passwort. Schon bei der Eingabe der Daten wird überprüft, ob die Felder leer sind oder es sich überhaupt um eine E-Mail Adresse handelt. Dabei wird abgefragt, ob ein \url{@}-Zeichen vorhanden ist und ob darauf ein Punkt folgt.
-Sobald das Formular abgeschickt wurde, werden die Daten zunächst im \texttt{login.js} Controller entgegengenommen. Von da aus werden diese an den Authenticate-Service weitergegeben wo sie an das Backend weitergereicht werden. In Firebase werden sie dann mit den hinterlegten Daten verglichen. Sind E-Mail Adresse und Passwort nicht korrekt oder nicht vorhanden, wird eine Fehlermeldung zurückgegeben die der Controller im View anzeigt. Sofern alle Angaben korrekt sind, wird der Nutzer weiter zu der Hauptseite geleitet.
-Da es sich hierbei um eine Betriebsinterne Software handelt, wird eine Registrierung nicht benötigt. Die E-Mail Adresse und das Passwort werden Manuell im Backend hinzugefügt, bearbeitet oder entfernt. Die Folgende Abbildung \ref{frontend_login} zeigt, wie der Anmeldebildschirm aussieht. 
+Da die Software, wie in den Projektzielen erwähnt, nicht nur intern im Büro sondern auch von extern aus erreichbar sein muss, ist es nötig, eine Authentifizierung einzurichten damit Unbefugte keine Möglichkeiten haben die Daten zu verändern oder einzusehen. Um die Software nutzen zu können, benötigt der Bearbeiter eine gültige Kombination aus E-Mail Adresse und Passwort. Schon bei der Eingabe der Daten wird überprüft, ob die Felder leer sind oder es sich überhaupt um eine E-Mail Adresse handelt. Dabei wird abgefragt, ob ein \url{@}-Zeichen vorhanden ist und ob darauf ein Punkt folgt.
+Sobald das Formular abgeschickt wurde, werden die Daten zunächst im \texttt{login.js} Controller entgegengenommen. Von da aus werden diese an den Authentication-Service weitergegeben wo sie an das Backend weitergereicht werden. In Firebase werden sie dann mit den hinterlegten Daten verglichen. Sind E-Mail Adresse und Passwort nicht korrekt oder nicht vorhanden, wird eine Fehlermeldung zurückgegeben die der Controller im View anzeigt. Sofern alle Angaben korrekt sind, wird der Nutzer weiter zu der Hauptseite geleitet.
+Da es sich hierbei um eine betriebsinterne Software handelt, wird eine Registrierung nicht benötigt. Die E-Mail-Adresse und das Passwort werden manuell im Backend hinzugefügt, bearbeitet oder entfernt. Die Folgende Abbildung \ref{frontend_login} zeigt, wie der Anmeldebildschirm aussieht.
 
 \begin{figure}[H]
 \centering\includegraphics[width=0.5\textwidth]{images/frontend_login.png}
@@ -24,7 +24,7 @@ Aus den in den Projektzielen gesteckten Bedingungen ergibt sich die in Abbildung
 \end{figure}
 
 \subsection{Header}
-Im Kopfbereich befinden sich neben dem Programmname auch folgende vier Button:
+Im Kopfbereich befinden sich neben dem Programm-Name auch folgende vier Button:
 
 \begin{description}
 \item[Kunde]\hfill \\
@@ -60,11 +60,11 @@ Sobald die Fenstergröße kleiner ist oder die Größe eines durchschnittlichen 
 
 
 \subsection{Main}
-In der Main befindet sich der eigentliche Kalender, in dem in einer Monatsübersicht die Buchungen dargestellt werden. 
+In der Main-View befindet sich der eigentliche Kalender, in dem in einer Monatsübersicht die Buchungen dargestellt werden.
 Dieser teilt sich in folgende zwei Bereiche:
 \begin{description}
 \item[Objektübersicht]\hfill \\
-Alle Objekte werden auf der linken Seite in form einer Liste dargestellt.
+Alle Buchungsobjekte werden auf der linken Seite in Form einer Liste dargestellt.
 \item[Buchungsübersicht]\hfill \\ 
 Alle Tage des aktuellen Monats werden als Spalten dargestellt. Die Buchungen werden als Blöcke angezeigt und verbinden die einzelnen Tage an denen das Objekt gebucht ist.  
 \end{description}

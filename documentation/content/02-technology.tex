@@ -5,32 +5,51 @@ Dieses Kapitel bietet einen Überblick über die im Projekt verwendeten Technolo
 
 \section{Verwendete Technologien}
 \subsection{AngularJS}
-AngularJS ist ein von Google entwickeltes JavaScript-Framework für clientseitige Webanwendungen, welches nach dem Model-View-View-Model Prinzip funktioniert. Es eignet sich besonders gut für Single-Page-Applications, bei der die meisten Daten bereits beim ersten Aufruf geladen werden. Das führt dazu, dass bei einer Änderung der URL nicht mehr die komplette Seite aktualisiert wird sondern lediglich die benötigten Daten per Ajax nachgeladen werden. Dadurch, dass bei AngularJS alles mittels JavaScript gerendert wird, stellt die Suchmaschinenoptimierung einen zusätzlichen Aufwand da, da die Suchmaschinen aktuell noch ihre Probleme haben. Abgesehen davon verfügt AngularJS aber über viele Stärken. Dazu gehören unter anderem Two-Way Binding, sehr gute Testbarkeit, Abstraktion von Low-Lovel-Operationen so wie die Lesbarkeit und Erweiterung von HTML-Code. 
+AngularJS ist ein von Google entwickeltes JavaScript-Framework für clientseitige Webanwendungen,
+welches nach dem Model-View-View-Model Prinzip funktioniert. Es eignet sich besonders gut für Single-Page-Applications,
+bei der die meisten Daten bereits beim ersten Aufruf geladen werden. Das führt dazu, dass bei einer Änderung der URL nicht mehr die komplette Seite aktualisiert wird,
+ sondern lediglich die benötigten Daten per Ajax nachgeladen werden.
+ Dadurch, dass bei AngularJS alles mittels JavaScript gerendert wird, stellt die Suchmaschinenoptimierung einen zusätzlichen Aufwand da,
+ da Suchmaschinen damit noch ihre Probleme haben. Abgesehen davon verfügt AngularJS aber über viele Stärken.
+ Dazu gehören unter anderem Two-Way Binding, sehr gute Testbarkeit, Abstraktion von Low-Lovel-Operationen so wie die Lesbarkeit und Erweiterung von HTML-Code.
 
 \subsection{Grunt}
-Grunt ist ein sogenannter JavaScript-Taskrunner der dazu da ist um wiederkehrende Aufgaben bei Build-Prozessen in Frontend-Projekten zu automatisieren. Sobald er einmal konfiguriert ist, ist das Testen und Ausliefern selbst bei umfangreichen Projekten problemlos möglich. Es hilft viele Schritte wie zum Beispiel das minifizieren von JavaScript-Code oder das Umwandeln von SASS-Code zu CSS-Code von zentraler Stelle aus zu Steuern. 
+Grunt ist ein sogenannter JavaScript-Taskrunner, der verwendet wird, um wiederkehrende Aufgaben in Build-Prozessen in Frontend-Projekten zu automatisieren.
+Sobald er einmal konfiguriert ist, ist das Testen und Ausliefern selbst bei umfangreichen Projekten problemlos möglich.
+Es hilft, viele Schritte wie zum Beispiel das Minimieren von JavaScript-Code oder das Umwandeln von SASS-Code zu CSS-Code von zentraler Stelle aus zu steuern.
 
 \subsection{NPM}
-Node Package Manager ist ein Kommandozeilenprogramm für node.js. Es erleichtert JavaScript Entwicklern das Teilen von Code, welcher erstellt wurde um besondere Probleme zu lösen. Diese wiederverwendbaren Codeschnipsel werden Package oder manchmal auch Module genannt. Die Idee dahinter ist, dass ein Package immer nur ein Problem richtig löst. Das ermöglicht es, mit Hilfe von vielen kleinen Package, zu einer Lösung zu gelangen.
+Node Package Manager ist ein Kommandozeilenprogramm für node.js. Es erleichtert JavaScript-Entwicklern das Teilen von Code, welcher erstellt wurde um besondere Probleme zu lösen.
+Diese wiederverwendbaren Codeschnipsel werden Package oder manchmal auch Module genannt. Die Idee dahinter ist, dass ein Package einen bestimmten Funktionsumfang zur Verfügung stellt.
+Das ermöglicht es, mit Hilfe von vielen kleinen Package, zu einer Lösung zu gelangen.
   
 \subsection{Bower}
-Wie auch der node package manager ist Bower ein Kommandozeilen Paketverwaltungstool für die clientseitige Webentwicklung. Er ist sogar in Node.js geschrieben und wird über NPM installiert. Er dient zur Installation und Aktualisierung von Programmbibliotheken und Frameworks. Als Ergänzung zu NPM und in Zusammenarbeit mit Grunt kann der Workflow erheblich beschleunigt und verbessert werden. 
+Wie auch NPM ist Bower ein Kommandozeilen-Paketverwaltungstool für die clientseitige Webentwicklung. Bower ist für Node.js geschrieben und wird über NPM installiert.
+Es dient zur Installation und Aktualisierung von Programmbibliotheken und Frameworks. Als Ergänzung zu NPM und in Zusammenarbeit mit Grunt kann der Workflow erheblich beschleunigt und verbessert werden.
 
 \subsection{Sass}
-Sass ist ein ausgereifter, etablierter und leistungsfähiger CSS-Präprozessor. Mit der Dateiendung .scss kann die Erweiterung genutzt werden. Da die Browser aktuell keine .scss-Dateien unterstützen, muss das Sass-Kommandozeilentool den Code zunächst in .css-Dateien übersetzen.  Andersherum ist es ohne Probleme möglich CSS-Code in SASS-Dateien einzubinden und zu nutzen, da dieser korrekt umgewandelt wird. Zu den Vorteilen von Sass gehört zum Beispiel Verschachtelungen, Variablen, Mixins, Vererbung und Importe.
+Sass ist ein ausgereifter, etablierter und leistungsfähiger CSS-Präprozessor.
+Mit der Dateiendung .scss kann die Erweiterung genutzt werden. Da akktuelle moderne Browser noch kein Sass unterstützen, muss das Sass-Kommandozeilentool den Code zunächst in .css-Dateien übersetzen.
+Andersherum ist es ohne Probleme möglich CSS-Code in SASS-Dateien einzubinden und zu nutzen, da dieser korrekt umgewandelt wird. Zu den Vorteilen von Sass gehört zum Beispiel
+Verschachtelungen, Variablen, Mixins, Vererbung und Importe.
 
 \subsection{Yeoman}
-Bei der modernen Frontendentwicklungen werden viele Bibliotheken und Werkzeuge benötigt. Yeoman bietet einen Workflow um Pakete zugänglich zu machen und zu installieren. Es ist ein Meta-Paketemanager, Entwicklungsserver, Code-Generator, der ein Grundgerüst mit den ausgewählten Bibliotheken und Frameworks bereitstellt. Es erstellt die Projektstruktur und lädt die notwendigen Ressourcen herunter. Je nach eingesetztem Generator stehen weitere verschiedene zusätzliche Funktionen zur Verfügung. 
+Bei der Entwicklung von mordernen Frontendentwicklungen werden viele Bibliotheken und Werkzeuge benötigt.
+Für das Kickstarten von Projekten eines speziellen Types, stellt Yeoman Generatoren mit einem Workflow  machen dieser Pakete bietet Yeoman einen Workflow. Es ist ein Meta-Paketemaneger, Entwicklungsserver, Code-Generator, der ein Grundgerüst mit den ausgewählten Bibliotheken und Frameworks erstellt. Es erstellt die Projektstruktur und lädt die notwendigen Ressourcen herunter. Je nach eingesetztem Generator stehen weitere verschiedene zusätzliche Funktionen zur Verfügung.
 
 \section{Verwendete Pakete}
 \subsection{Firebase}
-Wie auch AngularJS stammt das Framework Firebase aus dem Hause Google. Allerdings wurde die Plattform nicht von Grund auf von Google entwickelt sondern erst im Jahr 2014 übernommen. Es stellt eine universelle App-Plattform für Entwickler und Marketer zur Verfügung, welches zur Entwicklung von hochqualifizierten Anwendungen dient. Das Herzstück des Framework ist die Analyse von Apps und mobilen Anwendungen. Des Weiteren bietet es Cloud-Speicher, Cloud-Messaging, Remote Config und Test Lab. Ebenfalls stellt es die Möglichkeit zur Authentifizierung bereit so wie eine Echtzeit NoSQL Cloud Datenbank. 
+Wie auch AngularJS stammt das Framework Firebase aus dem Hause Google. Allerdings wurde die Plattform nicht von Grund auf von Google entwickelt sondern erst im Jahr 2014 übernommen.
+Firebase stellt eine universelle App-Plattform für Entwickler und Marketer zur Verfügung, die die Entwicklung von hochskalierbaren Multi-Platform-Anwendungen ermöglicht.
+Zum Portfolio von Firebase gehören Realtime-NoSQL-Datenbanken, Authentifizierungsschnittstellen, Hosting von Web-Apps, Cloud-Datenspeicher sowie Cloud-Messaging.
 
 \subsection{AngularJS Material Design}
 Passend zu Angular gibt es das User Interface Component Framework AngularJS Material Design. Es ist ein Zusammenschluss der Material Design Guidelines und dem AngularJS Framework. Dies soll dabei helfen, zeitgemäße attraktive konsistente und funktionale  Webseitendesigns zu Erstellen und auf allen Endgeräten zu gewährleisten.
 
 \subsection{Compass}
-Zusammen mit der Spracherweiterung Sass baut Compass ein Framework. Es ist quasi die Standardbibliothek für Sass und bietet vieles was auch gängige CSS-Frameworks enthalten. Compass erlaubt eine einheitliche Schreibweise die in verschiedene Eigenschaften übersetzt wird. Das hat zur Folge, dass sich die Entwickler keine Gedanken machen müssen, ob alle Browser abgedeckt werden. Ebenfalls ermöglicht es das automatisierte Erstellen von CSS-Sprites. 
+Compass ist eine in Ruby geschriebene Anwendung, die das Kompillieren der CSS übergeordneten Sprache Sass ermöglicht.
+Sass erweitert CSS um einige nützliche Features, wie z.B. Vererbung von Klassen und Variablen. Mit Hilfe von Compass werden Sass-Dateien in Css umgewandelt.
+Im Zusammenspiel mit Grunt lassen sich über entsprechende Tasks Sass-Dateien bei Änderungen automatisch in Css kompillieren.
 
 \subsection{Fullcalendar}
 Fullcalendar ist ein jQuery-Plugin und stellt ein umfangreiches Kalender-User-Interface mit vielen Funktionen zur Verfügung. Zu dem Funktionsumfang gehören verschiedene Kalenderansichten wie beispielsweise Monats-, Wochen- und Tages-Views. Zwischen diesen lässt sich bei Bedarf dynamisch umschalten.\\
